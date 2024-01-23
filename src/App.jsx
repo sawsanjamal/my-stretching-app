@@ -1,0 +1,30 @@
+import { useState } from "react";
+import Navbar from "./components/Navbar";
+import Modal from "./components/Modal";
+import Sidebar from "./components/Sidebar";
+import { Outlet } from "react-router-dom";
+
+export default function App() {
+  const [darkMode, setDarkMode] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
+  function toggleDarkMode() {
+    setDarkMode((prevDarkMode) => !prevDarkMode);
+  }
+
+  return (
+    <div className={darkMode ? "on" : "off"}>
+      <div className="parentModal">
+        <Modal className="childModal" openModal={openModal} />
+      </div>
+      <Navbar
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
+        setOpenModal={() => setOpenModal(!openModal)}
+      />
+      <div>
+        <Sidebar setOpenModal={() => setOpenModal(!openModal)} />
+        {/* <Outlet /> */}
+      </div>
+    </div>
+  );
+}
