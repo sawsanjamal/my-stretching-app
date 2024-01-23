@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Modal from "./components/Modal";
 import Sidebar from "./components/Sidebar";
 import { Outlet } from "react-router-dom";
+import "./index.css";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -21,9 +22,9 @@ export default function App() {
         toggleDarkMode={toggleDarkMode}
         setOpenModal={() => setOpenModal(!openModal)}
       />
-      <div>
+      <div style={{ display: "flex" }}>
         <Sidebar setOpenModal={() => setOpenModal(!openModal)} />
-        {/* <Outlet /> */}
+        <Outlet />
       </div>
     </div>
   );

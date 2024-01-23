@@ -6,6 +6,7 @@ import {
   faUser,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export default function Sidebar({ setOpenModal }) {
   return (
@@ -19,13 +20,17 @@ export default function Sidebar({ setOpenModal }) {
           </div>
           <div>
             <button className="sidebar-btn">
-              <FontAwesomeIcon icon={faHouse} />
+              <Link to="/">
+                <FontAwesomeIcon icon={faHouse} />
+              </Link>
             </button>
             <h3>Home</h3>
           </div>
           <div>
             <button className="sidebar-btn">
-              <FontAwesomeIcon icon={faHeart} />
+              <Link to="/stretches">
+                <FontAwesomeIcon icon={faHeart} />
+              </Link>
             </button>
             <h3>Stretches</h3>
           </div>
