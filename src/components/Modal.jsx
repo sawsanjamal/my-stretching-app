@@ -16,6 +16,7 @@ export default function Modal({ openModal, setOpenModal }) {
   const methods = useForm();
   const onSubmit = methods.handleSubmit((data) => {
     console.log(data);
+    methods.reset();
   });
 
   return (
@@ -31,24 +32,24 @@ export default function Modal({ openModal, setOpenModal }) {
             <button onClick={onCloseModal}>x</button>
           </div>
           <h1> Sign up</h1>
-          <div className="formContent">
+          <div>
             <Input
               id="name"
-              label="name"
+              label="Name"
               type="text"
               placeholder="type your name..."
             />
 
             <Input
               id="email"
-              label="email"
+              label="Email"
               type="email"
               placeholder="type your email..."
             />
 
             <Input
               id="password"
-              label="password"
+              label="Password"
               type="password"
               placeholder="type your password..."
             />
