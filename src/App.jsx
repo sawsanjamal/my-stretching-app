@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Navbar from "./components/Navbar";
-import Modal from "./components/Modal";
-import Sidebar from "./components/Sidebar";
+import Navbar from "./components/navbar/Navbar";
+import Modal from "./components/modals/SignUpModal";
+import Sidebar from "./components/sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
 import "./index.css";
 
@@ -13,7 +13,7 @@ export default function App() {
   }
 
   return (
-    <div className={darkMode ? "on" : "off"}>
+    <div className={darkMode ? "off" : "on"}>
       <div className="parentModal">
         <Modal
           className="childModal"

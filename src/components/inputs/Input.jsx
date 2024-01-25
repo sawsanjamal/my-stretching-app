@@ -1,17 +1,17 @@
 import { AnimatePresence } from "framer-motion";
 import { useFormContext } from "react-hook-form";
-import { findInputError } from "../findInputError";
-import { motion } from "framer-motion";
-import { isFormInvalid } from "../isFormInvalid";
-import { MdError } from "react-icons/md";
+import { findInputError } from "./findInputError";
+import { isFormInvalid } from "./isFormInvalid";
+import { InputError } from "./InputError";
+import "./styles.css";
 
-export const Input = ({ id, type, label, placeholder }) => {
+export const Input = ({ id, type, label, placeholder, validation, name }) => {
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
-  const inputError = findInputError(errors, label);
+  const inputError = findInputError(errors, name);
   const isInvalid = isFormInvalid(inputError);
   return (
     <div className="formContent">
@@ -34,28 +34,8 @@ export const Input = ({ id, type, label, placeholder }) => {
         id={id}
         type={type}
         placeholder={placeholder}
-        {...register(label, {
-          required: {
-            value: true,
-            message: "required",
-          },
-        })}
+        {...register(name, validation)}
       />
     </div>
   );
-};
-
-function InputError({ message }) {
-  return (
-    <motion.p className="input-error-message" {...framer_error}>
-      <MdError />
-      {message}
-    </motion.p>
-  );
-}
-const framer_error = {
-  initial: { opacity: 0, y: 10 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: 10 },
-  transition: { duration: 0.2 },
 };

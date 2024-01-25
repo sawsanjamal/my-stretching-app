@@ -1,0 +1,26 @@
+.success-message {
+  font-size: 15px;
+  color: rgb(130, 190, 130);
+  font-weight: 600;
+}
+.input-error-message {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #c35555;
+  font-weight: bold;
+  gap: 3px;
+}
+.form-input {
+  background-color: none;
+  border: none;
+  border-radius: 12px;
+  height: 2vh;
+  margin-bottom: 8px;
+  padding-left: 3px;
+  width: 10vw;
+}
+.label {
+  margin-bottom: 2px;
+  font-size: 19px;
+}

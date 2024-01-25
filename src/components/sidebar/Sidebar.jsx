@@ -7,6 +7,7 @@ import {
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import "./styles.css";
 
 export default function Sidebar({ setOpenModal }) {
   return (
