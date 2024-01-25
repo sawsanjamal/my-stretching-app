@@ -34,8 +34,10 @@ export default function Modal({ openModal, setOpenModal }) {
           className="showForm"
           method="dialog"
         >
-          <div className="form-close-btn">
-            <button onClick={onCloseModal}>x</button>
+          <div>
+            <button className="form-close-btn" onClick={onCloseModal}>
+              x
+            </button>
           </div>
           <h1> Sign up</h1>
           <div>
