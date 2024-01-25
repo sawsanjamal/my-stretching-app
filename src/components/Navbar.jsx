@@ -1,6 +1,6 @@
 import toggleOn from "../assets/toggle-on.svg";
 import toggleOff from "../assets/toggle-off.svg";
-import SearchBar from "./SearchBar";
+import SearchBar from "./searchBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 

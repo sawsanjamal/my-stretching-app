@@ -20,7 +20,7 @@ export default function Sidebar({ setOpenModal }) {
           </div>
           <div>
             <button className="sidebar-btn">
-              <Link to="/">
+              <Link to="/" className="link">
                 <FontAwesomeIcon icon={faHouse} />
               </Link>
             </button>
@@ -28,7 +28,7 @@ export default function Sidebar({ setOpenModal }) {
           </div>
           <div>
             <button className="sidebar-btn">
-              <Link to="/stretches">
+              <Link to="/stretches" className="link">
                 <FontAwesomeIcon icon={faHeart} />
               </Link>
             </button>
@@ -36,7 +36,9 @@ export default function Sidebar({ setOpenModal }) {
           </div>
           <div>
             <button className="sidebar-btn">
-              <FontAwesomeIcon icon={faBook} />
+              <Link to="/articles" className="link">
+                <FontAwesomeIcon icon={faBook} />
+              </Link>
             </button>
             <h3>Articles</h3>
           </div>

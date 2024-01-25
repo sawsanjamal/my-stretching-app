@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { Input } from "./Input";
 
 export default function Modal({ openModal, setOpenModal }) {
   const [name, setName] = useState("");
@@ -11,31 +13,51 @@ export default function Modal({ openModal, setOpenModal }) {
     setName("");
     setPassword("");
   }
+  const methods = useForm();
+  const onSubmit = methods.handleSubmit((data) => {
+    console.log(data);
+  });
+
   return (
-    <dialog open={openModal}>
-      <form className="showForm" method="dialog">
-        <div className="form-close-btn">
-          <button onClick={onCloseModal}>x</button>
-        </div>
-        <h1> Sign up</h1>
-        <div className="formContent">
-          <label className="label">Name</label>
-          <input className="form-input" defaultValue={name} type="text" />
+    <dialog className="dialog" open={openModal}>
+      <FormProvider {...methods}>
+        <form
+          onSubmit={onSubmit}
+          noValidate
+          className="showForm"
+          method="dialog"
+        >
+          <div className="form-close-btn">
+            <button onClick={onCloseModal}>x</button>
+          </div>
+          <h1> Sign up</h1>
+          <div className="formContent">
+            <Input
+              id="name"
+              label="name"
+              type="text"
+              placeholder="type your name..."
+            />
 
-          <label className="label">Email</label>
-          <input className="form-input" defaultValue={email} type="email" />
+            <Input
+              id="email"
+              label="email"
+              type="email"
+              placeholder="type your email..."
+            />
 
-          <label className="label">Password</label>
-          <input
-            className="form-input"
-            defaultValue={password}
-            type="password"
-          />
-        </div>
-        <button className="form-submit-btn" type="submit">
-          Submit
-        </button>
-      </form>
+            <Input
+              id="password"
+              label="password"
+              type="password"
+              placeholder="type your password..."
+            />
+          </div>
+          <button className="form-submit-btn" type="submit">
+            Submit
+          </button>
+        </form>
+      </FormProvider>
     </dialog>
   );
 }

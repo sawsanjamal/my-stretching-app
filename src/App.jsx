@@ -15,7 +15,11 @@ export default function App() {
   return (
     <div className={darkMode ? "on" : "off"}>
       <div className="parentModal">
-        <Modal className="childModal" openModal={openModal} />
+        <Modal
+          className="childModal"
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+        />
       </div>
       <Navbar
         darkMode={darkMode}
