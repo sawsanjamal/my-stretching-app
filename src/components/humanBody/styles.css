@@ -1,0 +1,23 @@
+.human-front {
+  width: 500px;
+  height: 500px;
+  fill: #fafafa;
+  stroke-width: 0.2em;
+  stroke: black;
+}
+.human-front:hover {
+  cursor: pointer;
+}
+.human-back {
+  width: 500px;
+  height: 500px;
+  fill: #fafafa;
+  stroke-width: 0.2em;
+  stroke: black;
+}
+.human-back:hover {
+  cursor: pointer;
+}
+.body-map-muscle:hover {
+  fill: #1f2937;
+}
