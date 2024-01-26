@@ -1,5 +1,5 @@
 import "./styles.css";
-export function HumanFront() {
+export function MaleHumanFront() {
   return (
     <svg
       viewBox="0 0 673 1200"

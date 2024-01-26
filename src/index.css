@@ -71,16 +71,30 @@ body {
 .human-body-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   border: 1px solid black;
-  width: 80vw;
+  width: 75vw;
   height: 45vh;
 }
-.human-body-front,
-.human-body-back {
-  margin: 150px;
+.home-toggle {
+  width: 500px;
+  height: 40px;
+  align-self: flex-start;
+  z-index: 1;
 }
+.btn-container {
+  float: right;
+  margin: 10px;
+  color: #fafafa;
+  padding: 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  background-color: #1f2937;
+  border-radius: 40px;
+}
+
 .article {
   margin: 200px;
   border: 1px solid black;

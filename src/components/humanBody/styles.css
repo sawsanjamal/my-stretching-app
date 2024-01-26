@@ -15,6 +15,7 @@
   stroke-width: 0.2em;
   stroke: black;
 }
+
 .human-back:hover {
   cursor: pointer;
 }
