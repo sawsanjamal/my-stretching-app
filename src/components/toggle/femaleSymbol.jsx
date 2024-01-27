@@ -1,13 +1,13 @@
-import "../Switch.css";
+import "./styles.css";
 export function FemaleSymbol() {
   return (
     <>
       <svg
-        viewBox="0 0 700 800"
+        viewBox="0 0 700 700"
         className="female-icon"
         fill="pink"
         width="40"
-        height="40"
+        height="45"
         preserveAspectRatio="xMidYMin"
         xmlns="http://www.w3.org/2000/svg"
       >

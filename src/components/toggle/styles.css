@@ -1,0 +1,25 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 60px;
+  height: 30px;
+  background-color: grey;
+  border-radius: 100px;
+  position: relative;
+  margin: 0 4px;
+}
+
+.symbol {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: 0.5s;
+  background: #fff;
+}
+.translated {
+  transition: all 0.5s linear;
+  transform: translateX(30px);
+}

@@ -4,7 +4,6 @@ import Modal from "./components/modals/SignUpModal";
 import Sidebar from "./components/sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
 import "./index.css";
-import { ToggleSwitch } from "./components/ToggleSwitch";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true);

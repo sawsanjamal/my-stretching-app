@@ -6,7 +6,7 @@ export function SearchModal() {
     <dialog className={styles.searchModal}>
       <button className={styles.closeBtn}>x</button>
       <div className={styles.searchModalHeader}>
-        <input className="search-input" type="search" />
+        <input className={styles.searchInput} type="search" />
         <button className={styles.searchBtn}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>

@@ -1,0 +1,80 @@
+.stretches-page {
+  position: relative;
+  flex-grow: 1;
+}
+.top-layer-card-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+.top-layer-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+.cards {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40%;
+}
+.individual-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+  margin: 30px;
+  border-radius: 20px;
+  background-color: #1f2937;
+  color: #fafafa;
+}
+.card-btn {
+  border: none;
+  padding: 15px;
+  color: #1f2937;
+  border-radius: 10px;
+  font-size: 15px;
+}
+.card-btn:hover,
+.close-btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  transform: scale(1.2);
+}
+
+.close-btn {
+  color: #1f2937;
+  border: none;
+  background-color: #fafafa;
+  font-weight: 900;
+  font-size: 20px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.list {
+  list-style: none;
+  text-align: center;
+  font-size: 17px;
+  white-space: nowrap;
+}
+
+.individual-card:hover {
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  transform: translateY(-10px);
+}
+
+.blur {
+  filter: blur(5px);
+}
