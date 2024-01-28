@@ -1,0 +1,30 @@
+.articles-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 1500px;
+  margin: 30px;
+  height: 300px;
+}
+.categories-container {
+  border: 1px solid black;
+  height: 300px;
+  width: 300px;
+}
+
+.categories-header {
+  background-color: gray;
+}
+.categories-list {
+  list-style: none;
+  font-size: 16px;
+}
+.categories-btn {
+  border: none;
+  background-color: #fafafa;
+}
+.categories-btn:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}

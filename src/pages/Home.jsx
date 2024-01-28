@@ -26,7 +26,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       <div className="articles-container">
         <div className="article">Article 1</div>
         <div className="article">Article 2</div>
