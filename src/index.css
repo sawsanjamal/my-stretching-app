@@ -29,16 +29,15 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  width: 100vw;
+  width: 100%;
 }
 .human-body-container {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
   align-items: center;
+  height: 50%;
+  width: 80%;
   border: 1px solid black;
-  width: 75vw;
-  height: 45vh;
 }
 .home-toggle {
   width: 500px;
@@ -61,14 +60,14 @@ body {
 .article {
   margin: 200px;
   border: 1px solid black;
-  width: 30vw;
-  height: 5vh;
+  width: 20%;
+  height: 5%;
   text-align: center;
 }
 .articles-container {
   display: flex;
   flex-direction: row;
-  width: 80vw;
+  width: 80%;
   justify-content: center;
   align-items: center;
   border: 1px solid black;

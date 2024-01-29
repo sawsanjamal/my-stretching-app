@@ -2,7 +2,7 @@ import "./styles.css";
 export function ArticlesContainer() {
   return (
     <>
-      <div className="articles-container">
+      <div className="articles-page-container">
         <div>
           <h1>Article name</h1>
           <div>Article Content</div>

@@ -4,6 +4,7 @@ import { ToggleSwitch } from "../components/toggle/ToggleSwitch";
 import { useState } from "react";
 import { FemaleHumanFront } from "../components/humanBody/femaleHumanFront";
 import { FemaleHumanBack } from "../components/humanBody/femaleHumanBack";
+import "../index.css";
 export default function Home() {
   const [female, setFemale] = useState(true);
   return (

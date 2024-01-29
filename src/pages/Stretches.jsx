@@ -62,7 +62,7 @@ export default function Stretches() {
         <div className="toggle-container">
           <ToggleSwitch />
         </div>
-        <div className="human-body-container">
+        <div className="stretches-human-body-container">
           {female ? <FemaleHumanFront /> : <MaleHumanFront />}
           {female ? <FemaleHumanBack /> : <MaleHumanBack />}
         </div>
