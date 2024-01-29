@@ -60,7 +60,7 @@ export default function Stretches() {
       </div>
       <div className="stretches-side-bar">
         <div className="toggle-container">
-          <ToggleSwitch />
+          <ToggleSwitch isOn={female} handleToggle={() => setFemale(!female)} />
         </div>
         <div className="stretches-human-body-container">
           {female ? <FemaleHumanFront /> : <MaleHumanFront />}

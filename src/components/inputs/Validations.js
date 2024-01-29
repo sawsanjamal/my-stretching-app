@@ -1,9 +1,26 @@
-export const name_validation = {
-  name: "name",
-  label: "Name",
+export const first_name_validation = {
+  name: "firstName",
+  label: "First Name",
   type: "text",
-  id: "name",
-  placeholder: "type your name...",
+  id: "fname",
+  placeholder: "type your first name...",
+  validation: {
+    required: {
+      value: true,
+      message: "required",
+    },
+    maxLength: {
+      value: 30,
+      message: "30 characters max",
+    },
+  },
+};
+export const last_name_validation = {
+  name: "lastName",
+  label: "Last Name",
+  type: "text",
+  id: "lname",
+  placeholder: "type your last name...",
   validation: {
     required: {
       value: true,
