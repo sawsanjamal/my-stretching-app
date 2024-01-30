@@ -1,9 +1,5 @@
-import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { Input } from "../inputs/Input";
-
-import { AnimatePresence } from "framer-motion";
-import { InputSuccess } from "../inputs/SuccessInput";
 import "./styles.css";
 import {
   email_validation,
@@ -11,10 +7,13 @@ import {
   last_name_validation,
   password_validation,
 } from "../inputs/Validations";
-import { createUser } from "../../api/users";
+import { createUser, login } from "../../api/users";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-export default function Modal({ openModal, setOpenModal }) {
-  const [success, setSuccess] = useState(false);
+export default function SignUpModal({ openModal, setOpenModal }) {
+  const [isSigningUp, setIsSigningUp] = useState(true);
+  const nav = useNavigate();
 
   function onCloseModal() {
     setOpenModal(false);
@@ -23,18 +22,20 @@ export default function Modal({ openModal, setOpenModal }) {
 
   const methods = useForm();
   const onSubmit = methods.handleSubmit(async (data) => {
-    console.log(data);
-
     const userData = {
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
       password: data.password,
     };
-    await createUser(userData);
-
-    setSuccess(true);
-    methods.reset();
+    if (isSigningUp) {
+      await createUser(userData);
+      nav("/success");
+    } else {
+      await login(userData);
+      nav("/successlogin");
+    }
+    onCloseModal();
   });
 
   return (
@@ -52,21 +53,28 @@ export default function Modal({ openModal, setOpenModal }) {
               x
             </button>
           </div>
-          <h1> Sign up</h1>
+          <h1>{isSigningUp ? "Sign Up" : "Log In"}</h1>
           <div>
-            <Input {...first_name_validation} />
-            <Input {...last_name_validation} />
+            {isSigningUp && (
+              <>
+                <Input {...first_name_validation} />
+                <Input {...last_name_validation} />
+              </>
+            )}
 
             <Input {...email_validation} />
 
             <Input {...password_validation} />
           </div>
           <div className="form-bottom-section">
-            <AnimatePresence mode="wait" initial={false}>
-              {success && <InputSuccess />}
-            </AnimatePresence>
             <button className="form-submit-btn" onClick={onSubmit}>
               Submit
+            </button>
+            <button
+              className="form-option-btn"
+              onClick={() => setIsSigningUp(!isSigningUp)}
+            >
+              {isSigningUp ? "or login" : "or sign up"}
             </button>
           </div>
         </form>

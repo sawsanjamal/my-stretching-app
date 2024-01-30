@@ -2,8 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
+
 const User = require("./model/schema.js");
-const { hashPassword } = require("./password/index.js");
 
 app.use(express.json());
 app.use(cors());
@@ -30,15 +30,25 @@ app.post("/users/create", async (req, res) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    password: hashPassword(req.body.password),
+    password: User.hashPassword(req.body.password),
   });
 
   try {
     await newUser.save();
-    res.send("Inserted test user");
+    res.json({ message: "Inserted test user" });
   } catch (err) {
     console.log(err);
   }
+});
+app.post("/login", async (req, res) => {
+  const user = await User.findOne({ email: req.body.email });
+  if (user) {
+    if (user.comparePassword(req.body.password, user.password)) {
+      return res.json({ message: "Logged in" });
+    }
+  }
+
+  return res.status(401).json({ message: "Invalid email or password" });
 });
 
 const port = process.env.PORT || 4000;
