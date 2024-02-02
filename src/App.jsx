@@ -5,6 +5,7 @@ import Sidebar from "./components/sidebar/Sidebar";
 import { Outlet, ScrollRestoration } from "react-router-dom";
 import { StretchesModal } from "./components/modals/stretchesModal";
 import SignUpModal from "./components/modals/SignUpModal";
+import { authenticate } from "./api/users";
 
 export const AppContext = createContext();
 
@@ -23,6 +24,12 @@ export default function App() {
       setModalOpen(false);
     }
   }, [user]);
+
+  useEffect(() => {
+    authenticate().then((res) => {
+      setUser(res.user);
+    });
+  }, []);
 
   function renderModal() {
     if (signUpModalOpen) {

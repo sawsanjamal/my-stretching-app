@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const Cookies = require("js-cookie");
 
 const User = require("./model/schema.js");
 const VerifyToken = require("./model/VerifyToken.js");
@@ -10,7 +9,7 @@ const VerifyToken = require("./model/VerifyToken.js");
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
 app.use(cookieParser());
 
 // DB config
@@ -45,13 +44,20 @@ app.post("/users/create", async (req, res) => {
     console.log(err);
   }
 });
+
 app.post("/login", async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   if (user) {
     if (user.comparePassword(req.body.password, user.password)) {
       const token = user.generateAuthToken();
-      Cookies.set("token", token);
-      res.json({ token, user });
+      res.cookie("token", token, {
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+      });
+
+      res.json({ user });
+
       return;
     }
   }
@@ -59,10 +65,23 @@ app.post("/login", async (req, res) => {
 });
 
 app.get("/authenticate", async (req, res) => {
-  // const user = re(req.body.user);
-  // console.log(user);
+  try {
+    const token = req.cookies.token;
+    if (!token) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+    const user = await User.findByToken(token);
+    if (!user) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+    res.send({ user });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
-
+app.get("/logout", async (req, res) => {
+  res.cookie("token", null);
+});
 const port = process.env.PORT || 4000;
 
 app.listen(port, async () => {

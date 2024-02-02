@@ -1,15 +1,17 @@
 import { useContext } from "react";
 import { AppContext } from "../../App";
+import { authenticate, clearCookies } from "../../api/users";
 
 export function AccountDropdown() {
   const {
     data: { user, darkMode },
     methods: { setUser, setSignUpModalOpen },
   } = useContext(AppContext);
-
   function handleLogout() {
-    setUser(null);
-    setSignUpModalOpen(false);
+    clearCookies();
+    authenticate().then((res) => {
+      setUser(res.user);
+    });
   }
   return (
     <div className="account-dropdown">

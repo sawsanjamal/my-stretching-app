@@ -1,11 +1,8 @@
 const User = require("./schema");
-const Cookies = require("js-cookie");
 
 const VerifyToken = async (req, res, next) => {
   try {
-    const token = Cookies.get("token");
-    console.log(token);
-
+    const token = req.cookies.token;
     if (!token) {
       return res.status(401).json({ message: "Unauthorized" });
     }

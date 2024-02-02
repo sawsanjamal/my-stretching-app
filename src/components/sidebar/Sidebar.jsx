@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 import { useContext } from "react";
 import { AppContext } from "../../App";
+import { clearCookies } from "../../api/users";
 // import { Cookies } from "js-cookie";
 
 export default function Sidebar({ setOpenModal }) {
@@ -18,8 +19,10 @@ export default function Sidebar({ setOpenModal }) {
     methods: { setUser },
   } = useContext(AppContext);
   function handleLogout() {
-    setUser(null);
-    // Cookies.remove("token");
+    clearCookies();
+    authenticate().then((res) => {
+      setUser(res.user);
+    });
   }
   return (
     <>

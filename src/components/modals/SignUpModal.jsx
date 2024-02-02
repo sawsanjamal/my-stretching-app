@@ -7,7 +7,7 @@ import {
   last_name_validation,
   password_validation,
 } from "../inputs/Validations";
-import { createUser, login } from "../../api/users";
+import { authenticate, createUser, login } from "../../api/users";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AppContext } from "../../App";
@@ -39,9 +39,8 @@ export default function SignUpModal() {
       await createUser(userData);
       nav("/success");
     } else {
-      const { token, user } = await login(userData);
+      const { user } = await login(userData);
       setUser(user);
-
       nav("/successlogin");
     }
     onCloseModal();

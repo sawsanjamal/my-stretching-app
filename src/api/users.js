@@ -5,10 +5,17 @@ export function createUser(options) {
 }
 export async function login(options) {
   const {
-    data: { token, user },
+    data: { user },
   } = await baseApi.post("login", options);
-  return { token, user };
+  return { user };
 }
 export async function authenticate() {
-  return await baseApi.get("authenticate");
+  const {
+    data: { user },
+  } = await baseApi.get("authenticate");
+  return { user };
+}
+
+export async function clearCookies() {
+  return await baseApi.get("/logout");
 }
