@@ -4,29 +4,46 @@ import "./styles.css";
 import toggleOn from "../../assets/toggle-on.svg";
 import toggleOff from "../../assets/toggle-off.svg";
 import SearchBar from "../searchBar";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { AccountDropdown } from "./AccountDropdown";
+import { AppContext } from "../../App";
 
-export default function Navbar(props) {
+export default function Navbar() {
+  const {
+    data: { user, darkMode },
+    methods: { setDarkMode },
+  } = useContext(AppContext);
   const [openDropdown, setOpenDropdown] = useState(false);
+  function toggleDarkMode() {
+    setDarkMode(() => !darkMode);
+  }
   return (
-    <div className="navbar">
+    <div className={darkMode ? "navbar-dark" : "navbar"}>
       <div className="navbarItems">
         <div className="navbar-toggle-btn">
-          <img
-            onClick={props.toggleDarkMode}
-            src={props.darkMode ? toggleOn : toggleOff}
-          />
+          <img onClick={toggleDarkMode} src={darkMode ? toggleOn : toggleOff} />
         </div>
         <div>
           <SearchBar />
         </div>
-        <button
-          className="navbar-signup-btn"
-          onClick={() => setOpenDropdown(!openDropdown)}
-        >
-          <FontAwesomeIcon icon={faUser} />
-        </button>
+        {user ? (
+          <button
+            className={darkMode ? "navbar-email-btn-dark" : "navbar-email-btn"}
+            onMouseEnter={() => setOpenDropdown(!openDropdown)}
+          >
+            <div className="user-email">{user.email}</div>
+          </button>
+        ) : (
+          <button
+            className={
+              darkMode ? "navbar-signup-btn-dark" : "navbar-signup-btn"
+            }
+            onMouseEnter={() => setOpenDropdown(!openDropdown)}
+          >
+            <FontAwesomeIcon icon={faUser} />
+          </button>
+        )}
+
         {openDropdown && <AccountDropdown />}
       </div>
     </div>

@@ -9,18 +9,25 @@ import {
 } from "../inputs/Validations";
 import { createUser, login } from "../../api/users";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AppContext } from "../../App";
 
-export default function SignUpModal({ openModal, setOpenModal }) {
+export default function SignUpModal() {
+  const {
+    data: { signUpModalOpen, darkMode },
+    methods: { setUser, setSignUpModalOpen },
+  } = useContext(AppContext);
   const [isSigningUp, setIsSigningUp] = useState(true);
   const nav = useNavigate();
 
   function onCloseModal() {
-    setOpenModal(false);
+    setSignUpModalOpen(false);
     methods.reset();
   }
 
-  const methods = useForm();
+  const methods = useForm({
+    defaultValues: { email: "testerfive@gmail.com", password: "testing123" },
+  });
   const onSubmit = methods.handleSubmit(async (data) => {
     const userData = {
       firstName: data.firstName,
@@ -32,24 +39,29 @@ export default function SignUpModal({ openModal, setOpenModal }) {
       await createUser(userData);
       nav("/success");
     } else {
-      await login(userData);
+      const { token, user } = await login(userData);
+      setUser(user);
+
       nav("/successlogin");
     }
     onCloseModal();
   });
 
   return (
-    <dialog className="dialog" open={openModal}>
+    <dialog className="dialog" open={signUpModalOpen}>
       <FormProvider {...methods}>
         <form
           onSubmit={(e) => e.preventDefault()}
           noValidate
           autoComplete="off"
-          className="showForm"
+          className={darkMode ? "showForm-dark" : "showForm"}
           method="dialog"
         >
           <div>
-            <button className="form-close-btn" onClick={onCloseModal}>
+            <button
+              className={darkMode ? "form-close-btn-dark" : "form-close-btn"}
+              onClick={onCloseModal}
+            >
               x
             </button>
           </div>

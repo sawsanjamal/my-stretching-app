@@ -1,11 +1,15 @@
 import { MaleHumanFront } from "../components/humanBody/maleHumanFront";
 import { MaleHumanBack } from "../components/humanBody/maleHumanBack";
 import { ToggleSwitch } from "../components/toggle/ToggleSwitch";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FemaleHumanFront } from "../components/humanBody/femaleHumanFront";
 import { FemaleHumanBack } from "../components/humanBody/femaleHumanBack";
 import "../index.css";
+import { AppContext } from "../App";
 export default function Home() {
+  const {
+    data: { darkMode },
+  } = useContext(AppContext);
   const [female, setFemale] = useState(true);
   return (
     <div className="home-container">
@@ -17,7 +21,7 @@ export default function Home() {
           {female ? <FemaleHumanBack /> : <MaleHumanBack />}
         </div>
         <div className="home-toggle">
-          <div className="btn-container">
+          <div className={darkMode ? "btn-container-dark" : "btn-container"}>
             <span>Male</span>
             <ToggleSwitch
               isOn={female}

@@ -1,13 +1,37 @@
 import { useContext } from "react";
-import { ModalContext } from "../../App";
+import { AppContext } from "../../App";
 
 export function AccountDropdown() {
-  const { setOpenModal } = useContext(ModalContext);
+  const {
+    data: { user, darkMode },
+    methods: { setUser, setSignUpModalOpen },
+  } = useContext(AppContext);
+
+  function handleLogout() {
+    setUser(null);
+    setSignUpModalOpen(false);
+  }
   return (
     <div className="account-dropdown">
-      <button className="dropdown-btn" onClick={() => setOpenModal(true)}>
-        Sign Up / Log In
-      </button>
+      {user ? (
+        <button
+          className={darkMode ? "dropdown-btn-dark" : "dropdown-btn"}
+          onClick={() => setSignUpModalOpen(true)}
+        >
+          <div className="personal-dropdown-item" onClick={handleLogout}>
+            Logout
+          </div>
+          <div className="personal-dropdown-item">My Stretches</div>
+          <div className="personal-dropdown-item"> My Articles</div>
+        </button>
+      ) : (
+        <button
+          className={darkMode ? "dropdown-btn-dark" : "dropdown-btn"}
+          onClick={() => setSignUpModalOpen(true)}
+        >
+          <div className="dropdown-item"> Sign up / Log in</div>
+        </button>
+      )}
     </div>
   );
 }

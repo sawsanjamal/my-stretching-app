@@ -1,11 +1,11 @@
 .navbar-toggle-btn {
   display: flex;
-  height: 100%;
   outline: none;
-  margin: 0 10px;
+  margin: 0 5px;
 }
 img {
-  width: 40px;
+  width: 45px;
+  margin-right: 10px;
 }
 .navbar-toggle-btn:hover,
 .navbar-toggle-btn:focus {
@@ -20,29 +20,71 @@ img {
   background-color: #1f2937;
   align-items: center;
   color: #fafafa;
+  z-index: 3;
+}
+.navbar-dark {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 13px;
+  background-color: black;
+  align-items: center;
+  color: grey;
+  z-index: 3;
 }
 .navbarItems {
-  width: 300px;
+  width: 430px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 0 10px;
+  z-index: 3;
 }
 .navbar-signup-btn {
-  margin-right: 11px;
-  width: 2vw;
+  margin: 0 5px;
+  width: 100px;
   background-color: #1f2937;
   border: none;
   color: #fafafa;
   font-size: 18px;
+  text-wrap: wrap;
 }
-.navbar-signup-btn:hover {
+.navbar-signup-btn-dark {
+  margin: 0 5px;
+  width: 100px;
+  background-color: black;
+  border: none;
+  color: #fafafa;
+  font-size: 18px;
+  text-wrap: wrap;
+}
+.navbar-email-btn {
+  margin: 0 5px;
+  width: 300px;
+  background-color: #1f2937;
+  border: none;
+  color: #fafafa;
+  font-size: 18px;
+  text-wrap: wrap;
+}
+.navbar-email-btn-dark {
+  margin: 0 5px;
+  width: 300px;
+  background-color: black;
+  border: none;
+  color: #fafafa;
+  font-size: 18px;
+  text-wrap: wrap;
+}
+
+.navbar-signup-btn:hover,
+.navbar-signup-btn-dark:hover {
   cursor: pointer;
   opacity: 0.7;
   border-radius: 30px;
 }
-.navbar-signup-btn:focus {
+.navbar-signup-btn:focus,
+.navbar-signup-bt-dark:focus {
   border-radius: 30px;
 }
 
@@ -59,11 +101,28 @@ img {
   color: #fafafa;
   font-size: 18px;
   font-weight: bold;
-  border-bottom: 1px solid white;
   padding: 10px;
+  border-radius: 10px;
+  z-index: 1;
 }
-.dropdown-btn:hover {
-  transition: all 0.5ms ease-in-out;
-  opacity: 0.7;
+.dropdown-btn-dark {
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.personal-dropdown-item,
+.dropdown-item {
+  margin: 5px 0;
+  padding: 5px;
+}
+.personal-dropdown-item:hover,
+.dropdown-item:hover {
   cursor: pointer;
+  opacity: 0.7;
 }

@@ -6,7 +6,6 @@ import styles from "./styles.module.css";
 
 export default function SearchBar() {
   const [openModal, setOpenModal] = useState(false);
-  const toggleSearchModal = () => setOpenModal(!openModal);
 
   return (
     <>
@@ -15,13 +14,15 @@ export default function SearchBar() {
           className={styles.searchInput}
           type="search"
           aria-label="Search"
-          onFocus={toggleSearchModal}
+          onFocus={() => setOpenModal(true)}
         />
         <button className={styles.searchBtn}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
       </div>
-      {openModal && <SearchModal />}
+      {openModal && (
+        <SearchModal openModal={openModal} setOpenModal={setOpenModal} />
+      )}
     </>
   );
 }

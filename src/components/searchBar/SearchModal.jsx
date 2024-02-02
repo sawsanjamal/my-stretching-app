@@ -1,13 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./styles.module.css";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-export function SearchModal() {
+export function SearchModal({ setOpenModal }) {
+  function closeModal() {
+    setOpenModal(false);
+  }
   return (
     <dialog className={styles.searchModal}>
-      <button className={styles.closeBtn}>x</button>
+      <CloseButton closeModal={closeModal} />
       <div className={styles.searchModalHeader}>
-        <input className={styles.searchInput} type="search" />
-        <button className={styles.searchBtn}>
+        <input className={styles.searchInputModal} type="search" />
+        <button className={styles.searchBtnModal}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
       </div>
@@ -18,5 +21,15 @@ export function SearchModal() {
         </div>
       </div>
     </dialog>
+  );
+}
+
+function CloseButton({ closeModal }) {
+  return (
+    <>
+      <button onClick={closeModal} className={styles.closeBtn}>
+        x
+      </button>
+    </>
   );
 }

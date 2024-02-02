@@ -1,4 +1,7 @@
 .human-front {
+  position: fixed;
+  top: 450px;
+  left: 300px;
   width: 500px;
   height: 500px;
   fill: #fafafa;
@@ -9,6 +12,9 @@
   cursor: pointer;
 }
 .human-back {
+  position: fixed;
+  top: 450px;
+  left: 750px;
   width: 500px;
   height: 500px;
   fill: #fafafa;

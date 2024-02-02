@@ -1,12 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const app = express();
+const cookieParser = require("cookie-parser");
+const Cookies = require("js-cookie");
 
 const User = require("./model/schema.js");
+const VerifyToken = require("./model/VerifyToken.js");
+
+const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 
 // DB config
 
@@ -44,11 +49,18 @@ app.post("/login", async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   if (user) {
     if (user.comparePassword(req.body.password, user.password)) {
-      return res.json({ message: "Logged in" });
+      const token = user.generateAuthToken();
+      Cookies.set("token", token);
+      res.json({ token, user });
+      return;
     }
   }
-
   return res.status(401).json({ message: "Invalid email or password" });
+});
+
+app.get("/authenticate", async (req, res) => {
+  // const user = re(req.body.user);
+  // console.log(user);
 });
 
 const port = process.env.PORT || 4000;
