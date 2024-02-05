@@ -34,26 +34,31 @@
 }
 .toggle-container {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   width: 500px;
   max-width: 900px;
   height: 80px;
   background-color: #1f2937;
-  justify-content: flex-start;
+  color: white;
   align-items: center;
+  padding: 15px;
 }
 .toggle-container-dark {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   width: 500px;
   max-width: 900px;
   height: 80px;
   background-color: black;
-  justify-content: flex-start;
+  color: white;
   align-items: center;
+  padding: 15px;
 }
 .stretches-human-body-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 800px;
   padding: 20px;
@@ -62,18 +67,48 @@
   position: fixed;
   top: 160px;
   left: 200px;
-  width: 600px;
+  width: 1000px;
   height: 900px;
+  padding: 30px;
+}
+.stretch-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #1f2937;
+  color: #fafafa;
+  width: 100%;
+  padding: 10px;
+}
+.stretch-title-dark {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: black;
+  color: #fafafa;
+  width: 100%;
+  padding: 10px;
 }
 .stretch-example {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  font-size: 35px;
+  align-items: flex-start;
+  font-size: 23px;
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 15px;
   border: 1px solid black;
 }
 .articles-page {
   display: flex;
   flex-direction: row;
+}
+.hearted {
+  color: pink;
+  background-color: none;
+}
+
+.nothearted {
+  color: red;
+  background-color: none;
 }

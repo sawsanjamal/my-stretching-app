@@ -13,16 +13,19 @@ import { AppContext } from "../../App";
 import { clearCookies } from "../../api/users";
 // import { Cookies } from "js-cookie";
 
-export default function Sidebar({ setOpenModal }) {
+export default function Sidebar() {
   const {
     data: { user, darkMode },
-    methods: { setUser },
+    methods: { setUser, setModalOpen, setSignUpModalOpen },
   } = useContext(AppContext);
   function handleLogout() {
     clearCookies();
-    authenticate().then((res) => {
-      setUser(res.user);
-    });
+    setUser(null);
+    setModalOpen(true);
+  }
+  function signUp() {
+    setModalOpen(false);
+    setSignUpModalOpen(true);
   }
   return (
     <>
@@ -71,7 +74,7 @@ export default function Sidebar({ setOpenModal }) {
             <div>
               <button
                 className={darkMode ? "sidebar-btn-dark" : "sidebar-btn"}
-                onClick={setOpenModal}
+                onClick={signUp}
               >
                 <FontAwesomeIcon icon={faUser} />
               </button>

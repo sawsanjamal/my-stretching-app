@@ -1,4 +1,4 @@
-const User = require("./schema");
+const User = require("./UserSchema");
 
 const VerifyToken = async (req, res, next) => {
   try {

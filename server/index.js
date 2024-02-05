@@ -4,7 +4,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 const User = require("./model/schema.js");
-const VerifyToken = require("./model/VerifyToken.js");
+const Stretch = require("./model/StretchesSchema.js");
 
 const app = express();
 
@@ -80,10 +80,14 @@ app.get("/authenticate", async (req, res) => {
   }
 });
 app.get("/logout", async (req, res) => {
-  res.cookie("token", null);
+  res.clearCookie("token").json({ message: "Cookies cleared" });
+});
+
+app.get("/stretches", async (req, res) => {
+  const stretches = await Stretch.find();
+  res.send({ stretches });
 });
 const port = process.env.PORT || 4000;
-
 app.listen(port, async () => {
   console.log(`Server started on port ${port}`);
 });

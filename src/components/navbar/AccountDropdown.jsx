@@ -1,25 +1,21 @@
 import { useContext } from "react";
 import { AppContext } from "../../App";
-import { authenticate, clearCookies } from "../../api/users";
+import { clearCookies } from "../../api/users";
 
 export function AccountDropdown() {
   const {
-    data: { user, darkMode },
-    methods: { setUser, setSignUpModalOpen },
+    data: { user, darkMode, modalOpen },
+    methods: { setUser, setModalOpen, setSignUpModalOpen },
   } = useContext(AppContext);
   function handleLogout() {
     clearCookies();
-    authenticate().then((res) => {
-      setUser(res.user);
-    });
+    setUser(null);
+    setModalOpen(true);
   }
   return (
     <div className="account-dropdown">
       {user ? (
-        <button
-          className={darkMode ? "dropdown-btn-dark" : "dropdown-btn"}
-          onClick={() => setSignUpModalOpen(true)}
-        >
+        <button className={darkMode ? "dropdown-btn-dark" : "dropdown-btn"}>
           <div className="personal-dropdown-item" onClick={handleLogout}>
             Logout
           </div>
@@ -29,7 +25,9 @@ export function AccountDropdown() {
       ) : (
         <button
           className={darkMode ? "dropdown-btn-dark" : "dropdown-btn"}
-          onClick={() => setSignUpModalOpen(true)}
+          onClick={() => {
+            setSignUpModalOpen(true);
+          }}
         >
           <div className="dropdown-item"> Sign up / Log in</div>
         </button>

@@ -1,7 +1,7 @@
 import { MaleHumanFront } from "../components/humanBody/maleHumanFront";
 import { MaleHumanBack } from "../components/humanBody/maleHumanBack";
 import { ToggleSwitch } from "../components/toggle/ToggleSwitch";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { FemaleHumanFront } from "../components/humanBody/femaleHumanFront";
 import { FemaleHumanBack } from "../components/humanBody/femaleHumanBack";
 import "../index.css";
@@ -11,14 +11,23 @@ export default function Home() {
     data: { darkMode },
   } = useContext(AppContext);
   const [female, setFemale] = useState(true);
+  let home = useRef(true);
   return (
     <div className="home-container">
       <div className="human-body-container">
         <div className="human-body-front">
-          {female ? <FemaleHumanFront /> : <MaleHumanFront />}
+          {female ? (
+            <FemaleHumanFront home={home} />
+          ) : (
+            <MaleHumanFront home={home} />
+          )}
         </div>
         <div className="human-body-back">
-          {female ? <FemaleHumanBack /> : <MaleHumanBack />}
+          {female ? (
+            <FemaleHumanBack home={home} />
+          ) : (
+            <MaleHumanBack home={home} />
+          )}
         </div>
         <div className="home-toggle">
           <div className={darkMode ? "btn-container-dark" : "btn-container"}>

@@ -1,5 +1,5 @@
 .human-front {
-  position: fixed;
+  position: relative;
   top: 450px;
   left: 300px;
   width: 500px;
@@ -8,11 +8,12 @@
   stroke-width: 0.2em;
   stroke: black;
 }
-.human-front:hover {
+.human-front:hover,
+.human-stretches-front:hover {
   cursor: pointer;
 }
 .human-back {
-  position: fixed;
+  position: relative;
   top: 450px;
   left: 750px;
   width: 500px;
@@ -22,9 +23,23 @@
   stroke: black;
 }
 
-.human-back:hover {
+.human-back:hover,
+.human-stretches-back:hover {
   cursor: pointer;
 }
 .body-map-muscle:hover {
   fill: #1f2937;
+}
+.human-stretches-back {
+  fill: #fafafa;
+  stroke-width: 0.2em;
+  stroke: black;
+  width: 500px;
+  height: 500px;
+}
+.human-stretches-front {
+  fill: #fafafa;
+  stroke-width: 0.2em;
+  stroke: black;
+  height: 500px;
 }

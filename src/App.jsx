@@ -6,12 +6,14 @@ import { Outlet, ScrollRestoration } from "react-router-dom";
 import { StretchesModal } from "./components/modals/stretchesModal";
 import SignUpModal from "./components/modals/SignUpModal";
 import { authenticate } from "./api/users";
+import { getStretches } from "./api/stretches";
 
 export const AppContext = createContext();
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [user, setUser] = useState(null);
+  const [stretches, setStretches] = useState([]);
   const [signUpModalOpen, setSignUpModalOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(true);
 
@@ -28,6 +30,10 @@ export default function App() {
   useEffect(() => {
     authenticate().then((res) => {
       setUser(res.user);
+      getStretches().then((res) => {
+        console.log(res.stretches);
+        setStretches(res.stretches);
+      });
     });
   }, []);
 
@@ -43,10 +49,11 @@ export default function App() {
   return (
     <AppContext.Provider
       value={{
-        data: { user, modalOpen, signUpModalOpen, darkMode },
+        data: { user, stretches, modalOpen, signUpModalOpen, darkMode },
         methods: {
           setDarkMode,
           setUser,
+          setStretches,
           setModalOpen,
           setSignUpModalOpen,
         },

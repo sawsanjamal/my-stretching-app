@@ -32,6 +32,16 @@ body {
   align-items: center;
   width: 100%;
 }
+.human-body-front {
+  position: fixed;
+  top: 0;
+  left: 250px;
+}
+.human-body-back {
+  position: fixed;
+  top: 0;
+  left: 250px;
+}
 .human-body-container {
   position: fixed;
   top: 200px;

@@ -14,8 +14,8 @@ import { AppContext } from "../../App";
 
 export default function SignUpModal() {
   const {
-    data: { signUpModalOpen, darkMode },
-    methods: { setUser, setSignUpModalOpen },
+    data: { user, signUpModalOpen, darkMode },
+    methods: { setUser, setSignUpModalOpen, setModalOpen },
   } = useContext(AppContext);
   const [isSigningUp, setIsSigningUp] = useState(true);
   const nav = useNavigate();
