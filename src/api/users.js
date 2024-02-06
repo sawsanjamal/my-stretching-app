@@ -17,5 +17,12 @@ export async function authenticate() {
 }
 
 export async function clearCookies() {
-  return await baseApi.get("/logout");
+  return await baseApi.get("logout");
+}
+
+export async function toggleLike(options) {
+  const {
+    data: { user },
+  } = await baseApi.put("users/stretches", options);
+  return { user };
 }

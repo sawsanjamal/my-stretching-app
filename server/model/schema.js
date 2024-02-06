@@ -9,6 +9,7 @@ const userSchema = new Schema({
   lastName: String,
   email: String,
   password: String,
+  stretches: [{ type: Schema.Types.ObjectId, ref: "Stretch" }],
 });
 
 // Password methods
@@ -33,7 +34,15 @@ userSchema.statics.findByToken = function (token) {
     throw new Error(`Error verifying token: ${err.message}`);
   }
 };
-
+userSchema.methods.toggleLikedStretch = function (stretchId) {
+  if (this.stretches.includes(stretchId)) {
+    this.stretches.pull(stretchId);
+    this.save();
+    return;
+  }
+  this.stretches.push(stretchId);
+  this.save();
+};
 // Create model
 const User = mongoose.model("User", userSchema);
 

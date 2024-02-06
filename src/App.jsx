@@ -5,7 +5,7 @@ import Sidebar from "./components/sidebar/Sidebar";
 import { Outlet, ScrollRestoration } from "react-router-dom";
 import { StretchesModal } from "./components/modals/stretchesModal";
 import SignUpModal from "./components/modals/SignUpModal";
-import { authenticate } from "./api/users";
+import { toggleLike, authenticate } from "./api/users";
 import { getStretches } from "./api/stretches";
 
 export const AppContext = createContext();
@@ -30,9 +30,8 @@ export default function App() {
   useEffect(() => {
     authenticate().then((res) => {
       setUser(res.user);
-      getStretches().then((res) => {
-        console.log(res.stretches);
-        setStretches(res.stretches);
+      getStretches().then(({ stretches }) => {
+        setStretches(stretches);
       });
     });
   }, []);
@@ -46,6 +45,10 @@ export default function App() {
     }
   }
 
+  function handleLike(stretchId) {
+    toggleLike({ stretchId }).then(({ user }) => setUser(user));
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -56,6 +59,7 @@ export default function App() {
           setStretches,
           setModalOpen,
           setSignUpModalOpen,
+          handleLike,
         },
       }}
     >

@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import "../styles.css";
 import { MaleHumanFront } from "../components/humanBody/maleHumanFront";
 import { MaleHumanBack } from "../components/humanBody/maleHumanBack";
@@ -6,24 +6,24 @@ import { ToggleSwitch } from "../components/toggle/ToggleSwitch";
 import { FemaleHumanFront } from "../components/humanBody/femaleHumanFront";
 import { FemaleHumanBack } from "../components/humanBody/femaleHumanBack";
 import { AppContext } from "../App";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+
+import { v4 as uuid } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export default function Stretches() {
   const [female, setFemale] = useState(true);
   const [muscleGroup, setMuscleGroup] = useState(null);
-  const [like, setLike] = useState(false);
 
   const {
-    data: { stretches, darkMode },
+    data: { user, stretches, darkMode },
+    methods: { handleLike },
   } = useContext(AppContext);
 
   const selectedStretches = stretches.filter(
     (stretch) => stretch.muscleGroup === muscleGroup
   );
-  function toggleLikeButton() {
-    setLike(!like);
-  }
+
   // work on page for empty array
   return (
     <div className="stretches-page-container">
@@ -31,9 +31,10 @@ export default function Stretches() {
         <div>
           <h1> Here are my stretches </h1>
           <div className="stretches-example-container">
-            {selectedStretches.map((stretch, i) => {
+            {selectedStretches.map((stretch) => {
+              const liked = user.stretches.includes(stretch._id);
               return (
-                <div key={i} className="stretch-example">
+                <div key={uuid()} className="stretch-example">
                   <h1
                     className={
                       darkMode ? "stretch-title-dark" : "stretch-title"
@@ -41,8 +42,8 @@ export default function Stretches() {
                   >
                     {stretch.name}
                     <button
-                      onClick={toggleLikeButton}
-                      className={like ? "hearted" : "nothearted"}
+                      className={liked ? "hearted" : "nothearted"}
+                      onClick={() => handleLike(stretch._id)}
                     >
                       <FontAwesomeIcon icon={faHeart} />
                     </button>
@@ -51,7 +52,7 @@ export default function Stretches() {
                     <div>images</div>
                     <ul>
                       {stretch.steps.map((step) => {
-                        return <li> {step} </li>;
+                        return <li key={uuid()}>{step}</li>;
                       })}
                     </ul>
                   </div>

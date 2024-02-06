@@ -104,11 +104,11 @@
   flex-direction: row;
 }
 .hearted {
-  color: pink;
+  color: fuchsia;
   background-color: none;
 }
 
 .nothearted {
-  color: red;
+  color: pink;
   background-color: none;
 }

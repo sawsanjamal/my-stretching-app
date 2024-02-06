@@ -3,8 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
-const User = require("./model/schema.js");
-const Stretch = require("./model/StretchesSchema.js");
+const Router = require("./routes.js");
 
 const app = express();
 
@@ -29,64 +28,8 @@ mongoose
 // bodyparser gets the req.body
 app.use(express.urlencoded({ extended: false }));
 
-app.post("/users/create", async (req, res) => {
-  const newUser = new User({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password: User.hashPassword(req.body.password),
-  });
+app.use(Router);
 
-  try {
-    await newUser.save();
-    res.json({ message: "Inserted test user" });
-  } catch (err) {
-    console.log(err);
-  }
-});
-
-app.post("/login", async (req, res) => {
-  const user = await User.findOne({ email: req.body.email });
-  if (user) {
-    if (user.comparePassword(req.body.password, user.password)) {
-      const token = user.generateAuthToken();
-      res.cookie("token", token, {
-        httpOnly: true,
-        sameSite: "none",
-        secure: true,
-      });
-
-      res.json({ user });
-
-      return;
-    }
-  }
-  return res.status(401).json({ message: "Invalid email or password" });
-});
-
-app.get("/authenticate", async (req, res) => {
-  try {
-    const token = req.cookies.token;
-    if (!token) {
-      return res.status(401).json({ message: "Unauthorized" });
-    }
-    const user = await User.findByToken(token);
-    if (!user) {
-      return res.status(401).json({ message: "Unauthorized" });
-    }
-    res.send({ user });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
-app.get("/logout", async (req, res) => {
-  res.clearCookie("token").json({ message: "Cookies cleared" });
-});
-
-app.get("/stretches", async (req, res) => {
-  const stretches = await Stretch.find();
-  res.send({ stretches });
-});
 const port = process.env.PORT || 4000;
 app.listen(port, async () => {
   console.log(`Server started on port ${port}`);
