@@ -4,6 +4,7 @@ import Articles from "./pages/Articles";
 import Stretches from "./pages/Stretches";
 import Home from "./pages/Home";
 import { Signup } from "./pages/Signup";
+import MyStretches from "./pages/MyStretches";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
       { path: "/signup", element: <Signup /> },
       { path: "/articles", element: <Articles /> },
       { path: "/stretches", element: <Stretches /> },
+      { path: "/mystretches", element: <MyStretches /> },
     ],
   },
 ]);

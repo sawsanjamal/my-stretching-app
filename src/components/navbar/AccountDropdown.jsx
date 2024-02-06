@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { AppContext } from "../../App";
 import { clearCookies } from "../../api/users";
+import { Link } from "react-router-dom";
 
 export function AccountDropdown() {
   const {
-    data: { user, darkMode, modalOpen },
+    data: { user, darkMode },
     methods: { setUser, setModalOpen, setSignUpModalOpen },
   } = useContext(AppContext);
   function handleLogout() {
@@ -12,6 +13,7 @@ export function AccountDropdown() {
     setUser(null);
     setModalOpen(true);
   }
+
   return (
     <div className="account-dropdown">
       {user ? (
@@ -19,7 +21,9 @@ export function AccountDropdown() {
           <div className="personal-dropdown-item" onClick={handleLogout}>
             Logout
           </div>
-          <div className="personal-dropdown-item">My Stretches</div>
+          <div className="personal-dropdown-item">
+            <Link to="mystretches">My Stretches</Link>
+          </div>
           <div className="personal-dropdown-item"> My Articles</div>
         </button>
       ) : (

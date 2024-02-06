@@ -6,10 +6,7 @@ import { ToggleSwitch } from "../components/toggle/ToggleSwitch";
 import { FemaleHumanFront } from "../components/humanBody/femaleHumanFront";
 import { FemaleHumanBack } from "../components/humanBody/femaleHumanBack";
 import { AppContext } from "../App";
-
-import { v4 as uuid } from "uuid";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import StretchesList from "../components/StretchesList";
 
 export default function Stretches() {
   const [female, setFemale] = useState(true);
@@ -23,6 +20,9 @@ export default function Stretches() {
   const selectedStretches = stretches.filter(
     (stretch) => stretch.muscleGroup === muscleGroup
   );
+  const userStretches = selectedStretches.map((stretch) => {
+    return { ...stretch, liked: user.stretches.includes(stretch._id) };
+  });
 
   // work on page for empty array
   return (
@@ -30,36 +30,11 @@ export default function Stretches() {
       <div className="stretches-page">
         <div>
           <h1> Here are my stretches </h1>
-          <div className="stretches-example-container">
-            {selectedStretches.map((stretch) => {
-              const liked = user.stretches.includes(stretch._id);
-              return (
-                <div key={uuid()} className="stretch-example">
-                  <h1
-                    className={
-                      darkMode ? "stretch-title-dark" : "stretch-title"
-                    }
-                  >
-                    {stretch.name}
-                    <button
-                      className={liked ? "hearted" : "nothearted"}
-                      onClick={() => handleLike(stretch._id)}
-                    >
-                      <FontAwesomeIcon icon={faHeart} />
-                    </button>
-                  </h1>
-                  <div className="stretch-example-content">
-                    <div>images</div>
-                    <ul>
-                      {stretch.steps.map((step) => {
-                        return <li key={uuid()}>{step}</li>;
-                      })}
-                    </ul>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <StretchesList
+            darkMode={darkMode}
+            handleLike={handleLike}
+            stretches={userStretches}
+          />
           <div className="stretches-side-bar">
             <div
               className={

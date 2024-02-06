@@ -43,6 +43,10 @@ userSchema.methods.toggleLikedStretch = function (stretchId) {
   this.stretches.push(stretchId);
   this.save();
 };
+userSchema.methods.getLikedStretches = function () {
+  const likedStretches = this.stretches;
+  return likedStretches;
+};
 // Create model
 const User = mongoose.model("User", userSchema);
 
