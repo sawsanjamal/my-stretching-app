@@ -1,7 +1,7 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SearchModal } from "./SearchModal";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./styles.module.css";
 
 export default function SearchBar() {
@@ -14,7 +14,9 @@ export default function SearchBar() {
           className={styles.searchInput}
           type="search"
           aria-label="Search"
-          onFocus={() => setOpenModal(true)}
+          onFocus={() => {
+            setOpenModal(true);
+          }}
         />
         <button className={styles.searchBtn}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
