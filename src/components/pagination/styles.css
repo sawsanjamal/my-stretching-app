@@ -1,0 +1,41 @@
+.pagination-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  padding: 5px;
+  position: fixed;
+  bottom: 30px;
+  width: 90%;
+  background-color: black;
+}
+.pagination-text {
+  color: white;
+  font-size: 20px;
+  position: relative;
+  top: 25px;
+  padding-left: 3px;
+}
+.number-list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  z-index: 2;
+  padding-right: 5px;
+}
+.list-item {
+  text-decoration: none;
+  margin: 6px;
+}
+.pagination-btn {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  width: 30px;
+  background-color: white;
+  color: black;
+}
+.pagination-btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}

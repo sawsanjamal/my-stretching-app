@@ -16,6 +16,15 @@
 .stretches-page {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  flex-grow: 1;
+}
+.my-stretches-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
   position: relative;
   flex-grow: 1;
 }
