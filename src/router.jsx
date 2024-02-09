@@ -5,7 +5,9 @@ import Stretches from "./pages/Stretches";
 import Home from "./pages/Home";
 import { Signup } from "./pages/Signup";
 import MyStretches from "./pages/MyStretches";
+import MyArticles from "./pages/MyArticles";
 import Stretch from "./pages/Stretch";
+import Article from "./pages/Article";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +21,9 @@ export const router = createBrowserRouter([
       { path: "/articles", element: <Articles /> },
       { path: "/stretches", element: <Stretches /> },
       { path: "/stretches/:id", element: <Stretch /> }, // make this a child of `/stretches`
+      { path: "/articles/:id", element: <Article /> }, // make this a child of `/stretches`
       { path: "/mystretches", element: <MyStretches /> },
+      { path: "/myarticles", element: <MyArticles /> },
     ],
   },
 ]);

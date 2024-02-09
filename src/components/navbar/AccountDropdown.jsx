@@ -24,7 +24,10 @@ export function AccountDropdown() {
           <div className="personal-dropdown-item">
             <Link to="mystretches">My Stretches</Link>
           </div>
-          <div className="personal-dropdown-item"> My Articles</div>
+          <div className="personal-dropdown-item">
+            {" "}
+            <Link to="myarticles">My Articles</Link>
+          </div>
         </button>
       ) : (
         <button

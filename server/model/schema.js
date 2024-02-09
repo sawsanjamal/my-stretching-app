@@ -10,6 +10,7 @@ const userSchema = new Schema({
   email: String,
   password: String,
   stretches: [{ type: Schema.Types.ObjectId, ref: "Stretch" }],
+  articles: [{ type: Schema.Types.ObjectId, ref: "Article" }],
 });
 
 // Password methods
@@ -43,9 +44,22 @@ userSchema.methods.toggleLikedStretch = function (stretchId) {
   this.stretches.push(stretchId);
   this.save();
 };
+userSchema.methods.toggleLikeArticle = function (articleId) {
+  if (this.articles.includes(articleId)) {
+    this.articles.pull(articleId);
+    this.save();
+    return;
+  }
+  this.articles.push(articleId);
+  this.save();
+};
 userSchema.methods.getLikedStretches = function () {
   const likedStretches = this.stretches;
   return likedStretches;
+};
+userSchema.methods.getLikedArticles = function () {
+  const likedArticles = this.articles;
+  return likedArticles;
 };
 // Create model
 const User = mongoose.model("User", userSchema);

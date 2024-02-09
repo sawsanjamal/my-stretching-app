@@ -2,6 +2,7 @@ const Router = require("express");
 const User = require("./model/schema.js");
 const Stretch = require("./model/StretchesSchema.js");
 const authenticate = require("./middleware/authenticate.js");
+const Article = require("./model/ArticlesSchema.js");
 
 const router = Router();
 
@@ -47,6 +48,10 @@ router.get("/stretches", async (req, res) => {
   const stretches = await Stretch.find();
   res.send({ stretches });
 });
+router.get("/articles", async (req, res) => {
+  const articles = await Article.find();
+  res.send({ articles });
+});
 router.get("/authenticate", authenticate, async (req, res) => {
   res.send({ user: req.user });
 });
@@ -56,6 +61,13 @@ router.put("/users/stretches", authenticate, async (req, res) => {
   const id = req.body.stretchId;
   const { user } = req;
   await user.toggleLikedStretch(id);
+
+  res.send({ user });
+});
+router.put("/users/articles", authenticate, async (req, res) => {
+  const id = req.body.articleId;
+  const { user } = req;
+  await user.toggleLikeArticle(id);
 
   res.send({ user });
 });

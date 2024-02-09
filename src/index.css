@@ -98,11 +98,12 @@ body {
 }
 .articles-container {
   position: fixed;
-  bottom: 200px;
+  bottom: 100px;
   left: 250px;
   display: flex;
   flex-direction: row;
   width: 80%;
+  height: 30%;
   justify-content: center;
   align-items: center;
   border: 1px solid black;

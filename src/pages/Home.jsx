@@ -6,9 +6,12 @@ import { FemaleHumanFront } from "../components/humanBody/femaleHumanFront";
 import { FemaleHumanBack } from "../components/humanBody/femaleHumanBack";
 import "../index.css";
 import { AppContext } from "../App";
+import { SingleArticle } from "../components/articles/articlesContainer";
+
 export default function Home() {
   const {
-    data: { darkMode },
+    data: { darkMode, articles },
+    methods: { handleLikeArticle },
   } = useContext(AppContext);
   const [female, setFemale] = useState(true);
   let home = useRef(true);
@@ -41,9 +44,16 @@ export default function Home() {
         </div>
       </div>
       <div className="articles-container">
-        <div className="article">Article 1</div>
-        <div className="article">Article 2</div>
-        <div className="article">Article 3</div>
+        {articles.slice(0, 3).map((article, i) => {
+          return (
+            <div key={i}>
+              <SingleArticle
+                handleLikeArticle={handleLikeArticle}
+                article={article}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

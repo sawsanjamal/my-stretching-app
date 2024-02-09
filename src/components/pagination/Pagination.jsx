@@ -13,23 +13,28 @@ const Pagination = ({
   return (
     <nav className="pagination-nav">
       <div className="pagination-text">
-        Showing {indexOfFirstPost + 1} to{" "}
-        {totalPosts > indexOfLastPost ? indexOfLastPost : totalPosts} of{" "}
-        {totalPosts} results
+        Showing {totalPosts === 0 ? "0" : indexOfFirstPost + 1}{" "}
+        {totalPosts === 0 ? " " : "to "}
+        {totalPosts > indexOfLastPost
+          ? indexOfLastPost
+          : totalPosts || " "} of {totalPosts} results
       </div>
-      <ul className="number-list">
-        {pageNumbers.map((number) => (
-          <li className="list-item" key={number}>
-            <button
-              className="pagination-btn"
-              onClick={() => paginate(number)}
-              aria-label={`Go to Page ${number}`}
-            >
-              {number}
-            </button>
-          </li>
-        ))}
-      </ul>
+
+      {totalPosts > 3 && (
+        <ul className="number-list">
+          {pageNumbers.map((number) => (
+            <li className="list-item" key={number}>
+              <button
+                className="pagination-btn"
+                onClick={() => paginate(number)}
+                aria-label={`Go to Page ${number}`}
+              >
+                {number}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </nav>
   );
 };

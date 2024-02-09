@@ -7,6 +7,7 @@
   position: fixed;
   bottom: 30px;
   width: 90%;
+  height: 5%;
   background-color: black;
 }
 .pagination-text {

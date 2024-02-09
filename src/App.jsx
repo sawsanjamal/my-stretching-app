@@ -5,8 +5,9 @@ import Sidebar from "./components/sidebar/Sidebar";
 import { Outlet, ScrollRestoration } from "react-router-dom";
 import { StretchesModal } from "./components/modals/stretchesModal";
 import SignUpModal from "./components/modals/SignUpModal";
-import { toggleLike, authenticate } from "./api/users";
+import { toggleLike, authenticate, toggleLikeArticle } from "./api/users";
 import { getStretches } from "./api/stretches";
+import { getArticles } from "./api/articles";
 
 export const AppContext = createContext();
 
@@ -14,6 +15,7 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [user, setUser] = useState(null);
   const [stretches, setStretches] = useState([]);
+  const [articles, setArticles] = useState([]);
   const [signUpModalOpen, setSignUpModalOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(true);
 
@@ -33,6 +35,9 @@ export default function App() {
       getStretches().then(({ stretches }) => {
         setStretches(stretches);
       });
+      getArticles().then(({ articles }) => {
+        setArticles(articles);
+      });
     });
   }, []);
 
@@ -48,11 +53,21 @@ export default function App() {
   function handleLike(stretchId) {
     toggleLike({ stretchId }).then(({ user }) => setUser(user));
   }
+  function handleLikeArticle(articleId) {
+    toggleLikeArticle({ articleId }).then(({ user }) => setUser(user));
+  }
 
   return (
     <AppContext.Provider
       value={{
-        data: { user, stretches, modalOpen, signUpModalOpen, darkMode },
+        data: {
+          user,
+          stretches,
+          modalOpen,
+          signUpModalOpen,
+          darkMode,
+          articles,
+        },
         methods: {
           setDarkMode,
           setUser,
@@ -60,6 +75,8 @@ export default function App() {
           setModalOpen,
           setSignUpModalOpen,
           handleLike,
+          setArticles,
+          handleLikeArticle,
         },
       }}
     >

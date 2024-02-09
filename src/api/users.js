@@ -26,3 +26,9 @@ export async function toggleLike(options) {
   } = await baseApi.put("users/stretches", options);
   return { user };
 }
+export async function toggleLikeArticle(options) {
+  const {
+    data: { user },
+  } = await baseApi.put("users/articles", options);
+  return { user };
+}
