@@ -3,6 +3,8 @@ const User = require("./model/schema.js");
 const Stretch = require("./model/StretchesSchema.js");
 const authenticate = require("./middleware/authenticate.js");
 const Article = require("./model/ArticlesSchema.js");
+const { SECRET_KEY } = require("./config/keys.js");
+const stripe = require("stripe")(SECRET_KEY);
 
 const router = Router();
 
@@ -71,5 +73,24 @@ router.put("/users/articles", authenticate, async (req, res) => {
 
   res.send({ user });
 });
+const calculateOrderAmount = (items) => {
+  return 2000;
+};
 
+router.post("/payments/create", async (req, res) => {
+  const { items } = req.body;
+
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: calculateOrderAmount(items),
+    currency: "usd",
+
+    automatic_payment_methods: {
+      enabled: true,
+    },
+  });
+
+  res.send({
+    clientSecret: paymentIntent.client_secret,
+  });
+});
 module.exports = router;

@@ -8,6 +8,7 @@ import MyStretches from "./pages/MyStretches";
 import MyArticles from "./pages/MyArticles";
 import Stretch from "./pages/Stretch";
 import Article from "./pages/Article";
+import Checkout from "./components/checkout/Checkout";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
       { path: "/articles/:id", element: <Article /> }, // make this a child of `/stretches`
       { path: "/mystretches", element: <MyStretches /> },
       { path: "/myarticles", element: <MyArticles /> },
+      { path: "/checkout", element: <Checkout /> },
     ],
   },
 ]);

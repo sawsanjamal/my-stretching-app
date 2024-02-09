@@ -7,15 +7,15 @@ import {
   last_name_validation,
   password_validation,
 } from "../inputs/Validations";
-import { authenticate, createUser, login } from "../../api/users";
+import { createUser, login } from "../../api/users";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AppContext } from "../../App";
 
 export default function SignUpModal() {
   const {
-    data: { user, signUpModalOpen, darkMode },
-    methods: { setUser, setSignUpModalOpen, setModalOpen },
+    data: { signUpModalOpen, darkMode },
+    methods: { setUser, setSignUpModalOpen },
   } = useContext(AppContext);
   const [isSigningUp, setIsSigningUp] = useState(true);
   const nav = useNavigate();
