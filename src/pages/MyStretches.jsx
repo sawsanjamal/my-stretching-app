@@ -10,7 +10,7 @@ export default function MyStretches() {
     methods: { handleLike },
   } = useContext(AppContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(3);
+  const POSTS_PER_PAGE = 3;
   const userStretches = (user || { stretches: [] }).stretches.map(
     (stretchId) => {
       const stretch = (stretches || []).find(
@@ -20,8 +20,8 @@ export default function MyStretches() {
       return { ...stretch, liked: true };
     }
   );
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const indexOfLastPost = currentPage * POSTS_PER_PAGE;
+  const indexOfFirstPost = indexOfLastPost - POSTS_PER_PAGE;
   const currentPosts = userStretches.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
@@ -35,7 +35,7 @@ export default function MyStretches() {
           stretches={currentPosts}
         />
         <Pagination
-          postsPerPage={postsPerPage}
+          postsPerPage={POSTS_PER_PAGE}
           totalPosts={userStretches.length}
           paginate={paginate}
           indexOfFirstPost={indexOfFirstPost}

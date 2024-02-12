@@ -6,12 +6,13 @@ import { Link } from "react-router-dom";
 export function AccountDropdown() {
   const {
     data: { user, darkMode },
-    methods: { setUser, setModalOpen, setSignUpModalOpen },
+    methods: { setUser, setModalOpen, setSignUpModalOpen, setOpenDropdown },
   } = useContext(AppContext);
   function handleLogout() {
     clearCookies();
     setUser(null);
     setModalOpen(true);
+    setOpenDropdown(false);
   }
 
   return (
@@ -19,12 +20,18 @@ export function AccountDropdown() {
       {user ? (
         <button className={darkMode ? "dropdown-btn-dark" : "dropdown-btn"}>
           <div className="personal-dropdown-item" onClick={handleLogout}>
-            Logout
+            <Link to="/logout">Logout</Link>
           </div>
-          <div className="personal-dropdown-item">
+          <div
+            className="personal-dropdown-item"
+            onClick={() => setOpenDropdown(false)}
+          >
             <Link to="mystretches">My Stretches</Link>
           </div>
-          <div className="personal-dropdown-item">
+          <div
+            className="personal-dropdown-item"
+            onClick={() => setOpenDropdown(false)}
+          >
             {" "}
             <Link to="myarticles">My Articles</Link>
           </div>

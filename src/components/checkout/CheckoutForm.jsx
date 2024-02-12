@@ -30,6 +30,7 @@ export default function CheckoutForm() {
       );
     });
   }, [stripe]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 

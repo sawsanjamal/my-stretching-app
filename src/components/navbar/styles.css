@@ -78,13 +78,16 @@ img {
 }
 
 .navbar-signup-btn:hover,
-.navbar-signup-btn-dark:hover {
+.navbar-signup-btn-dark:hover,
+.navbar-email-btn-dark:hover,
+.navbar-email-btn:hover {
   cursor: pointer;
   opacity: 0.7;
   border-radius: 30px;
 }
 .navbar-signup-btn:focus,
-.navbar-signup-bt-dark:focus {
+.navbar-signup-btn-dark:focus .navbar-email-btn-dark:focus,
+.navbar-email-btn:focus {
   border-radius: 30px;
 }
 

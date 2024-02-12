@@ -17,8 +17,8 @@ export default function App() {
   const [stretches, setStretches] = useState([]);
   const [articles, setArticles] = useState([]);
   const [signUpModalOpen, setSignUpModalOpen] = useState(false);
-  const [signUpModalWithPaymentOpen, setSignUpModalWithPaymentOpen] =
-    useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
+
   const [modalOpen, setModalOpen] = useState(true);
 
   useEffect(() => {
@@ -76,7 +76,7 @@ export default function App() {
           signUpModalOpen,
           darkMode,
           articles,
-          signUpModalWithPaymentOpen,
+          openDropdown,
         },
         methods: {
           setDarkMode,
@@ -87,7 +87,7 @@ export default function App() {
           handleLike,
           setArticles,
           handleLikeArticle,
-          setSignUpModalWithPaymentOpen,
+          setOpenDropdown,
         },
       }}
     >

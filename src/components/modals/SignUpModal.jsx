@@ -14,14 +14,16 @@ import { AppContext } from "../../App";
 
 export default function SignUpModal() {
   const {
-    data: { signUpModalOpen, darkMode },
-    methods: { setUser, setSignUpModalOpen },
+    data: { signUpModalOpen, darkMode, openDropdown },
+    methods: { setUser, setSignUpModalOpen, setModalOpen, setOpenDropdown },
   } = useContext(AppContext);
+
   const [isSigningUp, setIsSigningUp] = useState(true);
   const nav = useNavigate();
 
   function onCloseModal() {
     setSignUpModalOpen(false);
+    setModalOpen(false);
     methods.reset();
   }
 
@@ -29,6 +31,7 @@ export default function SignUpModal() {
     defaultValues: { email: "testerfive@gmail.com", password: "testing123" },
   });
   const onSubmit = methods.handleSubmit(async (data) => {
+    setOpenDropdown(false);
     const userData = {
       firstName: data.firstName,
       lastName: data.lastName,
@@ -37,7 +40,8 @@ export default function SignUpModal() {
     };
     if (isSigningUp) {
       await createUser(userData);
-      nav("/success");
+
+      nav("/checkout");
     } else {
       const { user } = await login(userData);
       setUser(user);

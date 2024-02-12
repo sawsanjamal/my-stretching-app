@@ -66,7 +66,9 @@ export default function Sidebar() {
                 className={darkMode ? "sidebar-btn-dark" : "sidebar-btn"}
                 onClick={handleLogout}
               >
-                <FontAwesomeIcon icon={faUser} />
+                <Link to="/logout">
+                  <FontAwesomeIcon icon={faUser} />
+                </Link>
               </button>
               <h3> Logout</h3>
             </div>

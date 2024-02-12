@@ -9,6 +9,7 @@ import MyArticles from "./pages/MyArticles";
 import Stretch from "./pages/Stretch";
 import Article from "./pages/Article";
 import Checkout from "./components/checkout/Checkout";
+import { Logout } from "./pages/Logout";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ export const router = createBrowserRouter([
       { path: "/mystretches", element: <MyStretches /> },
       { path: "/myarticles", element: <MyArticles /> },
       { path: "/checkout", element: <Checkout /> },
+      { path: "/logout", element: <Logout /> },
     ],
   },
 ]);

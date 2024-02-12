@@ -10,10 +10,10 @@ import { AppContext } from "../../App";
 
 export default function Navbar() {
   const {
-    data: { user, darkMode },
-    methods: { setDarkMode },
+    data: { user, darkMode, openDropdown },
+    methods: { setDarkMode, setOpenDropdown },
   } = useContext(AppContext);
-  const [openDropdown, setOpenDropdown] = useState(false);
+
   function toggleDarkMode() {
     setDarkMode(() => !darkMode);
   }
@@ -29,7 +29,7 @@ export default function Navbar() {
         {user ? (
           <button
             className={darkMode ? "navbar-email-btn-dark" : "navbar-email-btn"}
-            onMouseEnter={() => setOpenDropdown(!openDropdown)}
+            onClick={() => setOpenDropdown(!openDropdown)}
           >
             <div className="user-email">{user.email}</div>
           </button>
@@ -38,7 +38,7 @@ export default function Navbar() {
             className={
               darkMode ? "navbar-signup-btn-dark" : "navbar-signup-btn"
             }
-            onMouseEnter={() => setOpenDropdown(!openDropdown)}
+            onClick={() => setOpenDropdown(!openDropdown)}
           >
             <FontAwesomeIcon icon={faUser} />
           </button>

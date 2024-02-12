@@ -10,15 +10,22 @@ const Pagination = ({
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
   }
+  // if(pageNumbers[pageNumbers[length -1]] < ){}
+
+  const generatePaginationText = () => {
+    let firstChunk = totalPosts === 0 ? "0" : indexOfFirstPost + 1;
+    const secondChunk = totalPosts === 0 ? "" : "to";
+    let thirdChunk =
+      totalPosts > indexOfLastPost ? indexOfLastPost : totalPosts || " ";
+    if (firstChunk > thirdChunk) {
+      firstChunk = thirdChunk - postsPerPage;
+      paginate(totalPosts / postsPerPage);
+    }
+    return `Showing ${firstChunk} ${secondChunk} ${thirdChunk} of ${totalPosts} results`;
+  };
   return (
     <nav className="pagination-nav">
-      <div className="pagination-text">
-        Showing {totalPosts === 0 ? "0" : indexOfFirstPost + 1}{" "}
-        {totalPosts === 0 ? " " : "to "}
-        {totalPosts > indexOfLastPost
-          ? indexOfLastPost
-          : totalPosts || " "} of {totalPosts} results
-      </div>
+      <div className="pagination-text">{generatePaginationText()}</div>
 
       {totalPosts > 3 && (
         <ul className="number-list">
