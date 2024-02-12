@@ -43,6 +43,13 @@ export default function App() {
     });
   }, []);
 
+  useEffect(() => {
+    const articlesWithUserContext = articles.map((article) => {
+      return { ...article, liked: user.articles.includes(article._id) };
+    });
+    setArticles(articlesWithUserContext);
+  }, [user?.articles]);
+
   function renderModal() {
     if (signUpModalOpen) {
       return <SignUpModal />;

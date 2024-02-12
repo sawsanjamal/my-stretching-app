@@ -81,21 +81,14 @@
   padding: 30px;
 }
 .stretch-title {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   background-color: #1f2937;
   color: #fafafa;
-  width: 100%;
+  width: 95%;
   padding: 10px;
 }
 .stretch-title-dark {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: black;
   color: #fafafa;
-  width: 100%;
+  width: 95%;
   padding: 10px;
 }
 .stretch-example {
@@ -112,12 +105,25 @@
   display: flex;
   flex-direction: row;
 }
-.hearted {
-  color: fuchsia;
-  background-color: none;
+.stretch-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  background-color: #1f2937;
+  border-radius: 10px;
+  height: 55px;
 }
-
-.nothearted {
-  color: pink;
-  background-color: none;
+.stretch-header-container-dark {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  background-color: black;
+  border-radius: 10px;
+  height: 55px;
 }

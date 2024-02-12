@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles.css";
 import { v4 as uuid } from "uuid";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+
+import LikeBtn from "./likeBtn/LikeBtn";
 
 export default function StretchesList({ stretches, darkMode, handleLike }) {
   return (
@@ -10,15 +10,21 @@ export default function StretchesList({ stretches, darkMode, handleLike }) {
         {(stretches || []).map((stretch) => {
           return (
             <div key={uuid()} className="stretch-example">
-              <h1 className={darkMode ? "stretch-title-dark" : "stretch-title"}>
-                {stretch.name}
-                <button
-                  className={stretch.liked ? "hearted" : "nothearted"}
-                  onClick={() => handleLike(stretch._id)}
+              <div
+                className={
+                  darkMode
+                    ? "stretch-header-container-dark"
+                    : "stretch-header-container"
+                }
+              >
+                <h1
+                  className={darkMode ? "stretch-title-dark" : "stretch-title"}
                 >
-                  <FontAwesomeIcon icon={faHeart} />
-                </button>
-              </h1>
+                  {stretch.name}
+                </h1>
+                <LikeBtn selection={stretch} handleLike={handleLike} />
+              </div>
+
               <div className="stretch-example-content">
                 <div>images</div>
                 <ul>

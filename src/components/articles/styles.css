@@ -27,9 +27,10 @@
   justify-content: space-between;
   align-items: center;
 }
-.big-container:hover {
+.article-header:hover {
   transform: translateY(-3px);
   cursor: pointer;
+  opacity: 0.7;
 }
 .article-header {
   padding: 5px;
@@ -67,20 +68,4 @@
 .categories-btn:hover {
   opacity: 0.7;
   cursor: pointer;
-}
-.like-btn {
-  color: pink;
-  padding: 5px;
-  border-radius: 10px;
-  border: none;
-}
-.like-btn:hover {
-  cursor: pointer;
-  opacity: 0.7;
-  transition: 0.3s ease-in-out;
-  transform: scale(1.2);
-}
-.hearted {
-  color: fuchsia;
-  background-color: none;
 }

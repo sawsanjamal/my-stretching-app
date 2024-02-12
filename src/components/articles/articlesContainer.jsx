@@ -4,6 +4,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { AppContext } from "../../App";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import LikeBtn from "../likeBtn/LikeBtn";
 export function ArticlesContainer({ userArticles }) {
   const {
     methods: { handleLikeArticle },
@@ -28,20 +29,15 @@ export function ArticlesContainer({ userArticles }) {
 export function SingleArticle({ handleLikeArticle, article }) {
   const nav = useNavigate();
   return (
-    <div
-      onClick={() => nav(`/articles/${article._id}`)}
-      className="big-container"
-    >
+    <div className="big-container">
       <div className="article-container">
-        <div className="article-header">
+        <div
+          className="article-header"
+          onClick={() => nav(`/articles/${article._id}`)}
+        >
           <h1>{article.title}</h1>
         </div>
-        <button
-          onClick={() => handleLikeArticle(article._id)}
-          className={article.liked ? "hearted" : "like-btn"}
-        >
-          <FontAwesomeIcon icon={faHeart} />
-        </button>
+        <LikeBtn selection={article} handleLike={handleLikeArticle} />
       </div>
       <div className="article-content">
         <div>image</div>

@@ -15,6 +15,7 @@ export default function Home() {
   } = useContext(AppContext);
   const [female, setFemale] = useState(true);
   let home = useRef(true);
+
   return (
     <div className="home-container">
       <div className="human-body-container">
