@@ -15,7 +15,7 @@ export default function Navbar() {
   } = useContext(AppContext);
 
   function toggleDarkMode() {
-    setDarkMode(() => !darkMode);
+    setDarkMode(!darkMode);
   }
   return (
     <div className={darkMode ? "navbar-dark" : "navbar"}>

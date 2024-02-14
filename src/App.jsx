@@ -18,8 +18,7 @@ import Footer from "./components/Footer/Footer";
 export const AppContext = createContext();
 
 export default function App() {
-  const storedDarkMode = localStorage.getItem("DARK_MODE");
-  const [darkMode, setDarkMode] = useState(storedDarkMode);
+  const [darkMode, setDarkMode] = useState(false);
   const [user, setUser] = useState(null);
   const [stretches, setStretches] = useState([]);
   const [articles, setArticles] = useState([]);
@@ -49,6 +48,9 @@ export default function App() {
         setArticles(articles);
       });
     });
+
+    const storedDarkMode = localStorage.getItem("DARK_MODE") === "true";
+    setDarkMode(storedDarkMode);
   }, []);
 
   useEffect(() => {
