@@ -17,7 +17,6 @@
   border: none;
   border-radius: 10px;
   padding: 20px;
-  z-index: 5;
 }
 .closeBtn {
   width: 18px;
@@ -99,7 +98,7 @@
 }
 .searchBtn {
   color: #1f2937;
-  z-index: 2;
+
   margin-right: 2px;
   padding: 3px;
   border: none;
@@ -121,7 +120,6 @@
 .searchBtnModal {
   background-color: #fafafa;
   border: none;
-  z-index: 2;
 }
 
 .searchInputModal {
@@ -130,7 +128,6 @@
   border-radius: 10px;
   border: none;
   position: relative;
-  z-index: 2;
 }
 .searchInput:focus {
   opacity: 0.85;

@@ -9,11 +9,9 @@ import { AppContext } from "../App";
 import StretchesList from "../components/StretchesList";
 
 export default function Stretches() {
-  const [female, setFemale] = useState(true);
-
   const {
-    data: { user, stretches, darkMode, muscleGroup },
-    methods: { handleLike, toggleMuscleGroup },
+    data: { female, user, stretches, darkMode, muscleGroup },
+    methods: { setFemale, handleLike, toggleMuscleGroup },
   } = useContext(AppContext);
 
   const selectedStretches = stretches.filter(

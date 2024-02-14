@@ -132,7 +132,7 @@ h1 {
   display: flex;
   align-items: start;
   justify-content: center;
-  z-index: 100;
+  z-index: 80;
 }
 .top-layer-card {
   position: relative;

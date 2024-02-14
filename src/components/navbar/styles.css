@@ -22,7 +22,7 @@ img {
   background-color: #1f2937;
   align-items: center;
   color: #fafafa;
-  z-index: 3;
+  z-index: 120;
 }
 .navbar-dark {
   display: flex;
@@ -34,7 +34,7 @@ img {
   background-color: black;
   align-items: center;
   color: grey;
-  z-index: 3;
+  z-index: 120;
 }
 .navbarItems {
   width: 430px;
@@ -42,7 +42,6 @@ img {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  z-index: 3;
 }
 .navbar-signup-btn {
   margin: 0 5px;
@@ -101,7 +100,6 @@ img {
   right: 15px;
   display: flex;
   flex-direction: column;
-  z-index: 100;
 }
 .dropdown-btn {
   border: none;
@@ -111,7 +109,6 @@ img {
   font-weight: bold;
   padding: 10px;
   border-radius: 10px;
-  z-index: 1;
 }
 .dropdown-btn-dark {
   border: none;
@@ -121,7 +118,6 @@ img {
   font-weight: bold;
   padding: 10px;
   border-radius: 10px;
-  z-index: 1;
 }
 
 .personal-dropdown-item,

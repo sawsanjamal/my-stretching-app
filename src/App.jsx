@@ -19,6 +19,7 @@ export const AppContext = createContext();
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
+  const [female, setFemale] = useState(true);
   const [user, setUser] = useState(null);
   const [stretches, setStretches] = useState([]);
   const [articles, setArticles] = useState([]);
@@ -92,6 +93,10 @@ export default function App() {
     const value = category === muscleGroup ? null : category;
     setMuscleGroup(value);
   }
+  function signUp() {
+    setModalOpen(false);
+    setSignUpModalOpen(true);
+  }
   return (
     <AppContext.Provider
       value={{
@@ -104,6 +109,7 @@ export default function App() {
           articles,
           openDropdown,
           muscleGroup,
+          female,
         },
         methods: {
           setDarkMode,
@@ -116,7 +122,9 @@ export default function App() {
           setOpenDropdown,
           handleLogout,
           setMuscleGroup,
+          setFemale,
           toggleMuscleGroup,
+          signUp,
         },
       }}
     >

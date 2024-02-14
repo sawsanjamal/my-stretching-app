@@ -10,10 +10,9 @@ import { SingleArticle } from "../components/articles/articlesContainer";
 
 export default function Home() {
   const {
-    data: { darkMode, articles, muscleGroup },
-    methods: { handleLikeArticle, toggleMuscleGroup },
+    data: { darkMode, female, articles, muscleGroup },
+    methods: { handleLikeArticle, toggleMuscleGroup, setFemale },
   } = useContext(AppContext);
-  const [female, setFemale] = useState(true);
 
   return (
     <div className="home-container">

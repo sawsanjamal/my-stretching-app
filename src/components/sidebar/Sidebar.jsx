@@ -14,13 +14,9 @@ import { AppContext } from "../../App";
 export default function Sidebar() {
   const {
     data: { user, darkMode },
-    methods: { setModalOpen, setSignUpModalOpen, handleLogout },
+    methods: { signUp, handleLogout },
   } = useContext(AppContext);
 
-  function signUp() {
-    setModalOpen(false);
-    setSignUpModalOpen(true);
-  }
   return (
     <>
       <div className={darkMode ? "sidebar-dark" : "sidebar"}>

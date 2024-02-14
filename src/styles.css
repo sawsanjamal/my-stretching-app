@@ -116,3 +116,15 @@
   border-radius: 10px;
   height: 55px;
 }
+
+.videos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.video {
+  height: 240px;
+  width: 350px;
+}

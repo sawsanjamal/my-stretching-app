@@ -13,7 +13,6 @@
   height: 100vh;
   width: var(--width);
   color: #fafafa;
-  z-index: 2;
 }
 .sidebar-dark {
   background-color: black;
@@ -27,7 +26,6 @@
   height: 100vh;
   width: var(--width);
   color: grey;
-  z-index: 4;
 }
 .sidebarItems {
   position: fixed;
@@ -35,7 +33,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  z-index: 4;
 }
 .sidebar-btn {
   font-size: 25px;
@@ -95,7 +92,6 @@
     height: 100vh;
     width: 150px;
     color: #fafafa;
-    z-index: 2;
   }
   .sidebar-dark {
     background-color: black;
@@ -109,7 +105,6 @@
     height: 100vh;
     width: 150px;
     color: grey;
-    z-index: 4;
   }
 
   .sidebar-btn {
