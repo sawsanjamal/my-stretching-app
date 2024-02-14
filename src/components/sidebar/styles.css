@@ -1,34 +1,46 @@
+:root {
+  --width: 10vw;
+}
 .sidebar {
   background-color: #1f2937;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
   text-align: center;
+  position: sticky;
+  left: 0px;
   height: 100vh;
-  width: 10vw;
+  width: var(--width);
   color: #fafafa;
+  z-index: 2;
 }
 .sidebar-dark {
   background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
   text-align: center;
+  position: sticky;
+  left: 0px;
   height: 100vh;
-  width: 10vw;
+  width: var(--width);
   color: grey;
+  z-index: 4;
 }
 .sidebarItems {
-  height: 45vh;
+  position: fixed;
+  height: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  z-index: 3;
+  z-index: 4;
 }
 .sidebar-btn {
   font-size: 25px;
   padding: 4px;
-  width: 3.5vw;
+  width: calc(0.35 * var(--width));
   background-color: #1f2937;
   border: none;
   color: #fafafa;
@@ -36,7 +48,7 @@
 .sidebar-btn-dark {
   font-size: 25px;
   padding: 4px;
-  width: 3.5vw;
+  width: calc(0.35 * var(--width));
   background-color: black;
   border: none;
   color: white;
@@ -57,7 +69,7 @@
 }
 .sidebar-menu-btn {
   font-size: 23px;
-  width: 3.5vw;
+  width: calc(0.35 * --width);
   background-color: #1f2937;
   border: none;
   color: #fafafa;
@@ -65,8 +77,65 @@
 .sidebar-menu-btn:hover {
   border-radius: 60px;
   border: 0.5px solid #4a5369;
-  width: 3.5vw;
+  width: calc(0.35 * var(--width));
 }
 .link {
   color: #fafafa;
+}
+@media (max-width: 1719px) {
+  .sidebar {
+    background-color: #1f2937;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    position: sticky;
+    left: 0px;
+    height: 100vh;
+    width: 150px;
+    color: #fafafa;
+    z-index: 2;
+  }
+  .sidebar-dark {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    position: sticky;
+    left: 0px;
+    height: 100vh;
+    width: 150px;
+    color: grey;
+    z-index: 4;
+  }
+
+  .sidebar-btn {
+    font-size: calc(0.15 * var(--width));
+    width: calc(0.1 * var(--width));
+    background-color: #1f2937;
+    border: none;
+    color: #fafafa;
+  }
+  .sidebar-btn-dark {
+    font-size: calc(0.15 * var(--width));
+    width: calc(0.1 * var(--width));
+    background-color: black;
+    border: none;
+    color: white;
+  }
+  .sidebar-menu-btn {
+    font-size: calc(0.01 * var(--width));
+    width: calc(0.1 * var(--width));
+    background-color: #1f2937;
+    border: none;
+    color: #fafafa;
+  }
+  .sidebar-menu-btn:hover {
+    border-radius: 60px;
+    border: 0.5px solid #4a5369;
+    width: calc(0.1 * var(--width));
+  }
 }

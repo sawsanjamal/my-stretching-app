@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import "./styles.css";
+import { AppContext } from "../../App";
 const Pagination = ({
   postsPerPage,
   totalPosts,
@@ -6,25 +8,27 @@ const Pagination = ({
   indexOfFirstPost,
   indexOfLastPost,
 }) => {
+  const {
+    data: { darkMode },
+  } = useContext(AppContext);
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
   }
-  // if(pageNumbers[pageNumbers[length -1]] < ){}
 
   const generatePaginationText = () => {
     let firstChunk = totalPosts === 0 ? "0" : indexOfFirstPost + 1;
     const secondChunk = totalPosts === 0 ? "" : "to";
     let thirdChunk =
       totalPosts > indexOfLastPost ? indexOfLastPost : totalPosts || " ";
-    if (firstChunk > thirdChunk) {
+    if (firstChunk > thirdChunk && totalPosts !== 0) {
       firstChunk = thirdChunk - postsPerPage;
       paginate(totalPosts / postsPerPage);
     }
     return `Showing ${firstChunk} ${secondChunk} ${thirdChunk} of ${totalPosts} results`;
   };
   return (
-    <nav className="pagination-nav">
+    <nav className={darkMode ? "pagination-nav-dark" : "pagination-nav"}>
       <div className="pagination-text">{generatePaginationText()}</div>
 
       {totalPosts > 3 && (
@@ -32,7 +36,7 @@ const Pagination = ({
           {pageNumbers.map((number) => (
             <li className="list-item" key={number}>
               <button
-                className="pagination-btn"
+                className={darkMode ? "pagination-btn-dark" : "pagination-btn"}
                 onClick={() => paginate(number)}
                 aria-label={`Go to Page ${number}`}
               >

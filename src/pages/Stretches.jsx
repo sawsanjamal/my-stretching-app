@@ -10,54 +10,67 @@ import StretchesList from "../components/StretchesList";
 
 export default function Stretches() {
   const [female, setFemale] = useState(true);
-  const [muscleGroup, setMuscleGroup] = useState(null);
 
   const {
-    data: { user, stretches, darkMode },
-    methods: { handleLike },
+    data: { user, stretches, darkMode, muscleGroup },
+    methods: { handleLike, toggleMuscleGroup },
   } = useContext(AppContext);
 
   const selectedStretches = stretches.filter(
     (stretch) => stretch.muscleGroup === muscleGroup
   );
-  const userStretches = selectedStretches.map((stretch) => {
-    return { ...stretch, liked: user.stretches.includes(stretch._id) };
-  });
+  const userStretches = user
+    ? selectedStretches.map((stretch) => {
+        return { ...stretch, liked: user.stretches.includes(stretch._id) };
+      })
+    : selectedStretches;
 
   // work on page for empty array
   return (
     <div className="stretches-page-container">
+      <h1> Here are my stretches </h1>
       <div className="stretches-page">
-        <div>
-          <h1> Here are my stretches </h1>
-          <StretchesList
-            darkMode={darkMode}
-            handleLike={handleLike}
-            stretches={userStretches}
-          />
-          <div className="stretches-side-bar">
-            <div
-              className={
-                darkMode ? "toggle-container-dark" : "toggle-container"
-              }
-            >
-              <ToggleSwitch
-                isOn={female}
-                handleToggle={() => setFemale(!female)}
+        <div className="stretches-list">
+          {userStretches.length > 0 && (
+            <StretchesList
+              darkMode={darkMode}
+              handleLike={handleLike}
+              stretches={userStretches}
+            />
+          )}
+        </div>
+        <div className="stretches-side-bar">
+          <div
+            className={darkMode ? "toggle-container-dark" : "toggle-container"}
+          >
+            <ToggleSwitch
+              isOn={female}
+              handleToggle={() => setFemale(!female)}
+            />
+          </div>
+          <div className="stretches-human-body-container">
+            {female ? (
+              <FemaleHumanFront
+                toggleMuscleGroup={toggleMuscleGroup}
+                muscleGroup={muscleGroup}
               />
-            </div>
-            <div className="stretches-human-body-container">
-              {female ? (
-                <FemaleHumanFront setMuscleGroup={setMuscleGroup} />
-              ) : (
-                <MaleHumanFront setMuscleGroup={setMuscleGroup} />
-              )}
-              {female ? (
-                <FemaleHumanBack setMuscleGroup={setMuscleGroup} />
-              ) : (
-                <MaleHumanBack setMuscleGroup={setMuscleGroup} />
-              )}
-            </div>
+            ) : (
+              <MaleHumanFront
+                toggleMuscleGroup={toggleMuscleGroup}
+                muscleGroup={muscleGroup}
+              />
+            )}
+            {female ? (
+              <FemaleHumanBack
+                toggleMuscleGroup={toggleMuscleGroup}
+                muscleGroup={muscleGroup}
+              />
+            ) : (
+              <MaleHumanBack
+                toggleMuscleGroup={toggleMuscleGroup}
+                muscleGroup={muscleGroup}
+              />
+            )}
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ import { AppContext } from "../../App";
 
 export default function SignUpModal() {
   const {
-    data: { signUpModalOpen, darkMode, openDropdown },
+    data: { signUpModalOpen, darkMode },
     methods: { setUser, setSignUpModalOpen, setModalOpen, setOpenDropdown },
   } = useContext(AppContext);
 
@@ -45,7 +45,6 @@ export default function SignUpModal() {
     } else {
       const { user } = await login(userData);
       setUser(user);
-      nav("/successlogin");
     }
     onCloseModal();
   });

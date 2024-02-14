@@ -16,7 +16,9 @@ img {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  position: sticky;
   padding: 13px;
+  top: 0px;
   background-color: #1f2937;
   align-items: center;
   color: #fafafa;
@@ -26,6 +28,8 @@ img {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  position: sticky;
+  top: 0px;
   padding: 13px;
   background-color: black;
   align-items: center;
@@ -97,6 +101,7 @@ img {
   right: 15px;
   display: flex;
   flex-direction: column;
+  z-index: 100;
 }
 .dropdown-btn {
   border: none;
@@ -128,4 +133,8 @@ img {
 .dropdown-item:hover {
   cursor: pointer;
   opacity: 0.7;
+}
+
+.link {
+  text-decoration: none;
 }

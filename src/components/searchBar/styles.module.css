@@ -1,22 +1,27 @@
 .searchModal {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-items: flex-start;
   background-color: #1f2937;
-  width: 40%;
-  height: 45%;
-  top: 15%;
-  left: 15%;
   border: none;
   border-radius: 10px;
   padding: 20px;
-  position: absolute;
-  z-index: 1;
+}
+.searchModalDark {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  background-color: black;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  z-index: 5;
 }
 .closeBtn {
   width: 18px;
-  position: relative;
-  left: 94%;
+  align-self: flex-end;
   border: none;
   background-color: #1f2937;
   color: #fafafa;
@@ -27,7 +32,6 @@
   opacity: 0.7;
   cursor: pointer;
 }
-
 .searchBtn {
   border: none;
   border-radius: 10px;
@@ -40,17 +44,17 @@
 .searchModalBody {
   display: flex;
   flex-direction: row;
-  height: 80%;
+  height: 400px;
 }
 .searchResultsContainer {
   display: flex;
   flex-direction: column;
   background-color: #fafafa;
-  z-index: 1;
   height: 100%;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   padding: 20px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .searchOptions {
   font-size: 20px;
@@ -74,7 +78,8 @@
   background-color: #fafafa;
   padding: 20px;
   width: 290px;
-  border-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   color: #1f2937;
 }
 .searchBarContainer {
@@ -107,12 +112,11 @@
   cursor: pointer;
 }
 .searchModalHeader {
-  position: absolute;
-  top: 90px;
   background-color: #fafafa;
   border-radius: 10px;
   height: 30px;
-  width: 620px;
+  width: 100%;
+  margin: 10px 0px;
 }
 .searchBtnModal {
   background-color: #fafafa;
@@ -122,7 +126,7 @@
 
 .searchInputModal {
   height: 30px;
-  width: 580px;
+  width: 90%;
   border-radius: 10px;
   border: none;
   position: relative;

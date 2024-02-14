@@ -1,16 +1,14 @@
 .articles-page-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  width: 100%;
+  width: 90%;
   height: 80%;
-  margin: 0 20px;
 }
 .big-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   border: 1px solid black;
-  height: 90%;
-  width: 95%;
   margin: 10px;
   padding: 5px;
   border-radius: 10px;
@@ -32,15 +30,17 @@
   cursor: pointer;
   opacity: 0.7;
 }
+h1 {
+  font-size: 30px;
+}
 .article-header {
   padding: 5px;
   width: 100%;
 }
 .categories-container {
   border: 1px solid black;
-  width: 30%;
-  height: 40%;
-  margin: 0 20px;
+  width: 15%;
+  margin-left: 20px;
   border-radius: 10px;
   color: white;
   background-color: black;
@@ -64,8 +64,46 @@
   margin-bottom: 10px;
   border-radius: 10px;
 }
+.categories-btn-selected {
+  border: none;
+  background-color: inherit;
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  background-color: pink;
+  box-shadow: 0 0 5px 5px pink;
+  margin-left: 10px;
+  margin-bottom: 17px;
+  border-radius: 10px;
+}
 
-.categories-btn:hover {
+.categories-btn:hover,
+.categories-btn-selected:hover {
   opacity: 0.7;
   cursor: pointer;
+}
+
+@media (max-width: 1719px) {
+  h1 {
+    font-size: 20px;
+  }
+  .articles-page-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 90%;
+    height: 80%;
+  }
+  .categories-btn {
+    border: none;
+    background-color: inherit;
+    color: #1f2937;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 8px;
+    background-color: pink;
+    margin-left: 8x;
+    margin-bottom: 8px;
+    border-radius: 8px;
+  }
 }

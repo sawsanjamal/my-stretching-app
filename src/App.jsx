@@ -2,23 +2,31 @@ import { createContext, useEffect, useState } from "react";
 import "./index.css";
 import Navbar from "./components/navbar/Navbar";
 import Sidebar from "./components/sidebar/Sidebar";
-import { Outlet, ScrollRestoration } from "react-router-dom";
+import { Outlet, ScrollRestoration, useNavigate } from "react-router-dom";
 import { StretchesModal } from "./components/modals/stretchesModal";
 import SignUpModal from "./components/modals/SignUpModal";
-import { toggleLike, authenticate, toggleLikeArticle } from "./api/users";
+import {
+  toggleLike,
+  authenticate,
+  toggleLikeArticle,
+  clearCookies,
+} from "./api/users";
 import { getStretches } from "./api/stretches";
 import { getArticles } from "./api/articles";
+import Footer from "./components/Footer/Footer";
 
 export const AppContext = createContext();
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const storedDarkMode = localStorage.getItem("DARK_MODE");
+  const [darkMode, setDarkMode] = useState(storedDarkMode);
   const [user, setUser] = useState(null);
   const [stretches, setStretches] = useState([]);
   const [articles, setArticles] = useState([]);
   const [signUpModalOpen, setSignUpModalOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
-
+  const nav = useNavigate();
+  const [muscleGroup, setMuscleGroup] = useState(null);
   const [modalOpen, setModalOpen] = useState(true);
 
   useEffect(() => {
@@ -44,11 +52,17 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const articlesWithUserContext = articles.map((article) => {
-      return { ...article, liked: user.articles.includes(article._id) };
-    });
+    const articlesWithUserContext = user
+      ? articles.map((article) => {
+          return { ...article, liked: user.articles.includes(article._id) };
+        })
+      : articles;
     setArticles(articlesWithUserContext);
   }, [user?.articles]);
+
+  useEffect(() => {
+    localStorage.setItem("DARK_MODE", darkMode);
+  }, [darkMode]);
 
   function renderModal() {
     if (signUpModalOpen) {
@@ -65,7 +79,17 @@ export default function App() {
   function handleLikeArticle(articleId) {
     toggleLikeArticle({ articleId }).then(({ user }) => setUser(user));
   }
-
+  function handleLogout() {
+    clearCookies();
+    setUser(null);
+    setModalOpen(true);
+    setOpenDropdown(false);
+    nav("/");
+  }
+  function toggleMuscleGroup(category) {
+    const value = category === muscleGroup ? null : category;
+    setMuscleGroup(value);
+  }
   return (
     <AppContext.Provider
       value={{
@@ -77,6 +101,7 @@ export default function App() {
           darkMode,
           articles,
           openDropdown,
+          muscleGroup,
         },
         methods: {
           setDarkMode,
@@ -85,9 +110,11 @@ export default function App() {
           setModalOpen,
           setSignUpModalOpen,
           handleLike,
-          setArticles,
           handleLikeArticle,
           setOpenDropdown,
+          handleLogout,
+          setMuscleGroup,
+          toggleMuscleGroup,
         },
       }}
     >
@@ -95,13 +122,18 @@ export default function App() {
         <Navbar />
         <div style={{ display: "flex" }}>
           <Sidebar />
-          <div style={{ flexGrow: 1, position: "relative", zIndex: 2 }}>
+          <div className="body">
             {renderModal()}
-            <div className={`${modalOpen || signUpModalOpen ? "blur" : ""}`}>
+            <div
+              className={`${
+                modalOpen || signUpModalOpen ? "blur" : ""
+              } height-100`}
+            >
               <Outlet />
             </div>
           </div>
         </div>
+        <Footer />
       </div>
       <ScrollRestoration />
     </AppContext.Provider>

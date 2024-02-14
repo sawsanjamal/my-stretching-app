@@ -1,45 +1,46 @@
 .human-front {
-  position: relative;
-  top: 450px;
-  left: 300px;
-  width: 500px;
-  height: 500px;
+  width: 90%;
+  height: 90%;
   fill: #fafafa;
   stroke-width: 0.2em;
   stroke: black;
 }
-.human-front:hover,
-.human-stretches-front:hover {
+.human-front:hover {
   cursor: pointer;
 }
 .human-back {
-  position: relative;
-  top: 450px;
-  left: 750px;
-  width: 500px;
-  height: 500px;
+  width: 90%;
+  height: 90%;
   fill: #fafafa;
   stroke-width: 0.2em;
   stroke: black;
 }
-
-.human-back:hover,
-.human-stretches-back:hover {
+.selected {
+  fill: #1f2937;
+}
+@media (max-width: 1719px) {
+  .human-front {
+    width: 85%;
+    height: 85%;
+    padding: 0;
+    margin: 0;
+    fill: #fafafa;
+    stroke-width: 0.2em;
+    stroke: black;
+  }
+  .human-back {
+    width: 85%;
+    height: 85%;
+    fill: #fafafa;
+    stroke-width: 0.2em;
+    stroke: black;
+    padding: 0;
+    margin: 0;
+  }
+}
+.human-back:hover {
   cursor: pointer;
 }
 .body-map-muscle:hover {
   fill: #1f2937;
-}
-.human-stretches-back {
-  fill: #fafafa;
-  stroke-width: 0.2em;
-  stroke: black;
-  width: 500px;
-  height: 500px;
-}
-.human-stretches-front {
-  fill: #fafafa;
-  stroke-width: 0.2em;
-  stroke: black;
-  height: 500px;
 }

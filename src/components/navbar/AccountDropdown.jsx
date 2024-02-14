@@ -1,39 +1,37 @@
 import { useContext } from "react";
 import { AppContext } from "../../App";
-import { clearCookies } from "../../api/users";
+
 import { Link } from "react-router-dom";
 
 export function AccountDropdown() {
   const {
     data: { user, darkMode },
-    methods: { setUser, setModalOpen, setSignUpModalOpen, setOpenDropdown },
+    methods: { setSignUpModalOpen, setOpenDropdown, handleLogout },
   } = useContext(AppContext);
-  function handleLogout() {
-    clearCookies();
-    setUser(null);
-    setModalOpen(true);
-    setOpenDropdown(false);
-  }
 
   return (
     <div className="account-dropdown">
       {user ? (
         <button className={darkMode ? "dropdown-btn-dark" : "dropdown-btn"}>
           <div className="personal-dropdown-item" onClick={handleLogout}>
-            <Link to="/logout">Logout</Link>
+            Logout
           </div>
           <div
             className="personal-dropdown-item"
             onClick={() => setOpenDropdown(false)}
           >
-            <Link to="mystretches">My Stretches</Link>
+            <Link to="mystretches" className="link">
+              My Stretches
+            </Link>
           </div>
           <div
             className="personal-dropdown-item"
             onClick={() => setOpenDropdown(false)}
           >
             {" "}
-            <Link to="myarticles">My Articles</Link>
+            <Link to="myarticles" className="link">
+              My Articles
+            </Link>
           </div>
         </button>
       ) : (

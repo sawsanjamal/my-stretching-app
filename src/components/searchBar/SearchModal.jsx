@@ -6,7 +6,7 @@ import { AppContext } from "../../App";
 import { Link } from "react-router-dom";
 export function SearchModal({ setOpenModal }) {
   const {
-    data: { stretches },
+    data: { stretches, darkMode },
   } = useContext(AppContext);
   const inputRef = useRef(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -32,7 +32,7 @@ export function SearchModal({ setOpenModal }) {
   }, []);
 
   return (
-    <dialog className={styles.searchModal}>
+    <dialog className={darkMode ? styles.searchModalDark : styles.searchModal}>
       <CloseButton closeModal={closeModal} />
       <div className={styles.searchModalHeader}>
         <input

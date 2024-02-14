@@ -4,7 +4,7 @@ import "./styles.css";
 import toggleOn from "../../assets/toggle-on.svg";
 import toggleOff from "../../assets/toggle-off.svg";
 import SearchBar from "../searchBar";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AccountDropdown } from "./AccountDropdown";
 import { AppContext } from "../../App";
 
@@ -21,7 +21,7 @@ export default function Navbar() {
     <div className={darkMode ? "navbar-dark" : "navbar"}>
       <div className="navbarItems">
         <div className="navbar-toggle-btn">
-          <img onClick={toggleDarkMode} src={darkMode ? toggleOn : toggleOff} />
+          <img onClick={toggleDarkMode} src={darkMode ? toggleOff : toggleOn} />
         </div>
         <div>
           <SearchBar />

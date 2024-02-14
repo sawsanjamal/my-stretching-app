@@ -3,7 +3,7 @@
   padding: 5px;
   border-radius: 10px;
   border: none;
-  z-index: 3;
+
   height: 25px;
 }
 .nothearted:hover,
@@ -16,7 +16,7 @@
 .hearted {
   color: fuchsia;
   background-color: none;
-  z-index: 3;
+
   padding: 5px;
   border-radius: 10px;
   border: none;

@@ -1,33 +1,31 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./styles.css";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { AppContext } from "../../App";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import LikeBtn from "../likeBtn/LikeBtn";
-export function ArticlesContainer({ userArticles }) {
+export function ArticlesContainer({ articles }) {
   const {
     methods: { handleLikeArticle },
   } = useContext(AppContext);
+
   return (
-    <>
-      <div className="articles-page-container">
-        {userArticles.map((article, i) => {
-          return (
-            <SingleArticle
-              key={i}
-              handleLikeArticle={handleLikeArticle}
-              article={article}
-            />
-          );
-        })}
-      </div>
-    </>
+    <div className="articles-page-container">
+      {articles.map((article, i) => {
+        return (
+          <SingleArticle
+            key={i}
+            handleLikeArticle={handleLikeArticle}
+            article={article}
+          />
+        );
+      })}
+    </div>
   );
 }
 
 export function SingleArticle({ handleLikeArticle, article }) {
   const nav = useNavigate();
+
   return (
     <div className="big-container">
       <div className="article-container">

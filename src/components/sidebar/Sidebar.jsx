@@ -10,19 +10,13 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 import { useContext } from "react";
 import { AppContext } from "../../App";
-import { clearCookies } from "../../api/users";
-// import { Cookies } from "js-cookie";
 
 export default function Sidebar() {
   const {
     data: { user, darkMode },
-    methods: { setUser, setModalOpen, setSignUpModalOpen },
+    methods: { setModalOpen, setSignUpModalOpen, handleLogout },
   } = useContext(AppContext);
-  function handleLogout() {
-    clearCookies();
-    setUser(null);
-    setModalOpen(true);
-  }
+
   function signUp() {
     setModalOpen(false);
     setSignUpModalOpen(true);
@@ -66,9 +60,7 @@ export default function Sidebar() {
                 className={darkMode ? "sidebar-btn-dark" : "sidebar-btn"}
                 onClick={handleLogout}
               >
-                <Link to="/logout">
-                  <FontAwesomeIcon icon={faUser} />
-                </Link>
+                <FontAwesomeIcon icon={faUser} />
               </button>
               <h3> Logout</h3>
             </div>

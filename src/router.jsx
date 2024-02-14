@@ -9,16 +9,12 @@ import MyArticles from "./pages/MyArticles";
 import Stretch from "./pages/Stretch";
 import Article from "./pages/Article";
 import Checkout from "./components/checkout/Checkout";
-import { Logout } from "./pages/Logout";
 
 export const router = createBrowserRouter([
   {
     element: <App />,
     children: [
       { index: true, element: <Home /> },
-      { path: "/success", element: <Home /> },
-      { path: "/successlogin", element: <Home /> },
-
       { path: "/signup", element: <Signup /> },
       { path: "/articles", element: <Articles /> },
       { path: "/stretches", element: <Stretches /> },
@@ -27,7 +23,6 @@ export const router = createBrowserRouter([
       { path: "/mystretches", element: <MyStretches /> },
       { path: "/myarticles", element: <MyArticles /> },
       { path: "/checkout", element: <Checkout /> },
-      { path: "/logout", element: <Logout /> },
     ],
   },
 ]);

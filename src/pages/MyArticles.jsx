@@ -29,7 +29,7 @@ export default function MyArticles() {
         <h1> Here Are My Liked Articles </h1>
         <ArticlesContainer
           handleLikeArticle={handleLikeArticle}
-          userArticles={currentPosts}
+          articles={currentPosts}
         />
         <Pagination
           postsPerPage={postsPerPage}

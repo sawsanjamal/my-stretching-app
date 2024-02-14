@@ -1,7 +1,7 @@
 import { MaleHumanFront } from "../components/humanBody/maleHumanFront";
 import { MaleHumanBack } from "../components/humanBody/maleHumanBack";
 import { ToggleSwitch } from "../components/toggle/ToggleSwitch";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { FemaleHumanFront } from "../components/humanBody/femaleHumanFront";
 import { FemaleHumanBack } from "../components/humanBody/femaleHumanBack";
 import "../index.css";
@@ -10,28 +10,41 @@ import { SingleArticle } from "../components/articles/articlesContainer";
 
 export default function Home() {
   const {
-    data: { darkMode, articles },
-    methods: { handleLikeArticle },
+    data: { darkMode, articles, muscleGroup },
+    methods: { handleLikeArticle, toggleMuscleGroup },
   } = useContext(AppContext);
   const [female, setFemale] = useState(true);
-  let home = useRef(true);
 
   return (
     <div className="home-container">
       <div className="human-body-container">
-        <div className="human-body-front">
-          {female ? (
-            <FemaleHumanFront home={home} />
-          ) : (
-            <MaleHumanFront home={home} />
-          )}
-        </div>
-        <div className="human-body-back">
-          {female ? (
-            <FemaleHumanBack home={home} />
-          ) : (
-            <MaleHumanBack home={home} />
-          )}
+        <div className="human-body-inner-container">
+          <div className="human-body-front">
+            {female ? (
+              <FemaleHumanFront
+                toggleMuscleGroup={toggleMuscleGroup}
+                muscleGroup={muscleGroup}
+              />
+            ) : (
+              <MaleHumanFront
+                toggleMuscleGroup={toggleMuscleGroup}
+                muscleGroup={muscleGroup}
+              />
+            )}
+          </div>
+          <div className="human-body-back">
+            {female ? (
+              <FemaleHumanBack
+                toggleMuscleGroup={toggleMuscleGroup}
+                muscleGroup={muscleGroup}
+              />
+            ) : (
+              <MaleHumanBack
+                toggleMuscleGroup={toggleMuscleGroup}
+                muscleGroup={muscleGroup}
+              />
+            )}
+          </div>
         </div>
         <div className="home-toggle">
           <div className={darkMode ? "btn-container-dark" : "btn-container"}>
