@@ -7,13 +7,15 @@ import { FemaleHumanFront } from "../components/humanBody/femaleHumanFront";
 import { FemaleHumanBack } from "../components/humanBody/femaleHumanBack";
 import { AppContext } from "../App";
 import StretchesList from "../components/StretchesList";
+import Pagination from "../components/pagination/Pagination";
 
 export default function Stretches() {
   const {
     data: { female, user, stretches, darkMode, muscleGroup },
     methods: { setFemale, handleLike, toggleMuscleGroup },
   } = useContext(AppContext);
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const POSTS_PER_PAGE = 2;
   const selectedStretches = stretches.filter(
     (stretch) => stretch.muscleGroup === muscleGroup
   );
@@ -22,7 +24,13 @@ export default function Stretches() {
         return { ...stretch, liked: user.stretches.includes(stretch._id) };
       })
     : selectedStretches;
-
+  const indexOfLastPost = currentPage * POSTS_PER_PAGE;
+  const indexOfFirstPost = indexOfLastPost - POSTS_PER_PAGE;
+  const currentPosts = selectedStretches.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  );
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   // work on page for empty array
   return (
     <div className="stretches-page-container">
@@ -33,9 +41,16 @@ export default function Stretches() {
             <StretchesList
               darkMode={darkMode}
               handleLike={handleLike}
-              stretches={userStretches}
+              stretches={currentPosts}
             />
           )}
+          <Pagination
+            postsPerPage={POSTS_PER_PAGE}
+            totalPosts={selectedStretches.length}
+            paginate={paginate}
+            indexOfFirstPost={indexOfFirstPost}
+            indexOfLastPost={indexOfLastPost}
+          />
         </div>
         <div className="stretches-side-bar">
           <div

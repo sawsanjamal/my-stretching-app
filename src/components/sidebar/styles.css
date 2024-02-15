@@ -92,6 +92,7 @@
     height: 100vh;
     width: 150px;
     color: #fafafa;
+    z-index: 2;
   }
   .sidebar-dark {
     background-color: black;

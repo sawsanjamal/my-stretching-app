@@ -34,7 +34,7 @@ export default function StretchesList({ stretches }) {
 
               <div className="stretch-example-content">
                 <div className="videos">
-                  <video className="video" controls>
+                  <video className="video" controls autoPlay>
                     <source
                       src={
                         female ? stretch.frontVideoFemale : stretch.frontVideo
@@ -42,7 +42,7 @@ export default function StretchesList({ stretches }) {
                       type="video/mp4"
                     />
                   </video>
-                  <video className="video" controls>
+                  <video className="video" controls autoPlay>
                     {female ? (
                       <source src={stretch.sideVideoFemale} type="video/mp4" />
                     ) : (
@@ -50,9 +50,15 @@ export default function StretchesList({ stretches }) {
                     )}
                   </video>
                 </div>
-                <ul>
-                  {(stretch.steps || []).map((step) => {
-                    return <li key={uuid()}>{step}</li>;
+                <ul className="stretch-steps">
+                  {(stretch.steps || []).map((step, i) => {
+                    return (
+                      <li className="stretch-step" key={uuid()}>
+                        <div className="number">{i + 1}</div>
+
+                        {step}
+                      </li>
+                    );
                   })}
                 </ul>
               </div>

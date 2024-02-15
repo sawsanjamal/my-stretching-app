@@ -43,6 +43,13 @@ router.post("/login", async (req, res) => {
   }
   return res.status(401).json({ message: "Invalid email or password" });
 });
+router.put("/profilepicture", authenticate, async (req, res) => {
+  const { base64Image } = req.body;
+  const { user } = req;
+  await user.addProfilePicture(base64Image);
+
+  res.send({ user });
+});
 router.get("/logout", async (req, res) => {
   res.clearCookie("token").json({ message: "Cookies cleared" });
 });

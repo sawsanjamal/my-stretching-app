@@ -81,7 +81,8 @@ input {
   align-items: center;
 }
 
-.crop-btn {
+.crop-btn,
+.upload-btn {
   border: none;
   border-radius: 10px;
   padding: 10px;
@@ -95,7 +96,7 @@ input {
   border-bottom-right-radius: 999px;
   border-bottom-left-radius: 999px;
   z-index: 100;
-  font-size: 20px;
+  font-size: 15px;
   opacity: 0.7;
 }
 .change-container {
@@ -105,5 +106,10 @@ input {
 
 .change-btn:hover {
   opacity: 1;
+  cursor: pointer;
+}
+.upload-btn:hover,
+.crop-btn:hover {
+  opacity: 0.7;
   cursor: pointer;
 }

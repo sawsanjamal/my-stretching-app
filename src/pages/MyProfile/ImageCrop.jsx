@@ -1,8 +1,13 @@
-import React, { createRef, useState } from "react";
+import React, { createRef, useContext, useEffect, useState } from "react";
 import { Cropper } from "react-cropper";
 import "cropperjs/dist/cropper.css";
+import { addProfilePicture } from "../../api/users";
+import { AppContext } from "../../App";
 
 export const ImageCrop = () => {
+  const {
+    data: { user },
+  } = useContext(AppContext);
   const file2Base64 = (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -18,9 +23,9 @@ export const ImageCrop = () => {
   const onFileInputChange = (e) => {
     const file = e.target?.files?.[0];
     if (file) {
-      console.log(file);
       file2Base64(file).then((base64) => {
         setUploaded(base64);
+        addProfilePicture({ base64Image: base64 });
       });
     }
   };
@@ -32,6 +37,9 @@ export const ImageCrop = () => {
     const cropper = imageElement?.cropper;
     setCropped(cropper.getCroppedCanvas().toDataURL());
   };
+  useEffect(() => {
+    setUploaded(user.profilePicture);
+  }, [user]);
 
   return (
     <>
@@ -59,7 +67,7 @@ export const ImageCrop = () => {
               className="change-btn"
               onClick={() => fileRef.current?.click()}
             >
-              Change Image
+              Select New Image
             </button>
           </div>
           <button className="crop-btn" onClick={onCrop}>
@@ -75,7 +83,10 @@ export const ImageCrop = () => {
             onChange={onFileInputChange}
             accept="image/png,image/jpeg,image/gif"
           />
-          <button onClick={() => fileRef.current?.click()}>
+          <button
+            className="upload-btn"
+            onClick={() => fileRef.current?.click()}
+          >
             Upload something!
           </button>
         </>

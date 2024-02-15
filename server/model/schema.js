@@ -9,6 +9,7 @@ const userSchema = new Schema({
   lastName: String,
   email: String,
   password: String,
+  profilePicture: String,
   stretches: [{ type: Schema.Types.ObjectId, ref: "Stretch" }],
   articles: [{ type: Schema.Types.ObjectId, ref: "Article" }],
 });
@@ -52,6 +53,11 @@ userSchema.methods.toggleLikeArticle = function (articleId) {
   }
   this.articles.push(articleId);
   this.save();
+};
+userSchema.methods.addProfilePicture = function (base64Image) {
+  this.profilePicture = base64Image;
+  this.save();
+  return;
 };
 userSchema.methods.getLikedStretches = function () {
   const likedStretches = this.stretches;

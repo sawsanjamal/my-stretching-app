@@ -26,22 +26,21 @@ export default function Navbar() {
         <div>
           <SearchBar />
         </div>
+
         {user ? (
-          <button
-            className={darkMode ? "navbar-email-btn-dark" : "navbar-email-btn"}
+          <img
+            className="image"
+            src={user.profilePicture}
             onClick={() => setOpenDropdown(!openDropdown)}
-          >
-            <div className="user-email">{user.email}</div>
-          </button>
+          />
         ) : (
-          <button
+          <FontAwesomeIcon
             className={
               darkMode ? "navbar-signup-btn-dark" : "navbar-signup-btn"
             }
+            icon={faUser}
             onClick={() => setOpenDropdown(!openDropdown)}
-          >
-            <FontAwesomeIcon icon={faUser} />
-          </button>
+          />
         )}
 
         {openDropdown && <AccountDropdown />}

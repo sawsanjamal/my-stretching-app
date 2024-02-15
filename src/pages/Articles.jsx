@@ -17,6 +17,7 @@ export default function Articles() {
     const value = category === selectedCategory ? null : selectedCategory;
     setCategory(value);
   }
+
   return (
     <>
       <h1> Here are my articles </h1>

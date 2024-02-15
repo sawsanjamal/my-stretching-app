@@ -17,7 +17,7 @@ img {
   flex-direction: row;
   justify-content: flex-end;
   position: sticky;
-  padding: 13px;
+  padding: 20px;
   top: 0px;
   background-color: #1f2937;
   align-items: center;
@@ -61,29 +61,25 @@ img {
   font-size: 18px;
   text-wrap: wrap;
 }
-.navbar-email-btn {
+.image {
   margin: 0 5px;
-  width: 300px;
+  width: 50px;
+  height: 50px;
   background-color: #1f2937;
-  border: none;
-  color: #fafafa;
-  font-size: 18px;
-  text-wrap: wrap;
+  border-radius: 50%;
 }
-.navbar-email-btn-dark {
+.image-dark {
   margin: 0 5px;
-  width: 300px;
+  width: 50px;
+  height: 50px;
   background-color: black;
-  border: none;
-  color: #fafafa;
-  font-size: 18px;
-  text-wrap: wrap;
+  border-radius: 50%;
 }
 
 .navbar-signup-btn:hover,
 .navbar-signup-btn-dark:hover,
-.navbar-email-btn-dark:hover,
-.navbar-email-btn:hover {
+.image-dark:hover,
+.image:hover {
   cursor: pointer;
   opacity: 0.7;
   border-radius: 30px;
