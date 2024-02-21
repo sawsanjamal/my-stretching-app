@@ -15,7 +15,7 @@ export default function StretchesList({ stretches }) {
 
   return (
     <div className="stretches-example-container">
-      {(isLoading ? [<div />, <div />] : stretches).map((stretch) => {
+      {(isLoading ? [0, 1] : stretches).map((stretch) => {
         return (
           <div key={uuid()} className="stretch-example">
             <div

@@ -1,8 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../App";
 
 export default function EmailAndPassword({ title }) {
-  const [showPassword, setShowPassword] = useState(false);
   const {
     data: { user },
   } = useContext(AppContext);

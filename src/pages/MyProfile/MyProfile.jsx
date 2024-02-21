@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import "./styles.css";
 import PersonalInfo from "./PersonalInfo";
 import EmailAndPassword from "./EmailAndPassword";
 import Subscription from "./Subscription";
-import { AppContext } from "../../App";
+
 export default function MyProfile() {
   const [title, setTitle] = useState(null);
 

@@ -80,7 +80,7 @@ router.put("/users/articles", authenticate, async (req, res) => {
 
   res.send({ user });
 });
-const calculateOrderAmount = (items) => {
+const calculateOrderAmount = () => {
   return 2000;
 };
 

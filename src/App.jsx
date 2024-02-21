@@ -40,7 +40,7 @@ export default function App() {
     } else {
       setModalOpen(false);
     }
-  }, [user]);
+  }, [user, signUpModalOpen]);
 
   useEffect(() => {
     authenticate().then((res) => {
@@ -65,7 +65,7 @@ export default function App() {
         })
       : articles;
     setArticles(articlesWithUserContext);
-  }, [user?.articles]);
+  }, [user, articles]);
 
   useEffect(() => {
     localStorage.setItem("DARK_MODE", darkMode);

@@ -1,7 +1,7 @@
 import { MaleHumanFront } from "../components/humanBody/maleHumanFront";
 import { MaleHumanBack } from "../components/humanBody/maleHumanBack";
 import { ToggleSwitch } from "../components/toggle/ToggleSwitch";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { FemaleHumanFront } from "../components/humanBody/femaleHumanFront";
 import { FemaleHumanBack } from "../components/humanBody/femaleHumanBack";
 import "../index.css";
