@@ -14,10 +14,17 @@ export default function Stretch() {
   const stretchesMatch = stretches.filter((stretch) => stretch._id === id);
 
   return (
-    <StretchesList
-      darkMode={darkMode}
-      handleLike={handleLike}
-      stretches={stretchesMatch}
-    />
+    <div className="stretches-page-container">
+      <h1> Here Is The Selected Stretch </h1>
+      <div className="stretches-page">
+        <div className="stretches-list">
+          <StretchesList
+            darkMode={darkMode}
+            handleLike={handleLike}
+            stretches={stretchesMatch}
+          />
+        </div>
+      </div>
+    </div>
   );
 }

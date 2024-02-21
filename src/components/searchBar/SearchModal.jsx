@@ -105,7 +105,7 @@ export function SearchModal({ setOpenModal }) {
               to={`/stretches/${stretchMatches[stretchHovered]._id}`}
               className={styles.searchModalOpenLink}
             >
-              Open
+              <div onClick={closeModal}>Open</div>
             </Link>
           )}
           {searchQuery && !match && (

@@ -31,6 +31,7 @@ export default function Stretches() {
     indexOfLastPost
   );
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   // work on page for empty array
 
   return (
@@ -45,6 +46,7 @@ export default function Stretches() {
               stretches={currentPosts}
             />
           )}
+
           <Pagination
             postsPerPage={POSTS_PER_PAGE}
             totalPosts={selectedStretches.length}

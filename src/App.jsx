@@ -31,6 +31,7 @@ export default function App() {
   const [modalOpen, setModalOpen] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [collapsed, setCollapsed] = useState(false);
+  const [isLoadingArticle, setIsLoadingArticle] = useState(true);
 
   useEffect(() => {
     if (user) {
@@ -49,8 +50,12 @@ export default function App() {
         setStretches(stretches);
         setIsLoading(false);
       });
+
       getArticles().then(({ articles }) => {
         setArticles(articles);
+        setTimeout(() => {
+          setIsLoadingArticle(false);
+        }, 2000);
       });
     });
 
@@ -65,7 +70,7 @@ export default function App() {
         })
       : articles;
     setArticles(articlesWithUserContext);
-  }, [user, articles]);
+  }, [user]);
 
   useEffect(() => {
     localStorage.setItem("DARK_MODE", darkMode);
@@ -120,6 +125,7 @@ export default function App() {
             female,
             collapsed,
             isLoading,
+            isLoadingArticle,
           },
           methods: {
             setDarkMode,

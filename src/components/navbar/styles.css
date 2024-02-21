@@ -3,10 +3,6 @@
   outline: none;
   margin: 0 5px;
 }
-img {
-  width: 45px;
-  margin-right: 10px;
-}
 .navbar-toggle-btn:hover,
 .navbar-toggle-btn:focus {
   cursor: pointer;

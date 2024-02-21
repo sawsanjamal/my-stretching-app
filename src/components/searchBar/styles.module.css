@@ -7,6 +7,11 @@
   border: none;
   border-radius: 10px;
   padding: 20px;
+  width: 50%;
+  height: 40%;
+  position: fixed;
+  top: 200px;
+  left: 200px;
 }
 .searchModalDark {
   display: flex;
@@ -17,6 +22,11 @@
   border: none;
   border-radius: 10px;
   padding: 20px;
+  width: 50%;
+  height: 40%;
+  position: fixed;
+  top: 200px;
+  left: 300px;
 }
 .closeBtn {
   width: 18px;
@@ -44,12 +54,14 @@
   display: flex;
   flex-direction: row;
   height: 400px;
+  width: 100%;
 }
 .searchResultsContainer {
   display: flex;
   flex-direction: column;
   background-color: #fafafa;
   height: 100%;
+  width: 100%;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   padding: 20px;
@@ -76,13 +88,13 @@
   justify-content: space-between;
   background-color: #fafafa;
   padding: 20px;
-  width: 290px;
+  width: 100%;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   color: #1f2937;
 }
 .searchBarContainer {
-  width: 170px;
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -98,7 +110,6 @@
 }
 .searchBtn {
   color: #1f2937;
-
   margin-right: 2px;
   padding: 3px;
   border: none;
@@ -139,7 +150,8 @@
 .searchResultsMatch {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
+  align-items: center;
   background-color: #1f2937;
   color: #fafafa;
   padding: 10px;
@@ -149,7 +161,15 @@
 .searchResult {
   display: flex;
   flex-direction: column;
+
   justify-content: space-between;
+  align-items: center;
+}
+.video {
+  height: 90%;
+  width: 90%;
+  align-self: center;
+  border-radius: 10px;
 }
 
 .searchModalOpenLink {

@@ -21,7 +21,11 @@ export default function Navbar() {
     <div className={darkMode ? "navbar-dark" : "navbar"}>
       <div className="navbarItems">
         <div className="navbar-toggle-btn">
-          <img onClick={toggleDarkMode} src={darkMode ? toggleOff : toggleOn} />
+          <img
+            width="45px"
+            onClick={toggleDarkMode}
+            src={darkMode ? toggleOff : toggleOn}
+          />
         </div>
         <div>
           <SearchBar />
