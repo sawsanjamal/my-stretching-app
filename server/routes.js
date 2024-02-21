@@ -50,6 +50,7 @@ router.put("/profilepicture", authenticate, async (req, res) => {
 
   res.send({ user });
 });
+
 router.get("/logout", async (req, res) => {
   res.clearCookie("token").json({ message: "Cookies cleared" });
 });

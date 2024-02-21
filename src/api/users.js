@@ -25,10 +25,11 @@ export async function addProfilePicture(options) {
   } = await baseApi.put("profilepicture", options);
   return { user };
 }
+
 export async function toggleLike(options) {
   const {
     data: { user },
-  } = await baseApi.put("users/stretches", options);
+  } = await baseApi.patch("users/stretches", options);
   return { user };
 }
 export async function toggleLikeArticle(options) {

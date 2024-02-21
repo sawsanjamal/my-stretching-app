@@ -7,10 +7,10 @@ const Router = require("./routes.js");
 
 const app = express();
 
+app.use(bodyParser.json({ limit: "1mb" }));
 app.use(express.json());
 app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
 app.use(cookieParser());
-app.use(bodyParser.json());
 
 // DB config
 

@@ -59,6 +59,7 @@ userSchema.methods.addProfilePicture = function (base64Image) {
   this.save();
   return;
 };
+
 userSchema.methods.getLikedStretches = function () {
   const likedStretches = this.stretches;
   return likedStretches;

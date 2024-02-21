@@ -7,6 +7,7 @@ import { AppContext } from "../../App";
 export const ImageCrop = () => {
   const {
     data: { user },
+    methods: { setUser },
   } = useContext(AppContext);
   const file2Base64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -18,17 +19,20 @@ export const ImageCrop = () => {
   };
 
   const fileRef = createRef();
-  const [uploaded, setUploaded] = useState(null);
 
+  const [uploaded, setUploaded] = useState(null);
   const onFileInputChange = (e) => {
     const file = e.target?.files?.[0];
     if (file) {
       file2Base64(file).then((base64) => {
         setUploaded(base64);
-        addProfilePicture({ base64Image: base64 });
+        addProfilePicture({ base64Image: base64 }).then((res) =>
+          setUser(res.user)
+        );
       });
     }
   };
+
   const cropperRef = createRef();
   const [cropped, setCropped] = useState(null);
 
