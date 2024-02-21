@@ -28,10 +28,16 @@ const Pagination = ({
     return `Showing ${firstChunk} ${secondChunk} ${thirdChunk} of ${totalPosts} results`;
   };
   return (
-    <nav className={darkMode ? "pagination-nav-dark" : "pagination-nav"}>
+    <nav
+      className={
+        (darkMode && totalPosts > 0 && "pagination-nav-dark-selected",
+        totalPosts > 0 ? "pagination-nav-selected" : "pagination-nav",
+        darkMode ? "pagination-nav-dark" : "pagination-nav")
+      }
+    >
       <div className="pagination-text">{generatePaginationText()}</div>
 
-      {totalPosts > 3 && (
+      {totalPosts >= 3 && (
         <ul className="number-list">
           {pageNumbers.map((number) => (
             <li className="list-item" key={number}>

@@ -6,7 +6,7 @@ import { AppContext } from "../../App";
 import { Link } from "react-router-dom";
 export function SearchModal({ setOpenModal }) {
   const {
-    data: { stretches, darkMode },
+    data: { female, stretches, darkMode },
   } = useContext(AppContext);
   const inputRef = useRef(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -30,7 +30,14 @@ export function SearchModal({ setOpenModal }) {
   useEffect(() => {
     inputRef.current.focus();
   }, []);
+  function findVideoMatch() {
+    if (female) {
+      return stretchMatches[stretchHovered]?.frontVideoFemale;
+    }
+    return stretchMatches[stretchHovered]?.frontVideo;
+  }
 
+  console.log(stretchMatches[stretchHovered]);
   return (
     <dialog className={darkMode ? styles.searchModalDark : styles.searchModal}>
       <CloseButton closeModal={closeModal} />
@@ -80,7 +87,15 @@ export function SearchModal({ setOpenModal }) {
           {searchQuery && match && (
             <div className={styles.searchResultsMatch}>
               <div className={styles.searchResult}>
-                <div>{"image"}</div>
+                <video
+                  className={styles.video}
+                  key={findVideoMatch()}
+                  controls
+                  autoPlay
+                >
+                  <source src={findVideoMatch()} type="video/mp4" />
+                </video>
+
                 <div>{stretchMatches[stretchHovered].name}</div>
               </div>
             </div>

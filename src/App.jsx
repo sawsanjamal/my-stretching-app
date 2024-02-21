@@ -14,6 +14,7 @@ import {
 import { getStretches } from "./api/stretches";
 import { getArticles } from "./api/articles";
 import Footer from "./components/Footer/Footer";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 export const AppContext = createContext();
 
@@ -28,6 +29,8 @@ export default function App() {
   const nav = useNavigate();
   const [muscleGroup, setMuscleGroup] = useState(null);
   const [modalOpen, setModalOpen] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -44,6 +47,7 @@ export default function App() {
       setUser(res.user);
       getStretches().then(({ stretches }) => {
         setStretches(stretches);
+        setIsLoading(false);
       });
       getArticles().then(({ articles }) => {
         setArticles(articles);
@@ -97,55 +101,65 @@ export default function App() {
     setModalOpen(false);
     setSignUpModalOpen(true);
   }
+  const handleToggleSidebar = () => {
+    setCollapsed(!collapsed);
+  };
   return (
-    <AppContext.Provider
-      value={{
-        data: {
-          user,
-          stretches,
-          modalOpen,
-          signUpModalOpen,
-          darkMode,
-          articles,
-          openDropdown,
-          muscleGroup,
-          female,
-        },
-        methods: {
-          setDarkMode,
-          setUser,
-          setStretches,
-          setModalOpen,
-          setSignUpModalOpen,
-          handleLike,
-          handleLikeArticle,
-          setOpenDropdown,
-          handleLogout,
-          setMuscleGroup,
-          setFemale,
-          toggleMuscleGroup,
-          signUp,
-        },
-      }}
-    >
-      <div className={darkMode ? "on" : "off"}>
-        <Navbar />
-        <div style={{ display: "flex" }}>
-          <Sidebar />
-          <div className="body">
-            {renderModal()}
-            <div
-              className={`${
-                modalOpen || signUpModalOpen ? "blur" : ""
-              } height-100`}
-            >
-              <Outlet />
+    <SkeletonTheme baseColor="#313131" highlightColor="#525252">
+      <AppContext.Provider
+        value={{
+          data: {
+            user,
+            stretches,
+            modalOpen,
+            signUpModalOpen,
+            darkMode,
+            articles,
+            openDropdown,
+            muscleGroup,
+            female,
+            collapsed,
+            isLoading,
+          },
+          methods: {
+            setDarkMode,
+            setUser,
+            setStretches,
+            setModalOpen,
+            setSignUpModalOpen,
+            handleLike,
+            handleLikeArticle,
+            setOpenDropdown,
+            handleLogout,
+            setMuscleGroup,
+            setFemale,
+            toggleMuscleGroup,
+            signUp,
+            setCollapsed,
+            handleToggleSidebar,
+            setIsLoading,
+          },
+        }}
+      >
+        <div className={darkMode ? "on" : "off"}>
+          <Navbar />
+          <div style={{ display: "flex" }}>
+            <Sidebar />
+            <div className="body">
+              {renderModal()}
+              <div
+                className={`${
+                  modalOpen || signUpModalOpen ? "blur" : ""
+                } height-100`}
+              >
+                <Outlet />
+              </div>
             </div>
           </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-      <ScrollRestoration />
-    </AppContext.Provider>
+        <ScrollRestoration />
+      </AppContext.Provider>
+    </SkeletonTheme>
   );
 }
