@@ -5,15 +5,17 @@ import EmailAndPassword from "./EmailAndPassword";
 import Subscription from "./Subscription";
 
 export default function MyProfile() {
-  const [title, setTitle] = useState(null);
+  const [title, setTitle] = useState("Personal Information");
 
   function renderComponent() {
     if (title === "Personal Information") {
-      return <PersonalInfo title={title} />;
-    } else if (title === "Email And Password") {
-      return <EmailAndPassword title={title} />;
-    } else {
-      return <Subscription title={title} />;
+      return <PersonalInfo />;
+    }
+    if (title === "Email And Password") {
+      return <EmailAndPassword />;
+    }
+    if (title === "Subscription") {
+      return <Subscription />;
     }
   }
   return (

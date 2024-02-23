@@ -8,18 +8,19 @@ import {
   password_validation,
 } from "../inputs/Validations";
 import { createUser, login } from "../../api/users";
-import { useNavigate } from "react-router-dom";
+
 import { useContext, useState } from "react";
 import { AppContext } from "../../App";
+import Dropdown from "./Dropdown";
+import { SUBSCRIPTION_TIERS } from "../../constants";
 
 export default function SignUpModal() {
   const {
-    data: { signUpModalOpen, darkMode },
+    data: { signUpModalOpen, darkMode, subscription },
     methods: { setUser, setSignUpModalOpen, setModalOpen, setOpenDropdown },
   } = useContext(AppContext);
 
   const [isSigningUp, setIsSigningUp] = useState(true);
-  const nav = useNavigate();
 
   function onCloseModal() {
     setSignUpModalOpen(false);
@@ -28,7 +29,7 @@ export default function SignUpModal() {
   }
 
   const methods = useForm({
-    defaultValues: { email: "testerfive@gmail.com", password: "testing123" },
+    defaultValues: { email: "myname@gmail.com", password: "testing123" },
   });
   const onSubmit = methods.handleSubmit(async (data) => {
     setOpenDropdown(false);
@@ -37,11 +38,12 @@ export default function SignUpModal() {
       lastName: data.lastName,
       email: data.email,
       password: data.password,
+      subscription: data.subscription,
     };
-    if (isSigningUp) {
-      await createUser(userData);
 
-      nav("/checkout");
+    if (isSigningUp) {
+      const response = await createUser(userData);
+      setUser(response.data.newUser);
     } else {
       const { user } = await login(userData);
       setUser(user);
@@ -68,28 +70,35 @@ export default function SignUpModal() {
             </button>
           </div>
           <h1>{isSigningUp ? "Sign Up" : "Log In"}</h1>
-          <div>
-            {isSigningUp && (
-              <>
-                <Input {...first_name_validation} />
-                <Input {...last_name_validation} />
-              </>
-            )}
+          <h3>
+            {isSigningUp && `Create Your ${SUBSCRIPTION_TIERS[subscription]}`}
+          </h3>
+          <div className="form-content">
+            <div>
+              {isSigningUp && (
+                <>
+                  <Input {...first_name_validation} />
+                  <Input {...last_name_validation} />
+                </>
+              )}
 
-            <Input {...email_validation} />
+              <Input {...email_validation} />
 
-            <Input {...password_validation} />
-          </div>
-          <div className="form-bottom-section">
-            <button className="form-submit-btn" onClick={onSubmit}>
-              Submit
-            </button>
-            <button
-              className="form-option-btn"
-              onClick={() => setIsSigningUp(!isSigningUp)}
-            >
-              {isSigningUp ? "or login" : "or sign up"}
-            </button>
+              <Input {...password_validation} />
+            </div>
+            <div className="form-bottom-section">
+              <button className="form-submit-btn" onClick={onSubmit}>
+                Submit
+              </button>
+              <button
+                className="form-option-btn"
+                onClick={() => setIsSigningUp(!isSigningUp)}
+              >
+                {isSigningUp ? "or login" : "or sign up"}
+              </button>
+
+              <Dropdown />
+            </div>
           </div>
         </form>
       </FormProvider>

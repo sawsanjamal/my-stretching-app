@@ -1,19 +1,39 @@
-export default function Subscription({ title }) {
+import { useContext } from "react";
+import { AppContext } from "../../App";
+
+export default function Subscription() {
+  const {
+    data: { user, modalOpen },
+    methods: { setModalOpen },
+  } = useContext(AppContext);
+
   return (
     <div className="info-section">
-      <h1>{title}</h1>
+      <h1>Subscription</h1>
       <div className="input-fields">
-        <label>
-          Subscription
-          <div>
-            <div>
-              <button> subscription type</button>
-            </div>
-            <div>
-              <button>Active/Inactive</button>
-            </div>
-          </div>
-        </label>
+        <div className="subscription-tier">
+          <h3>Subscription Tier</h3>
+          <button className="subscription-btn">
+            {user?.subscription?.tier}
+          </button>
+        </div>
+        <div className="subscription-tier">
+          <h3> Subscription Status</h3>
+          <button className="subscription-btn-active">
+            {`Active${
+              user?.subscription?.expiration
+                ? " until " +
+                  new Date(user.subscription.expiration).toLocaleString()
+                : ""
+            }`}
+          </button>
+        </div>
+        <button
+          className="change-subscription-btn"
+          onClick={() => setModalOpen(!modalOpen)}
+        >
+          Change Subscription
+        </button>
       </div>
     </div>
   );

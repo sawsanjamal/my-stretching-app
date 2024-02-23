@@ -25,6 +25,12 @@ export async function addProfilePicture(options) {
   } = await baseApi.put("profilepicture", options);
   return { user };
 }
+export async function changeSubscription(options) {
+  const {
+    data: { user },
+  } = await baseApi.put("users/subscription", options);
+  return { user };
+}
 
 export async function toggleLike(options) {
   const {

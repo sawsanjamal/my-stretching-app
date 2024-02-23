@@ -41,6 +41,9 @@ export const ImageCrop = () => {
     const cropper = imageElement?.cropper;
     setCropped(cropper.getCroppedCanvas().toDataURL());
   };
+  function removeImage() {
+    addProfilePicture({ base64Image: null }).then((res) => setUser(res.user));
+  }
   useEffect(() => {
     setUploaded(user.profilePicture);
   }, [user]);
@@ -74,9 +77,14 @@ export const ImageCrop = () => {
               Select New Image
             </button>
           </div>
-          <button className="crop-btn" onClick={onCrop}>
-            Crop
-          </button>
+          <div className="btn-bar">
+            <button className="crop-btn" onClick={onCrop}>
+              Crop
+            </button>
+            <button className="crop-btn" onClick={removeImage}>
+              Remove Image
+            </button>
+          </div>
         </div>
       ) : (
         <>

@@ -32,6 +32,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [collapsed, setCollapsed] = useState(false);
   const [isLoadingArticle, setIsLoadingArticle] = useState(true);
+  const [subscription, setSubscription] = useState("free");
 
   useEffect(() => {
     if (user) {
@@ -106,6 +107,7 @@ export default function App() {
     setModalOpen(false);
     setSignUpModalOpen(true);
   }
+
   const handleToggleSidebar = () => {
     setCollapsed(!collapsed);
   };
@@ -126,6 +128,7 @@ export default function App() {
             collapsed,
             isLoading,
             isLoadingArticle,
+            subscription,
           },
           methods: {
             setDarkMode,
@@ -144,6 +147,7 @@ export default function App() {
             setCollapsed,
             handleToggleSidebar,
             setIsLoading,
+            setSubscription,
           },
         }}
       >

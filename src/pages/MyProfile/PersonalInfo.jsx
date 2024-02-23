@@ -3,14 +3,14 @@ import { AppContext } from "../../App";
 
 import { ImageCrop } from "./ImageCrop";
 
-export default function PersonalInfo({ title }) {
-  const [base64, setBase64] = useState(undefined);
+export default function PersonalInfo() {
+  const [base64, setBase64] = useState();
   const {
     data: { user },
   } = useContext(AppContext);
   return (
     <div className="info-section">
-      <h1>{title}</h1>
+      <h1>Personal Information</h1>
       <div className="pic">
         {/* {user.profilePicture && (
           <div className="pic-container">

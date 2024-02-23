@@ -37,7 +37,6 @@ export function SearchModal({ setOpenModal }) {
     return stretchMatches[stretchHovered]?.frontVideo;
   }
 
-  console.log(stretchMatches[stretchHovered]);
   return (
     <dialog className={darkMode ? styles.searchModalDark : styles.searchModal}>
       <CloseButton closeModal={closeModal} />
@@ -59,29 +58,23 @@ export function SearchModal({ setOpenModal }) {
 
       <div className={styles.searchModalBody}>
         <div className={styles.searchResultsContainer}>
-          {searchQuery && match
-            ? stretchMatches.map((stretch, i) => {
-                return (
-                  <div
-                    onMouseOver={() => {
-                      setStretchHovered(i);
-                    }}
-                    key={i}
-                    className={`${styles.searchOptions} ${
-                      stretchHovered === i ? styles.searchOptionsMatch : ""
-                    }`}
-                  >
-                    {stretch.name}
-                  </div>
-                );
-              })
-            : stretches.map((stretch, i) => {
-                return (
-                  <div key={i} className={styles.searchOptions}>
-                    {stretch.name}
-                  </div>
-                );
-              })}
+          {(searchQuery && match ? stretchMatches : stretches).map(
+            (stretch, i) => {
+              return (
+                <div
+                  onMouseOver={() => {
+                    setStretchHovered(i);
+                  }}
+                  key={i}
+                  className={`${styles.searchOptions} ${
+                    stretchHovered === i ? styles.searchOptionsMatch : ""
+                  }`}
+                >
+                  {stretch.name}
+                </div>
+              );
+            }
+          )}
         </div>
         <div className={styles.searchResults}>
           {searchQuery && match && (
@@ -108,6 +101,30 @@ export function SearchModal({ setOpenModal }) {
               <div onClick={closeModal}>Open</div>
             </Link>
           )}
+          {match && (
+              <div className={styles.searchResultsMatch}>
+                <div className={styles.searchResult}>
+                  <video
+                    className={styles.video}
+                    key={findVideoMatch()}
+                    controls
+                    autoPlay
+                  >
+                    <source src={findVideoMatch()} type="video/mp4" />
+                  </video>
+
+                  <div>{stretchMatches[stretchHovered].name}</div>
+                </div>
+              </div>
+            ) && (
+              <Link
+                to={`/stretches/${stretchMatches[stretchHovered]._id}`}
+                className={styles.searchModalOpenLink}
+              >
+                <div onClick={closeModal}>Open</div>
+              </Link>
+            )}
+
           {searchQuery && !match && (
             <div className={styles.searchResultsMatch}>
               No Matches For This Stretch

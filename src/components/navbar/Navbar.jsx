@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import Avatar, { genConfig } from "react-nice-avatar";
 import "./styles.css";
 import toggleOn from "../../assets/toggle-on.svg";
 import toggleOff from "../../assets/toggle-off.svg";
@@ -17,6 +16,7 @@ export default function Navbar() {
   function toggleDarkMode() {
     setDarkMode(!darkMode);
   }
+  const config = genConfig("myapp");
   return (
     <div className={darkMode ? "navbar-dark" : "navbar"}>
       <div className="navbarItems">
@@ -30,23 +30,17 @@ export default function Navbar() {
         <div>
           <SearchBar />
         </div>
-
-        {user ? (
+        {user && user.profilePicture ? (
           <img
             className="image"
             src={user.profilePicture}
             onClick={() => setOpenDropdown(!openDropdown)}
           />
         ) : (
-          <FontAwesomeIcon
-            className={
-              darkMode ? "navbar-signup-btn-dark" : "navbar-signup-btn"
-            }
-            icon={faUser}
-            onClick={() => setOpenDropdown(!openDropdown)}
-          />
+          <div className="image" onClick={() => setOpenDropdown(!openDropdown)}>
+            <Avatar style={{ width: "3rem", height: "3rem" }} {...config} />
+          </div>
         )}
-
         {openDropdown && <AccountDropdown />}
       </div>
     </div>

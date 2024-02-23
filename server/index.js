@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const Router = require("./routes.js");
+const AuthRouter = require("./routes/authenticated.js");
+const UnauthRouter = require("./routes/unauthenticated.js");
 
 const app = express();
 
@@ -29,7 +30,8 @@ mongoose
 // bodyparser gets the req.body
 app.use(express.urlencoded({ extended: false }));
 
-app.use(Router);
+app.use(AuthRouter);
+app.use(UnauthRouter);
 
 const port = process.env.PORT || 4000;
 app.listen(port, async () => {
