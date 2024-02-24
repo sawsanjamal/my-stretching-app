@@ -10,31 +10,30 @@ export function SearchModal({ setOpenModal }) {
   } = useContext(AppContext);
   const inputRef = useRef(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [match, setMatch] = useState("");
-  const [stretchMatches, setStretchMatches] = useState([]);
-  const [stretchHovered, setStretchHovered] = useState(0);
-  function findMatch() {
-    const stretchMatches = stretches.filter((stretch) =>
-      stretch.name.toLowerCase().includes(searchQuery)
-    );
-    if (stretchMatches.length) {
-      setMatch(true);
-    } else {
-      setMatch(false);
-    }
-    setStretchMatches(stretchMatches);
-  }
+  const [selectedStretch, setSelectedStretch] = useState(null);
+
+  const stretchMatches = stretches.filter(
+    (stretch) =>
+      !searchQuery || stretch.name.toLowerCase().includes(searchQuery)
+  );
+
   function closeModal() {
     setOpenModal(false);
   }
   useEffect(() => {
     inputRef.current.focus();
   }, []);
+  useEffect(() => {
+    if (stretchMatches.length === 0 && selectedStretch !== null) {
+      setSelectedStretch(null);
+    }
+  }, [stretchMatches, selectedStretch]);
+
   function findVideoMatch() {
     if (female) {
-      return stretchMatches[stretchHovered]?.frontVideoFemale;
+      return stretchMatches[selectedStretch]?.frontVideoFemale;
     }
-    return stretchMatches[stretchHovered]?.frontVideo;
+    return stretchMatches[selectedStretch]?.frontVideo;
   }
 
   return (
@@ -45,39 +44,36 @@ export function SearchModal({ setOpenModal }) {
           ref={inputRef}
           className={styles.searchInputModal}
           type="search"
-          onChange={(e) => setSearchQuery(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") setSearchQuery(e.target.value);
-            findMatch();
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+            setSelectedStretch(0);
           }}
         />
-        <button onClick={findMatch} className={styles.searchBtnModal}>
+        <button className={styles.searchBtnModal}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
       </div>
 
       <div className={styles.searchModalBody}>
         <div className={styles.searchResultsContainer}>
-          {(searchQuery && match ? stretchMatches : stretches).map(
-            (stretch, i) => {
-              return (
-                <div
-                  onMouseOver={() => {
-                    setStretchHovered(i);
-                  }}
-                  key={i}
-                  className={`${styles.searchOptions} ${
-                    stretchHovered === i ? styles.searchOptionsMatch : ""
-                  }`}
-                >
-                  {stretch.name}
-                </div>
-              );
-            }
-          )}
+          {stretchMatches.map((stretch, i) => {
+            return (
+              <div
+                onMouseOver={() => {
+                  setSelectedStretch(i);
+                }}
+                key={i}
+                className={`${styles.searchOptions} ${
+                  selectedStretch === i ? styles.searchOptionsMatch : ""
+                }`}
+              >
+                {stretch.name}
+              </div>
+            );
+          })}
         </div>
         <div className={styles.searchResults}>
-          {searchQuery && match && (
+          {selectedStretch !== null && (
             <div className={styles.searchResultsMatch}>
               <div className={styles.searchResult}>
                 <video
@@ -89,43 +85,21 @@ export function SearchModal({ setOpenModal }) {
                   <source src={findVideoMatch()} type="video/mp4" />
                 </video>
 
-                <div>{stretchMatches[stretchHovered].name}</div>
+                <div>{stretchMatches[selectedStretch]?.name}</div>
               </div>
             </div>
           )}
-          {searchQuery && match && (
+
+          {stretchMatches[selectedStretch] && (
             <Link
-              to={`/stretches/${stretchMatches[stretchHovered]._id}`}
+              to={`/stretches/${stretchMatches[selectedStretch]._id}`}
               className={styles.searchModalOpenLink}
             >
               <div onClick={closeModal}>Open</div>
             </Link>
           )}
-          {match && (
-              <div className={styles.searchResultsMatch}>
-                <div className={styles.searchResult}>
-                  <video
-                    className={styles.video}
-                    key={findVideoMatch()}
-                    controls
-                    autoPlay
-                  >
-                    <source src={findVideoMatch()} type="video/mp4" />
-                  </video>
 
-                  <div>{stretchMatches[stretchHovered].name}</div>
-                </div>
-              </div>
-            ) && (
-              <Link
-                to={`/stretches/${stretchMatches[stretchHovered]._id}`}
-                className={styles.searchModalOpenLink}
-              >
-                <div onClick={closeModal}>Open</div>
-              </Link>
-            )}
-
-          {searchQuery && !match && (
+          {searchQuery && stretchMatches.length === 0 && (
             <div className={styles.searchResultsMatch}>
               No Matches For This Stretch
             </div>

@@ -26,10 +26,7 @@ export default function Stretches() {
     : selectedStretches;
   const indexOfLastPost = currentPage * POSTS_PER_PAGE;
   const indexOfFirstPost = indexOfLastPost - POSTS_PER_PAGE;
-  const currentPosts = selectedStretches.slice(
-    indexOfFirstPost,
-    indexOfLastPost
-  );
+  const currentPosts = userStretches.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // work on page for empty array

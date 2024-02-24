@@ -35,7 +35,7 @@ export async function changeSubscription(options) {
 export async function toggleLike(options) {
   const {
     data: { user },
-  } = await baseApi.patch("users/stretches", options);
+  } = await baseApi.put("users/stretches", options);
   return { user };
 }
 export async function toggleLikeArticle(options) {

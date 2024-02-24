@@ -3,7 +3,7 @@ import "./index.css";
 import Navbar from "./components/navbar/Navbar";
 import Sidebar from "./components/sidebar/Sidebar";
 import { Outlet, ScrollRestoration, useNavigate } from "react-router-dom";
-import { StretchesModal } from "./components/modals/stretchesModal";
+import { StretchesModal } from "./components/modals/StretchesModal";
 import SignUpModal from "./components/modals/SignUpModal";
 import {
   toggleLike,
