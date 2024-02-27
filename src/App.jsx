@@ -2,7 +2,12 @@ import { createContext, useEffect, useState } from "react";
 import "./index.css";
 import Navbar from "./components/navbar/Navbar";
 import Sidebar from "./components/sidebar/Sidebar";
-import { Outlet, ScrollRestoration, useNavigate } from "react-router-dom";
+import {
+  Outlet,
+  ScrollRestoration,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { StretchesModal } from "./components/modals/StretchesModal";
 import SignUpModal from "./components/modals/SignUpModal";
 import {
@@ -27,6 +32,7 @@ export default function App() {
   const [signUpModalOpen, setSignUpModalOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
   const nav = useNavigate();
+  const { pathname } = useLocation();
   const [muscleGroup, setMuscleGroup] = useState(null);
   const [modalOpen, setModalOpen] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
@@ -35,14 +41,14 @@ export default function App() {
   const [subscription, setSubscription] = useState("free");
 
   useEffect(() => {
-    if (user) {
+    if (user && (user.subscription.tier || pathname.includes("checkout"))) {
       setModalOpen(false);
     } else if (!signUpModalOpen) {
       setModalOpen(true);
     } else {
       setModalOpen(false);
     }
-  }, [user, signUpModalOpen]);
+  }, [user, signUpModalOpen, pathname]);
 
   useEffect(() => {
     authenticate().then((res) => {

@@ -144,7 +144,6 @@ h1 {
 }
 .cards {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   height: 40%;
 }
@@ -176,6 +175,7 @@ h1 {
   color: var(--background-color);
   border-radius: 10px;
   font-size: 20px;
+  text-align: center;
 }
 .card-btn-dark {
   border: none;
@@ -196,12 +196,11 @@ h1 {
 .list {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
-  list-style: none;
+  justify-content: flex-start;
   text-align: center;
+  list-style: none;
   font-size: 20px;
-  text-wrap: nowrap;
+  padding: 10px;
 }
 .modal-list {
   padding: 15px;

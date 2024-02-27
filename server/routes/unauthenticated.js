@@ -3,7 +3,6 @@ const User = require("../model/schema.js");
 const Stretch = require("../model/StretchesSchema.js");
 const Article = require("../model/ArticlesSchema.js");
 const { SECRET_KEY } = require("../config/keys.js");
-const { getExpiration } = require("../utils/index.js");
 const stripe = require("stripe")(SECRET_KEY);
 
 const unauthRouter = Router();
@@ -17,13 +16,21 @@ unauthRouter.post("/users/create", async (req, res) => {
     stretches: [],
     articles: [],
     subscription: {
-      tier: req.body.subscription,
-      expiration: getExpiration(req.body.subscription),
+      tier: null,
+      expiration: null,
     },
   });
 
   try {
     await newUser.save();
+
+    const token = newUser.generateAuthToken();
+    res.cookie("token", token, {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+    });
+
     res.json({ newUser });
   } catch (err) {
     console.log(err);
@@ -60,14 +67,18 @@ unauthRouter.get("/articles", async (req, res) => {
   res.send({ articles });
 });
 unauthRouter.post("/payments/create", async (req, res) => {
-  const { items } = req.body;
-  const calculateOrderAmount = () => {
-    return 2000;
-  };
+  const { subscriptionTier } = req.body;
+  function calculateOrderAmount(subscriptionTier) {
+    if (subscriptionTier === "month") {
+      return 499;
+    }
+    if (subscriptionTier === "year") {
+      return 5599;
+    }
+  }
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: calculateOrderAmount(items),
+    amount: calculateOrderAmount(subscriptionTier),
     currency: "usd",
-    payment_method: "card",
 
     automatic_payment_methods: {
       enabled: true,

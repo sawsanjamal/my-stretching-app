@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { AppContext } from "../../App";
 import { changeSubscription } from "../../api/users";
+import { useNavigate } from "react-router-dom";
 
 export function StretchesModal() {
   const {
     data: { user, darkMode },
     methods: { setUser, setSignUpModalOpen, setSubscription, setModalOpen },
   } = useContext(AppContext);
-
+  const nav = useNavigate();
   function getClass(tier) {
     let className = darkMode ? "individual-card-dark" : "individual-card";
     if (user?.subscription?.tier === tier) {
@@ -22,20 +23,36 @@ export function StretchesModal() {
     setUser(user);
     setModalOpen(false);
   }
+  function handlePaidSubscription(subscriptionTier) {
+    if (!user) {
+      setSubscription(subscriptionTier);
+      setSignUpModalOpen(true);
+    }
+
+    if (!user.subscription.tier) {
+      nav(`/checkout/${subscriptionTier}`);
+    }
+  }
 
   return (
     <div className="top-layer-card-container">
       <div className="top-layer-card">
-        {user && <button onClick={() => setModalOpen(false)}>x</button>}
+        {user && user.subscription.tier && (
+          <button onClick={() => setModalOpen(false)}>x</button>
+        )}
         <h1>
-          {user ? "Change Subscription" : "Create an Account to Continue"}
+          {user && user.subscription.tier !== null && "Change Subscription"}
+          {user &&
+            user.subscription.tier === null &&
+            "Continue Creating Your Account"}
+          {!user && "Create Your Account"}
         </h1>
         <div className="cards">
           <div className={getClass("free")}>
             <h1>Free Account</h1>
             <p>$0</p>
 
-            {user ? (
+            {user && user.subscription.tier !== null ? (
               <button
                 className={darkMode ? "card-btn-dark" : "card-btn"}
                 onClick={() => {
@@ -64,7 +81,7 @@ export function StretchesModal() {
           <div className={getClass("month")}>
             <h1>One Month Premium Account</h1>
             <p>$4.99 Per Month</p>
-            {user ? (
+            {user && user.subscription.tier !== null ? (
               <button
                 className={darkMode ? "card-btn-dark" : "card-btn"}
                 onClick={() => {
@@ -77,8 +94,7 @@ export function StretchesModal() {
               <button
                 className={darkMode ? "card-btn-dark" : "card-btn"}
                 onClick={() => {
-                  setSubscription("month");
-                  setSignUpModalOpen(true);
+                  handlePaidSubscription("month");
                 }}
               >
                 Get Started
@@ -96,7 +112,7 @@ export function StretchesModal() {
             <h1>One Year Premium Account</h1>
             <p> $55.99 Per Year</p>
 
-            {user ? (
+            {user && user.subscription.tier !== null ? (
               <button
                 className={darkMode ? "card-btn-dark" : "card-btn"}
                 onClick={() => {
@@ -109,8 +125,7 @@ export function StretchesModal() {
               <button
                 className={darkMode ? "card-btn-dark" : "card-btn"}
                 onClick={() => {
-                  setSubscription("year");
-                  setSignUpModalOpen(true);
+                  handlePaidSubscription("year");
                 }}
               >
                 Get Started

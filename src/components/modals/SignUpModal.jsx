@@ -13,13 +13,14 @@ import { useContext, useState } from "react";
 import { AppContext } from "../../App";
 import Dropdown from "./Dropdown";
 import { SUBSCRIPTION_TIERS } from "../../constants";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUpModal() {
   const {
-    data: { signUpModalOpen, darkMode, subscription },
+    data: { user, signUpModalOpen, darkMode, subscription },
     methods: { setUser, setSignUpModalOpen, setModalOpen, setOpenDropdown },
   } = useContext(AppContext);
-
+  const nav = useNavigate();
   const [isSigningUp, setIsSigningUp] = useState(true);
 
   function onCloseModal() {
@@ -38,17 +39,18 @@ export default function SignUpModal() {
       lastName: data.lastName,
       email: data.email,
       password: data.password,
-      subscription: data.subscription,
     };
 
-    if (isSigningUp) {
+    if (isSigningUp && data.subscription !== "free") {
       const response = await createUser(userData);
       setUser(response.data.newUser);
+      setSignUpModalOpen(false);
+      nav(`/checkout/${data.subscription}`);
     } else {
       const { user } = await login(userData);
       setUser(user);
+      onCloseModal();
     }
-    onCloseModal();
   });
 
   return (
@@ -74,18 +76,26 @@ export default function SignUpModal() {
             {isSigningUp && `Create Your ${SUBSCRIPTION_TIERS[subscription]}`}
           </h3>
           <div className="form-content">
-            <div>
-              {isSigningUp && (
-                <>
-                  <Input {...first_name_validation} />
-                  <Input {...last_name_validation} />
-                </>
-              )}
+            {user ? (
+              <>
+                <Input {...first_name_validation} />
+                <Input {...last_name_validation} />
+                <Input {...email_validation} />
 
-              <Input {...email_validation} />
-
-              <Input {...password_validation} />
-            </div>
+                <Input {...password_validation} />
+              </>
+            ) : (
+              <div>
+                {isSigningUp && (
+                  <>
+                    <Input {...first_name_validation} />
+                    <Input {...last_name_validation} />
+                  </>
+                )}
+                <Input {...email_validation} />
+                <Input {...password_validation} />
+              </div>
+            )}
             <div className="form-bottom-section">
               <button className="form-submit-btn" onClick={onSubmit}>
                 Submit

@@ -1,13 +1,9 @@
+import { useParams } from "react-router-dom";
 import StripeCheckout from "./stripePayment";
 
 function Checkout() {
-  return (
-    <div className="font-mono text-white text-opacity-70 font-[700] text-opacity-90 h-screen flex justify-center items-center">
-      <div className="bg-white rounded-md p-12 bg-opacity-70">
-        <StripeCheckout />
-      </div>
-    </div>
-  );
+  const { subscriptionTier } = useParams();
+  return <StripeCheckout subscriptionTier={subscriptionTier} />;
 }
 
 export default Checkout;

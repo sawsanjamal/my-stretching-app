@@ -7,12 +7,13 @@ import { createPayment } from "../../api/stripe";
 
 const stripePromise = loadStripe(import.meta.env.VITE_CLIENT_KEY);
 
-export default function StripeCheckout() {
+export default function StripeCheckout({ subscriptionTier }) {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
     // replace this with your own server endpoint
-    createPayment({ items: [] })
+    createPayment({ subscriptionTier })
+      // maybe this is where i will get to pass the array of item s
       .then((data) => setClientSecret(data.clientSecret))
       .catch((error) => {
         console.log(error);
@@ -27,7 +28,7 @@ export default function StripeCheckout() {
     <div>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm subscriptionTier={subscriptionTier} />
         </Elements>
       )}
     </div>

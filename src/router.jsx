@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
       { path: "/articles/:id", element: <Article /> }, // make this a child of `/stretches`
       { path: "/mystretches", element: <MyStretches /> },
       { path: "/myarticles", element: <MyArticles /> },
-      { path: "/checkout", element: <Checkout /> },
+      { path: "/checkout/:subscriptionTier", element: <Checkout /> },
       { path: "/myprofile", element: <MyProfile /> },
     ],
   },
