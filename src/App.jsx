@@ -55,7 +55,9 @@ export default function App() {
       setUser(res.user);
       getStretches().then(({ stretches }) => {
         setStretches(stretches);
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 2000);
       });
 
       getArticles().then(({ articles }) => {
@@ -77,6 +79,12 @@ export default function App() {
         })
       : articles;
     setArticles(articlesWithUserContext);
+    const stretchesWithUserContext = user
+      ? stretches.map((stretch) => {
+          return { ...stretch, liked: user.stretches.includes(stretch._id) };
+        })
+      : stretches;
+    setStretches(stretchesWithUserContext);
   }, [user]);
 
   useEffect(() => {

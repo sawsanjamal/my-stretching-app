@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function SignUpModal() {
   const {
-    data: { user, signUpModalOpen, darkMode, subscription },
+    data: { signUpModalOpen, darkMode, subscription },
     methods: { setUser, setSignUpModalOpen, setModalOpen, setOpenDropdown },
   } = useContext(AppContext);
   const nav = useNavigate();
@@ -76,26 +76,17 @@ export default function SignUpModal() {
             {isSigningUp && `Create Your ${SUBSCRIPTION_TIERS[subscription]}`}
           </h3>
           <div className="form-content">
-            {user ? (
-              <>
-                <Input {...first_name_validation} />
-                <Input {...last_name_validation} />
-                <Input {...email_validation} />
+            <div>
+              {isSigningUp && (
+                <>
+                  <Input {...first_name_validation} />
+                  <Input {...last_name_validation} />
+                </>
+              )}
+              <Input {...email_validation} />
+              <Input {...password_validation} />
+            </div>
 
-                <Input {...password_validation} />
-              </>
-            ) : (
-              <div>
-                {isSigningUp && (
-                  <>
-                    <Input {...first_name_validation} />
-                    <Input {...last_name_validation} />
-                  </>
-                )}
-                <Input {...email_validation} />
-                <Input {...password_validation} />
-              </div>
-            )}
             <div className="form-bottom-section">
               <button className="form-submit-btn" onClick={onSubmit}>
                 Submit

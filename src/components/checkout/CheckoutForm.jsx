@@ -70,20 +70,37 @@ export default function CheckoutForm({ subscriptionTier }) {
 
   return (
     <>
-      <form className="checkout-form" onSubmit={handleSubmit}>
-        <p className="header">Complete your payment here!</p>
-        <div>
-          <p>Subscribe to one {subscriptionTier} of stretching!</p>
-          <p>price per month</p>
+      <div className="checkout-page">
+        <div className="subscription-info">
+          <p className="paragraph">
+            Subscribe to one {subscriptionTier} of stretching.
+          </p>
+          <div className="paragraph-details">
+            <p className="paragraph-detail-sign"> $</p>
+            <p className="paragraph-detail">
+              {" "}
+              {subscriptionTier === "month" ? "4.99" : "55.99"}
+            </p>
+            <div>
+              <p className="paragraph-detail-two"> per </p>
+              <p className="paragraph-detail-two"> {subscriptionTier}</p>
+            </div>
+          </div>
+          <img
+            src="https://www.spotebi.com/wp-content/uploads/2019/07/greatest-wealth-is-health-workout-motivation-spotebi.jpg"
+            className="subscription-image"
+          ></img>
         </div>
-        <PaymentElement />
-        <button
-          className="checkout-btn"
-          disabled={isLoading || !stripe || !elements}
-        >
-          {isLoading ? "Loading..." : "Pay now"}
-        </button>
-      </form>
+        <form className="checkout-form" onSubmit={handleSubmit}>
+          <PaymentElement />
+          <button
+            className="checkout-btn"
+            disabled={isLoading || !stripe || !elements}
+          >
+            {isLoading ? "Loading..." : "Pay now"}
+          </button>
+        </form>
+      </div>
       <div>{message}</div>
     </>
   );
