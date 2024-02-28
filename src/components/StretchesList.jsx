@@ -1,5 +1,4 @@
 import "../styles.css";
-import { v4 as uuid } from "uuid";
 
 import LikeBtn from "./likeBtn/LikeBtn";
 import { useContext } from "react";
@@ -15,9 +14,12 @@ export default function StretchesList({ stretches }) {
 
   return (
     <div className="stretches-example-container">
-      {(isLoading ? [0, 1] : stretches).map((stretch) => {
+      {stretches.map((stretch, i) => {
         return (
-          <div key={uuid()} className="stretch-example">
+          <div
+            key={i}
+            className={darkMode ? "stretch-example-dark" : "stretch-example"}
+          >
             <div
               className={
                 darkMode
@@ -59,7 +61,7 @@ export default function StretchesList({ stretches }) {
               <ul className="stretch-steps">
                 {(isLoading ? [{}, {}, {}] : stretch.steps).map((step, i) => {
                   return (
-                    <li className="stretch-step" key={uuid()}>
+                    <li className="stretch-step" key={i}>
                       <div className="number">
                         {isLoading ? <Skeleton circle /> : i + 1}
                       </div>

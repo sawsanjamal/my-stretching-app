@@ -38,7 +38,7 @@ export function SearchModal({ setOpenModal }) {
 
   return (
     <dialog className={darkMode ? styles.searchModalDark : styles.searchModal}>
-      <CloseButton closeModal={closeModal} />
+      <CloseButton closeModal={closeModal} darkMode={darkMode} />
       <div className={styles.searchModalHeader}>
         <input
           ref={inputRef}
@@ -72,14 +72,23 @@ export function SearchModal({ setOpenModal }) {
             );
           })}
         </div>
-        <div className={styles.searchResults}>
+        <div
+          className={darkMode ? styles.searchResultsDark : styles.searchResults}
+        >
           {selectedStretch !== null && (
-            <div className={styles.searchResultsMatch}>
+            <div
+              className={
+                darkMode
+                  ? styles.searchResultsMatchDark
+                  : styles.searchResultsMatch
+              }
+            >
               <div className={styles.searchResult}>
                 <video
                   className={styles.video}
                   key={findVideoMatch()}
                   controls
+                  loop
                   autoPlay
                 >
                   <source src={findVideoMatch()} type="video/mp4" />
@@ -93,14 +102,24 @@ export function SearchModal({ setOpenModal }) {
           {stretchMatches[selectedStretch] && (
             <Link
               to={`/stretches/${stretchMatches[selectedStretch]._id}`}
-              className={styles.searchModalOpenLink}
+              className={
+                darkMode
+                  ? styles.searchModalOpenLinkDark
+                  : styles.searchModalOpenLink
+              }
             >
               <div onClick={closeModal}>Open</div>
             </Link>
           )}
 
           {searchQuery && stretchMatches.length === 0 && (
-            <div className={styles.searchResultsMatch}>
+            <div
+              className={
+                darkMode
+                  ? styles.searchResultsMatchDark
+                  : styles.searchResultsMatch
+              }
+            >
               No Matches For This Stretch
             </div>
           )}
@@ -110,10 +129,13 @@ export function SearchModal({ setOpenModal }) {
   );
 }
 
-function CloseButton({ closeModal }) {
+function CloseButton({ closeModal, darkMode }) {
   return (
     <>
-      <button onClick={closeModal} className={styles.closeBtn}>
+      <button
+        onClick={closeModal}
+        className={darkMode ? styles.closeBtnDark : styles.closeBtn}
+      >
         x
       </button>
     </>

@@ -3,9 +3,12 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import { useEffect, useState } from "react";
+
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { changeSubscription } from "../../api/users";
+import { AppContext } from "../../App";
 
 export default function CheckoutForm({ subscriptionTier }) {
   const stripe = useStripe();
@@ -14,6 +17,16 @@ export default function CheckoutForm({ subscriptionTier }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const nav = useNavigate();
+  const {
+    methods: { setUser, setModalOpen },
+  } = useContext(AppContext);
+  async function handleChangeSubscription(tier) {
+    const { user } = await changeSubscription({
+      subscription: tier,
+    });
+    setUser(user);
+    setModalOpen(false);
+  }
 
   useEffect(() => {
     if (!stripe) {
@@ -37,6 +50,8 @@ export default function CheckoutForm({ subscriptionTier }) {
             ? "Your payment succeeded"
             : "Unexpected error occurred"
         );
+
+        handleChangeSubscription(subscriptionTier);
         nav("/");
       })
       .catch((e) => console.log(e));
@@ -64,7 +79,6 @@ export default function CheckoutForm({ subscriptionTier }) {
     ) {
       setMessage(error.message);
     }
-
     setIsLoading(false);
   };
 

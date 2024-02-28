@@ -63,6 +63,7 @@ export default function Home() {
               <SingleArticle
                 handleLikeArticle={handleLikeArticle}
                 article={article}
+                darkMode={darkMode}
               />
             </div>
           );

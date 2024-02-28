@@ -11,8 +11,16 @@
   justify-content: space-evenly;
   background-color: #1f2937;
   color: #fafafa;
-  padding: 5px;
-  height: 450px;
+  padding: 20px;
+  border-radius: 10px;
+}
+.big-container-dark {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: black;
+  color: #fafafa;
+  padding: 20px;
   border-radius: 10px;
 }
 .article-container {
@@ -47,7 +55,7 @@ h1 {
   padding: 5px;
   width: 90%;
 }
-.categories-container {
+.categories-container-dark {
   border: 1px solid black;
   width: 15%;
   margin-left: 20px;
@@ -55,21 +63,36 @@ h1 {
   color: white;
   background-color: black;
 }
-.categories-list {
+.categories-container {
+  border: 1px solid #1f2937;
+  width: 15%;
+  margin-left: 20px;
+  border-radius: 10px;
+  color: white;
+  background-color: #1f2937;
+}
+.categories-list-dark {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
   background-color: black;
 }
+.categories-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: #1f2937;
+}
 .categories-btn {
   border: none;
   background-color: inherit;
   color: #1f2937;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
-  padding: 10px;
-  background-color: pink;
+  padding: 7px;
+  background-color: #fafafa;
   margin-left: 10px;
   margin-bottom: 10px;
   border-radius: 10px;
@@ -78,11 +101,11 @@ h1 {
   border: none;
   background-color: inherit;
   color: #1f2937;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
-  padding: 10px;
-  background-color: pink;
-  box-shadow: 0 0 5px 5px pink;
+  padding: 7px;
+  background-color: lightgray;
+  box-shadow: 0 0 2px 2px silver;
   margin-left: 10px;
   margin-bottom: 17px;
   border-radius: 10px;
@@ -94,12 +117,16 @@ h1 {
   cursor: pointer;
 }
 .article-image {
-  width: 100%;
   text-align: center;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
+  max-width: 1000px;
+  height: fit-content;
 }
-
+.article-image-tag {
+  width: 100%;
+  height: auto;
+}
 @media (max-width: 1719px) {
   h1 {
     font-size: 20px;

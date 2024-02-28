@@ -73,18 +73,14 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    setIsLoadingArticle(true);
     const articlesWithUserContext = user
       ? articles.map((article) => {
           return { ...article, liked: user.articles.includes(article._id) };
         })
       : articles;
     setArticles(articlesWithUserContext);
-    const stretchesWithUserContext = user
-      ? stretches.map((stretch) => {
-          return { ...stretch, liked: user.stretches.includes(stretch._id) };
-        })
-      : stretches;
-    setStretches(stretchesWithUserContext);
+    setIsLoadingArticle(false);
   }, [user]);
 
   useEffect(() => {

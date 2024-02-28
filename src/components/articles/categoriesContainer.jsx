@@ -3,7 +3,7 @@ import { AppContext } from "../../App";
 
 export function CategoriesContainer({ toggleCategory, selectedCategory }) {
   const {
-    data: { articles },
+    data: { darkMode, articles },
   } = useContext(AppContext);
 
   const categories = articles.map((article) => article.category);
@@ -12,9 +12,13 @@ export function CategoriesContainer({ toggleCategory, selectedCategory }) {
 
   return (
     <>
-      <div className="categories-container">
+      <div
+        className={
+          darkMode ? "categories-container-dark" : "categories-container"
+        }
+      >
         <h1 className="categories-header">Categories</h1>
-        <div className="categories-list">
+        <div className={darkMode ? "categories-list-dark" : "categories-list"}>
           {categoriesArray.map((category, i) => {
             return (
               <button

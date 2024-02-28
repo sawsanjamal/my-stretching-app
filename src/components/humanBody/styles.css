@@ -16,7 +16,7 @@
   stroke: black;
 }
 .selected {
-  fill: #1f2937;
+  fill: pink;
 }
 @media (max-width: 1719px) {
   .human-front {

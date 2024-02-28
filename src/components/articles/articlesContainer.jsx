@@ -7,11 +7,11 @@ import Pagination from "../pagination/Pagination";
 import Skeleton from "react-loading-skeleton";
 export function ArticlesContainer({ articles }) {
   const {
-    data: { isLoadingArticle },
+    data: { darkMode, isLoadingArticle },
     methods: { handleLikeArticle },
   } = useContext(AppContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const POSTS_PER_PAGE = 9;
+  const POSTS_PER_PAGE = 6;
   const indexOfLastPost = currentPage * POSTS_PER_PAGE;
   const indexOfFirstPost = indexOfLastPost - POSTS_PER_PAGE;
   const currentPosts = articles.slice(indexOfFirstPost, indexOfLastPost);
@@ -26,6 +26,7 @@ export function ArticlesContainer({ articles }) {
             handleLikeArticle={handleLikeArticle}
             article={article}
             isLoadingArticle={isLoadingArticle}
+            darkMode={darkMode}
           />
         );
       })}
@@ -44,16 +45,17 @@ export function SingleArticle({
   handleLikeArticle,
   article,
   isLoadingArticle,
+  darkMode,
 }) {
   const nav = useNavigate();
 
   return (
-    <div className="big-container">
+    <div className={darkMode ? "big-container-dark" : "big-container"}>
       <div className="article-image">
         {isLoadingArticle ? (
           <Skeleton width="400px" height="200px" />
         ) : (
-          <img width="100%" src={article.image} />
+          <img className="article-image-tag" src={article.image} />
         )}
       </div>
 

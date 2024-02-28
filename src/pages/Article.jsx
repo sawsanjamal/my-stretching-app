@@ -8,16 +8,22 @@ import { SingleArticle } from "../components/articles/articlesContainer";
 // pull dynamic url param :id
 export default function Article() {
   const {
-    data: { articles },
+    data: { darkMode, articles },
     methods: { handleLikeArticle },
   } = useContext(AppContext);
   const { id } = useParams();
   const articleMatch = articles.find((article) => article._id === id) || {};
 
   return (
-    <SingleArticle
-      handleLikeArticle={handleLikeArticle}
-      article={articleMatch}
-    />
+    <>
+      <h1> Here are my articles </h1>
+      <div className="articles-page">
+        <SingleArticle
+          handleLikeArticle={handleLikeArticle}
+          article={articleMatch}
+          darkMode={darkMode}
+        />
+      </div>
+    </>
   );
 }

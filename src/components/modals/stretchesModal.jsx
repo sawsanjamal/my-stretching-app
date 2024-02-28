@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { AppContext } from "../../App";
-import { changeSubscription } from "../../api/users";
+
 import { useNavigate } from "react-router-dom";
+import { changeSubscription } from "../../api/users";
 
 export function StretchesModal() {
   const {
@@ -85,7 +86,7 @@ export function StretchesModal() {
               <button
                 className={darkMode ? "card-btn-dark" : "card-btn"}
                 onClick={() => {
-                  handleChangeSubscription("month");
+                  handlePaidSubscription("month");
                 }}
               >
                 Change to one month premium account

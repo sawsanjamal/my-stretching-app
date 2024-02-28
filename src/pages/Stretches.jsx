@@ -29,8 +29,6 @@ export default function Stretches() {
   const currentPosts = userStretches.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // work on page for empty array
-
   return (
     <div className="stretches-page-container">
       <h1> Here are my stretches </h1>
@@ -52,46 +50,61 @@ export default function Stretches() {
             indexOfLastPost={indexOfLastPost}
           />
         </div>
-        <div className="stretches-side-bar-short">
-          <div
-            className={darkMode ? "toggle-container-dark" : "toggle-container"}
-          >
-            <ToggleSwitch
-              isOn={female}
-              handleToggle={() => setFemale(!female)}
-            />
-          </div>
-          <div
-            className={
-              selectedStretches
-                ? "stretches-human-body-container-short"
-                : '"stretches-human=body-container'
-            }
-          >
-            {female ? (
-              <FemaleHumanFront
-                toggleMuscleGroup={toggleMuscleGroup}
-                muscleGroup={muscleGroup}
-              />
-            ) : (
-              <MaleHumanFront
-                toggleMuscleGroup={toggleMuscleGroup}
-                muscleGroup={muscleGroup}
-              />
-            )}
-            {female ? (
-              <FemaleHumanBack
-                toggleMuscleGroup={toggleMuscleGroup}
-                muscleGroup={muscleGroup}
-              />
-            ) : (
-              <MaleHumanBack
-                toggleMuscleGroup={toggleMuscleGroup}
-                muscleGroup={muscleGroup}
-              />
-            )}
-          </div>
-        </div>
+        <StretchesSideBar
+          female={female}
+          darkMode={darkMode}
+          setFemale={setFemale}
+          toggleMuscleGroup={toggleMuscleGroup}
+          muscleGroup={muscleGroup}
+          selectedStretches={selectedStretches}
+        />
+      </div>
+    </div>
+  );
+}
+
+export function StretchesSideBar({
+  female,
+  setFemale,
+  muscleGroup,
+  toggleMuscleGroup,
+  darkMode,
+  selectedStretches,
+}) {
+  return (
+    <div className="stretches-side-bar-short">
+      <div className={darkMode ? "toggle-container-dark" : "toggle-container"}>
+        <ToggleSwitch isOn={female} handleToggle={() => setFemale(!female)} />
+      </div>
+      <div
+        className={
+          selectedStretches
+            ? "stretches-human-body-container-short"
+            : '"stretches-human=body-container'
+        }
+      >
+        {female ? (
+          <FemaleHumanFront
+            toggleMuscleGroup={toggleMuscleGroup}
+            muscleGroup={muscleGroup}
+          />
+        ) : (
+          <MaleHumanFront
+            toggleMuscleGroup={toggleMuscleGroup}
+            muscleGroup={muscleGroup}
+          />
+        )}
+        {female ? (
+          <FemaleHumanBack
+            toggleMuscleGroup={toggleMuscleGroup}
+            muscleGroup={muscleGroup}
+          />
+        ) : (
+          <MaleHumanBack
+            toggleMuscleGroup={toggleMuscleGroup}
+            muscleGroup={muscleGroup}
+          />
+        )}
       </div>
     </div>
   );

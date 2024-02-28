@@ -105,6 +105,18 @@
   background-color: #1f2937;
   color: #fafafa;
 }
+.stretch-example-dark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 23px;
+  width: 80%;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  padding: 1rem;
+  background-color: black;
+  color: #fafafa;
+}
 .articles-page {
   display: flex;
   flex-direction: row;
