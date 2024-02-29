@@ -10,7 +10,7 @@ export default function MyStretches() {
     methods: { handleLike },
   } = useContext(AppContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const POSTS_PER_PAGE = 3;
+  const POSTS_PER_PAGE = 2;
   const userStretches = (user || { stretches: [] }).stretches.map(
     (stretchId) => {
       const stretch = (stretches || []).find(
@@ -27,7 +27,7 @@ export default function MyStretches() {
   return (
     <div>
       <div className="my-stretches-page">
-        <h1> Here Are My Liked Stretches </h1>
+        <h1 className="stretches-header"> Here Are My Liked Stretches </h1>
 
         <StretchesList
           darkMode={darkMode}

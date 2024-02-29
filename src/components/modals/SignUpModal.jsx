@@ -63,7 +63,7 @@ export default function SignUpModal() {
           className={darkMode ? "showForm-dark" : "showForm"}
           method="dialog"
         >
-          <div className="btn-container">
+          <div className="btn-container-modal">
             <button
               className={darkMode ? "form-close-btn-dark" : "form-close-btn"}
               onClick={onCloseModal}

@@ -65,7 +65,7 @@ export function SingleArticle({
             className="article-header"
             onClick={() => nav(`/articles/${article._id}`)}
           >
-            <h1>
+            <h1 className="article-title">
               {isLoadingArticle ? (
                 <Skeleton height="40px" width="380px" />
               ) : (

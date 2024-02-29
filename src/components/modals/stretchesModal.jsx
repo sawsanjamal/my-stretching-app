@@ -50,7 +50,7 @@ export function StretchesModal() {
         </h1>
         <div className="cards">
           <div className={getClass("free")}>
-            <h1>Free Account</h1>
+            <h1 className="subscription-title">Free Account</h1>
             <p>$0</p>
 
             {user && user.subscription.tier !== null ? (
@@ -80,7 +80,7 @@ export function StretchesModal() {
             </ul>
           </div>
           <div className={getClass("month")}>
-            <h1>One Month Premium Account</h1>
+            <h1 className="subscription-title">One Month Premium Account</h1>
             <p>$4.99 Per Month</p>
             {user && user.subscription.tier !== null ? (
               <button
@@ -110,7 +110,7 @@ export function StretchesModal() {
             </ul>
           </div>
           <div className={getClass("year")}>
-            <h1>One Year Premium Account</h1>
+            <h1 className="subscription-title">One Year Premium Account</h1>
             <p> $55.99 Per Year</p>
 
             {user && user.subscription.tier !== null ? (

@@ -25,9 +25,15 @@
   width: 50%;
   align-items: center;
 }
-.btn-container {
+.btn-container-modal {
   width: 100%;
+  color: #fafafa;
   justify-content: flex-end;
+  padding: 0.7rem;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .form-close-btn {
   background-color: var(--background-color);
@@ -38,8 +44,8 @@
   width: 10%;
 }
 .form-close-btn-dark {
-  background-color: black;
-  color: grey;
+  background-color: rgb(49, 47, 47);
+  color: #fafafa;
   border: none;
   font-weight: 700;
   font-size: 1.1rem;
@@ -87,11 +93,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: black;
+  background-color: rgb(49, 47, 47);
   height: 42rem;
   width: 42rem;
   font-size: 1.2rem;
-  color: grey;
+  color: #fafafa;
   border-radius: 8px;
 }
 .formContent {
@@ -111,11 +117,8 @@
 
 .top-layer-card-container {
   position: absolute;
-  top: 0;
-  left: 0;
+  max-width: 100rem;
   display: flex;
-  align-items: start;
-  justify-content: center;
   z-index: 80;
 }
 .top-layer-card {
@@ -149,7 +152,7 @@
   padding: 3.124rem;
   margin: 3.124rem;
   border-radius: 20px;
-  background-color: black;
+  background-color: rgb(49, 47, 47);
   color: white;
 }
 .card-btn {
@@ -163,7 +166,7 @@
 .card-btn-dark {
   border: none;
   padding: 1rem;
-  color: black;
+  color: rgb(49, 47, 47);
   border-radius: 10px;
   font-size: 1.1rem;
   background-color: white;
@@ -175,7 +178,9 @@
   transition: 0.3s ease-in-out;
   transform: scale(1.2);
 }
-
+.subscription-title {
+  text-align: center;
+}
 .list {
   display: flex;
   flex-direction: column;

@@ -18,7 +18,7 @@ import {
 } from "./api/users";
 import { getStretches } from "./api/stretches";
 import { getArticles } from "./api/articles";
-import Footer from "./components/Footer/Footer";
+
 import { SkeletonTheme } from "react-loading-skeleton";
 
 export const AppContext = createContext();
@@ -176,7 +176,6 @@ export default function App() {
               </div>
             </div>
           </div>
-          <Footer />
         </div>
         <ScrollRestoration />
       </AppContext.Provider>

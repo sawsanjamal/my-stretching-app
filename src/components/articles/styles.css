@@ -1,9 +1,9 @@
 .articles-page-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  width: 75%;
-  height: 70%;
-  grid-gap: 15px;
+  width: 70rem;
+  height: 60rem;
+  grid-gap: 1rem;
 }
 .big-container {
   display: flex;
@@ -11,16 +11,17 @@
   justify-content: space-evenly;
   background-color: #1f2937;
   color: #fafafa;
-  padding: 20px;
+  padding: 1.2rem;
   border-radius: 10px;
+  max-height: 30rem;
 }
 .big-container-dark {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: black;
+  background-color: rgb(49, 47, 47);
   color: #fafafa;
-  padding: 20px;
+  padding: 1.2rem;
   border-radius: 10px;
 }
 .article-container {
@@ -29,13 +30,11 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
 }
 
 .article-body {
   width: 90%;
   height: 100%;
-
   text-align: center;
 }
 .article-content {
@@ -48,25 +47,29 @@
   cursor: pointer;
   opacity: 0.7;
 }
-h1 {
-  font-size: 1.5em;
+.article-title {
+  font-size: 1.25em;
+  text-align: center;
 }
 .article-header {
   padding: 5px;
-  width: 90%;
 }
 .categories-container-dark {
-  border: 1px solid black;
-  width: 15%;
-  margin-left: 20px;
+  border: 1px solid rgb(49, 47, 47);
+  width: 17rem;
+  height: 22rem;
+  margin-left: 1.2rem;
   border-radius: 10px;
+  padding: 1rem;
   color: white;
-  background-color: black;
+  background-color: rgb(49, 47, 47);
 }
 .categories-container {
   border: 1px solid #1f2937;
-  width: 15%;
-  margin-left: 20px;
+  width: 17rem;
+  height: 22rem;
+  margin-left: 1.2rem;
+  padding: 1rem;
   border-radius: 10px;
   color: white;
   background-color: #1f2937;
@@ -76,7 +79,7 @@ h1 {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  background-color: black;
+  background-color: rgb(49, 47, 47);
 }
 .categories-list {
   display: flex;
@@ -89,7 +92,7 @@ h1 {
   border: none;
   background-color: inherit;
   color: #1f2937;
-  font-size: 17px;
+  font-size: 1rem;
   font-weight: bold;
   padding: 7px;
   background-color: #fafafa;
@@ -101,7 +104,7 @@ h1 {
   border: none;
   background-color: inherit;
   color: #1f2937;
-  font-size: 17px;
+  font-size: 1rem;
   font-weight: bold;
   padding: 7px;
   background-color: lightgray;
@@ -126,27 +129,4 @@ h1 {
 .article-image-tag {
   width: 100%;
   height: auto;
-}
-@media (max-width: 1719px) {
-  h1 {
-    font-size: 20px;
-  }
-  .articles-page-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: 90%;
-    height: 80%;
-  }
-  .categories-btn {
-    border: none;
-    background-color: inherit;
-    color: #1f2937;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 8px;
-    background-color: pink;
-    margin-left: 8x;
-    margin-bottom: 8px;
-    border-radius: 8px;
-  }
 }

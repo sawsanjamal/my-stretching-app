@@ -82,7 +82,11 @@ export default function Sidebar() {
           <div className="sidebarItemsExpanded">
             <div>
               <button
-                className={darkMode ? "sidebar-btn-dark" : "sidebar-btn"}
+                className={
+                  darkMode
+                    ? "sidebar-btn-expanded-dark"
+                    : "sidebar-btn-expanded"
+                }
                 onClick={handleToggleSidebar}
               >
                 <FontAwesomeIcon icon={faBars} />
@@ -91,7 +95,11 @@ export default function Sidebar() {
             <Link to="/" className="link">
               <div className="sidebarItem">
                 <button
-                  className={darkMode ? "sidebar-btn-dark" : "sidebar-btn"}
+                  className={
+                    darkMode
+                      ? "sidebar-btn-expanded-dark"
+                      : "sidebar-btn-expanded"
+                  }
                 >
                   <FontAwesomeIcon icon={faHouse} />
                 </button>
@@ -101,7 +109,11 @@ export default function Sidebar() {
             <Link to="/stretches" className="link">
               <div className="sidebarItem">
                 <button
-                  className={darkMode ? "sidebar-btn-dark" : "sidebar-btn"}
+                  className={
+                    darkMode
+                      ? "sidebar-btn-expanded-dark"
+                      : "sidebar-btn-expanded"
+                  }
                 >
                   <FontAwesomeIcon icon={faHeart} />
                 </button>
@@ -111,7 +123,11 @@ export default function Sidebar() {
             <Link to="/articles" className="link">
               <div className="sidebarItem">
                 <button
-                  className={darkMode ? "sidebar-btn-dark" : "sidebar-btn"}
+                  className={
+                    darkMode
+                      ? "sidebar-btn-expanded-dark"
+                      : "sidebar-btn-expanded"
+                  }
                 >
                   <FontAwesomeIcon icon={faBook} />
                 </button>
@@ -122,7 +138,11 @@ export default function Sidebar() {
               <Link to="/" className="link">
                 <div className="sidebarItem" onClick={handleLogout}>
                   <button
-                    className={darkMode ? "sidebar-btn-dark" : "sidebar-btn"}
+                    className={
+                      darkMode
+                        ? "sidebar-btn-expanded-dark"
+                        : "sidebar-btn-expanded"
+                    }
                   >
                     <FontAwesomeIcon icon={faUser} />
                   </button>
@@ -133,7 +153,11 @@ export default function Sidebar() {
               <Link to="/" className="link">
                 <div className="sidebarItem" onClick={signUp}>
                   <button
-                    className={darkMode ? "sidebar-btn-dark" : "sidebar-btn"}
+                    className={
+                      darkMode
+                        ? "sidebar-btn-expanded-dark"
+                        : "sidebar-btn-expanded"
+                    }
                   >
                     <FontAwesomeIcon icon={faUser} />
                   </button>

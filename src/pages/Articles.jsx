@@ -20,7 +20,7 @@ export default function Articles() {
 
   return (
     <>
-      <h1> Here are my articles </h1>
+      <h1 className="article-page-header"> Here Are My Articles </h1>
       <div className="articles-page">
         {articles.length > 0 && (
           <ArticlesContainer articles={articlesByCategory} />
