@@ -47,12 +47,12 @@ export default function Home() {
         </div>
         <div className="home-toggle">
           <div className={darkMode ? "btn-container-dark" : "btn-container"}>
-            <span>Male</span>
+            <span className="span-gender-male">Male</span>
             <ToggleSwitch
               isOn={female}
               handleToggle={() => setFemale(!female)}
             />
-            <span>Female</span>
+            <span className="span-gender-female">Female</span>
           </div>
         </div>
       </div>

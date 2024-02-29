@@ -6,12 +6,13 @@
   background-color: #1f2937;
   border: none;
   border-radius: 10px;
-  padding: 20px;
-  width: 50%;
-  height: 40%;
+  padding: 1.5rem;
+  width: 50rem;
+  height: 33rem;
   position: fixed;
   top: 200px;
   left: 200px;
+  z-index: 200;
 }
 .searchModalDark {
   display: flex;
@@ -21,30 +22,31 @@
   background-color: black;
   border: none;
   border-radius: 10px;
-  padding: 20px;
-  width: 50%;
-  height: 40%;
+  padding: 1.5rem;
+  width: 50rem;
+  height: 33rem;
   position: fixed;
   top: 200px;
-  left: 300px;
+  left: 200px;
+  z-index: 200;
 }
 .closeBtn {
-  width: 18px;
+  width: 1.1rem;
   align-self: flex-end;
   border: none;
   background-color: #1f2937;
   color: #fafafa;
   font-weight: 800;
-  font-size: 18px;
+  font-size: 1.1rem;
 }
 .closeBtnDark {
-  width: 18px;
+  width: 1.1rem;
   align-self: flex-end;
   border: none;
   background-color: black;
   color: #fafafa;
   font-weight: 800;
-  font-size: 18px;
+  font-size: 1.1rem;
 }
 .closeBtn:hover,
 .closeBtnDark:hover {
@@ -53,7 +55,7 @@
 }
 .searchBtn {
   border: none;
-  border-radius: 10px;
+  border-radius: 0.6rem;
   background-color: transparent;
 }
 .searchBtn:hover {
@@ -63,7 +65,7 @@
 .searchModalBody {
   display: flex;
   flex-direction: row;
-  height: 400px;
+  height: 85%;
   width: 100%;
 }
 .searchResultsContainer {
@@ -74,17 +76,17 @@
   width: 100%;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  padding: 20px;
+  padding: 1.2rem;
   overflow-y: auto;
 }
 .searchOptions {
-  font-size: 20px;
-  padding: 10px;
+  font-size: 1.25rem;
+  padding: 0.62rem;
   border: 1px solid #fafafa;
 }
 .searchOptionsMatch {
-  font-size: 20px;
-  padding: 10px;
+  font-size: 1.25rem;
+  padding: 0.62rem;
   border: 1px solid #1f2937;
 }
 
@@ -97,7 +99,7 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: #fafafa;
-  padding: 20px;
+  padding: 1.25rem;
   width: 100%;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -108,7 +110,7 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: #fafafa;
-  padding: 20px;
+  padding: 1.25rem;
   width: 100%;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -125,16 +127,16 @@
 .searchInput {
   width: 100%;
   border-radius: 10px;
-  padding-left: 3px;
+  padding: 0.2rem;
   border: none;
-  font-size: 18px;
+  font-size: 1.1rem;
 }
 .searchBtn {
   color: #1f2937;
-  margin-right: 2px;
-  padding: 3px;
+  margin-right: 0.15rem;
+  padding: 0.26rem;
   border: none;
-  font-size: 18px;
+  font-size: 1.1rem;
 }
 .searchBtn:hover,
 .searchBtnModal:hover {
@@ -145,9 +147,9 @@
 .searchModalHeader {
   background-color: #fafafa;
   border-radius: 10px;
-  height: 30px;
+  height: 1.9rem;
   width: 100%;
-  margin: 10px 0px;
+  margin: 0.62rem 0;
 }
 .searchBtnModal {
   background-color: #fafafa;
@@ -155,16 +157,18 @@
 }
 
 .searchInputModal {
-  height: 30px;
+  height: 1.85rem;
   width: 90%;
   border-radius: 10px;
   border: none;
   position: relative;
+  outline-style: hidden;
+  outline-offset: 0.1rem;
 }
 .searchInput:focus {
   opacity: 0.85;
   color: #1f2937;
-  outline-offset: 1.2px;
+  outline-offset: 0.075rem;
   outline-style: none;
   cursor: pointer;
 }
@@ -174,8 +178,8 @@
   align-items: center;
   background-color: #1f2937;
   color: #fafafa;
-  padding: 10px;
-  font-size: 20px;
+  padding: 0.625rem;
+  font-size: 1.1rem;
   border-radius: 10px;
 }
 .searchResultsMatchDark {
@@ -184,8 +188,8 @@
   align-items: center;
   background-color: black;
   color: #fafafa;
-  padding: 10px;
-  font-size: 20px;
+  padding: 0.625rem;
+  font-size: 1.1rem;
   border-radius: 10px;
 }
 .searchResult {
@@ -207,8 +211,8 @@
   background-color: #1f2937;
   color: #fafafa;
   border: none;
-  padding: 10px;
-  font-size: 16px;
+  padding: 0.625rem;
+  font-size: 1rem;
   text-decoration: none;
   text-align: center;
 }
@@ -217,8 +221,8 @@
   background-color: black;
   color: #fafafa;
   border: none;
-  padding: 10px;
-  font-size: 16px;
+  padding: 0.625rem;
+  font-size: 1rem;
   text-decoration: none;
   text-align: center;
 }

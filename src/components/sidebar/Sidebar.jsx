@@ -22,7 +22,7 @@ export default function Sidebar() {
       {collapsed ? (
         <div className={darkMode ? "sidebar-dark" : "sidebar"}>
           <div className="sidebarItems">
-            <div>
+            <div className="menu-item">
               <button
                 className={darkMode ? "sidebar-btn-dark" : "sidebar-btn"}
                 onClick={handleToggleSidebar}
@@ -36,7 +36,7 @@ export default function Sidebar() {
                   <FontAwesomeIcon icon={faHouse} />
                 </Link>
               </button>
-              <h3>Home</h3>
+              <h3 className="collapsed-title">Home</h3>
             </div>
             <div>
               <button className={darkMode ? "sidebar-btn-dark" : "sidebar-btn"}>
@@ -44,7 +44,7 @@ export default function Sidebar() {
                   <FontAwesomeIcon icon={faHeart} />
                 </Link>
               </button>
-              <h3>Stretches</h3>
+              <h3 className="collapsed-title">Stretches</h3>
             </div>
             <div>
               <button className={darkMode ? "sidebar-btn-dark" : "sidebar-btn"}>
@@ -52,7 +52,7 @@ export default function Sidebar() {
                   <FontAwesomeIcon icon={faBook} />
                 </Link>
               </button>
-              <h3>Articles</h3>
+              <h3 className="collapsed-title">Articles</h3>
             </div>
             {user ? (
               <div>
@@ -62,7 +62,7 @@ export default function Sidebar() {
                 >
                   <FontAwesomeIcon icon={faUser} />
                 </button>
-                <h3> Logout</h3>
+                <h3 className="collapsed-title"> Logout</h3>
               </div>
             ) : (
               <div>
@@ -72,7 +72,7 @@ export default function Sidebar() {
                 >
                   <FontAwesomeIcon icon={faUser} />
                 </button>
-                <h3> Sign Up</h3>
+                <h3 className="collapsed-title"> Sign Up</h3>
               </div>
             )}
           </div>

@@ -170,7 +170,7 @@ export default function App() {
               <div
                 className={`${
                   modalOpen || signUpModalOpen ? "blur" : ""
-                } height-100`}
+                } outlet-container`}
               >
                 <Outlet />
               </div>

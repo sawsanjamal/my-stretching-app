@@ -63,7 +63,7 @@ export default function SignUpModal() {
           className={darkMode ? "showForm-dark" : "showForm"}
           method="dialog"
         >
-          <div>
+          <div className="btn-container">
             <button
               className={darkMode ? "form-close-btn-dark" : "form-close-btn"}
               onClick={onCloseModal}
@@ -73,7 +73,9 @@ export default function SignUpModal() {
           </div>
           <h1>{isSigningUp ? "Sign Up" : "Log In"}</h1>
           <h3>
-            {isSigningUp && `Create Your ${SUBSCRIPTION_TIERS[subscription]}`}
+            {isSigningUp
+              ? `Create Your ${SUBSCRIPTION_TIERS[subscription]}`
+              : "Login To Your Account"}
           </h3>
           <div className="form-content">
             <div>

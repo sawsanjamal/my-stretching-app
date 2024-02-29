@@ -1,5 +1,8 @@
+* {
+  box-sizing: border-box;
+}
 :root {
-  --width: 10vw;
+  --width: 12rem;
 }
 .sidebar {
   background-color: #1f2937;
@@ -11,8 +14,9 @@
   position: sticky;
   left: 0px;
   height: 100vh;
-  width: 10vw;
+  width: fit-content;
   color: #fafafa;
+  padding: 0 1.75rem;
 }
 .sidebar-dark {
   background-color: black;
@@ -30,8 +34,6 @@
 .sidebarItems {
   position: sticky;
   top: 0px;
-  height: 50%;
-  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,13 +42,11 @@
 .sidebarItemsExpanded {
   position: sticky;
   top: 0px;
-  height: 50%;
-  width: 80%;
+  height: 40rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
-  padding-left: 30px;
 }
 .sidebarItem:hover {
   opacity: 0.7;
@@ -62,29 +62,30 @@
 }
 .sidebarItem {
   display: flex;
-  width: 80%;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 10px;
+}
+.collapsed-title {
+  font-size: 1.25rem;
+  margin: 2rem 0;
+}
+.menu-item {
+  margin-bottom: 2rem;
 }
 
 .btn-title {
-  margin-right: 100px;
-  margin-left: 20px;
+  font-size: 1.5rem;
   text-wrap: nowrap;
 }
 .sidebar-btn {
-  font-size: 25px;
-  padding: 4px;
-  width: min-content;
+  font-size: 1.5rem;
+  padding: 0 1rem;
   background-color: #1f2937;
   border: none;
   color: #fafafa;
 }
 .sidebar-btn-dark {
-  font-size: 25px;
-  padding: 4px;
-  width: calc(0.35 * var(--width));
+  font-size: 1.5rem;
+  padding: 0.25rem;
+  width: min-content;
   background-color: black;
   border: none;
   color: white;
@@ -102,8 +103,7 @@
   border-radius: 30px;
 }
 .sidebar-menu-btn {
-  font-size: 23px;
-  width: calc(0.35 * --width);
+  font-size: 1.4rem;
   background-color: #1f2937;
   border: none;
   color: #fafafa;
@@ -115,60 +115,4 @@
 }
 .link {
   color: #fafafa;
-}
-@media (max-width: 1719px) {
-  .sidebar {
-    background-color: #1f2937;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    position: sticky;
-    left: 0px;
-    height: 100vh;
-    width: 400px;
-    color: #fafafa;
-    z-index: 2;
-  }
-  .sidebar-dark {
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    position: sticky;
-    left: 0px;
-    height: 100vh;
-    width: 400px;
-    color: grey;
-  }
-
-  .sidebar-btn {
-    font-size: calc(0.15 * var(--width));
-    width: calc(0.1 * var(--width));
-    background-color: #1f2937;
-    border: none;
-    color: #fafafa;
-  }
-  .sidebar-btn-dark {
-    font-size: calc(0.15 * var(--width));
-    width: calc(0.1 * var(--width));
-    background-color: black;
-    border: none;
-    color: white;
-  }
-  .sidebar-menu-btn {
-    font-size: calc(0.01 * var(--width));
-    width: calc(0.1 * var(--width));
-    background-color: #1f2937;
-    border: none;
-    color: #fafafa;
-  }
-  .sidebar-menu-btn:hover {
-    border-radius: 60px;
-    border: 0.5px solid #4a5369;
-    width: calc(0.1 * var(--width));
-  }
 }

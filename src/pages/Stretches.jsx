@@ -30,8 +30,8 @@ export default function Stretches() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="stretches-page-container">
-      <h1> Here are my stretches </h1>
+    <>
+      <h1 className="stretches-header"> Here Are My Stretches </h1>
       <div className="stretches-page">
         <div className="stretches-list">
           {userStretches.length > 0 && (
@@ -59,7 +59,7 @@ export default function Stretches() {
           selectedStretches={selectedStretches}
         />
       </div>
-    </div>
+    </>
   );
 }
 
