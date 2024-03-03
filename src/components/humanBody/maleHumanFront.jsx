@@ -2,10 +2,10 @@ import "./styles.css";
 export function MaleHumanFront({ toggleMuscleGroup, muscleGroup }) {
   return (
     <svg
-      viewBox="0 0 673 1200"
+      viewBox="0 0 675 1205"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="human-front"
+      className="human"
     >
       <g
         id="abdominals"

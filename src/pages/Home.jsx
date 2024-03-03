@@ -15,10 +15,10 @@ export default function Home() {
   } = useContext(AppContext);
 
   return (
-    <div className="home-container">
+    <>
       <div className="human-body-container">
         <div className="human-body-inner-container">
-          <div className="human-body-front">
+          <div className="human-body-model-container">
             {female ? (
               <FemaleHumanFront
                 toggleMuscleGroup={toggleMuscleGroup}
@@ -30,8 +30,6 @@ export default function Home() {
                 muscleGroup={muscleGroup}
               />
             )}
-          </div>
-          <div className="human-body-back">
             {female ? (
               <FemaleHumanBack
                 toggleMuscleGroup={toggleMuscleGroup}
@@ -59,16 +57,15 @@ export default function Home() {
       <div className="articles-container">
         {articles.slice(0, 3).map((article, i) => {
           return (
-            <div key={i}>
-              <SingleArticle
-                handleLikeArticle={handleLikeArticle}
-                article={article}
-                darkMode={darkMode}
-              />
-            </div>
+            <SingleArticle
+              key={i}
+              handleLikeArticle={handleLikeArticle}
+              article={article}
+              darkMode={darkMode}
+            />
           );
         })}
       </div>
-    </div>
+    </>
   );
 }

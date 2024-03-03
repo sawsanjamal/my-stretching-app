@@ -1,24 +1,17 @@
-.human-front {
-  width: 90%;
-  height: 90%;
+.human {
+  max-width: 575px;
   fill: #fafafa;
   stroke-width: 0.2em;
   stroke: black;
+  margin: 0 1rem;
 }
-.human-front:hover {
+.human:hover {
   cursor: pointer;
-}
-.human-back {
-  width: 90%;
-  height: 90%;
-  fill: #fafafa;
-  stroke-width: 0.2em;
-  stroke: black;
 }
 .selected {
   fill: pink;
 }
-@media (max-width: 1719px) {
+/* @media (max-width: 1719px) {
   .human-front {
     width: 85%;
     height: 85%;
@@ -43,4 +36,4 @@
 }
 .body-map-muscle:hover {
   fill: #1f2937;
-}
+} */

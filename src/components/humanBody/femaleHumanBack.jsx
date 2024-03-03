@@ -3,10 +3,9 @@ export function FemaleHumanBack({ toggleMuscleGroup, muscleGroup }) {
   return (
     <>
       <svg
-        viewBox="0 0 657 1200"
-        fill="none"
+        viewBox="-2 -2 670 1205"
         xmlns="http://www.w3.org/2000/svg"
-        className="human-back"
+        className="human"
       >
         <g
           id="calves"

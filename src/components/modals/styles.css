@@ -65,7 +65,7 @@
   text-align: center;
   width: 6.5rem;
   border: none;
-  font-size: 1rm;
+  font-size: 1rem;
 }
 
 .form-input:focus,
@@ -117,7 +117,6 @@
 
 .top-layer-card-container {
   position: absolute;
-  max-width: 100rem;
   display: flex;
   z-index: 80;
 }
@@ -180,6 +179,7 @@
 }
 .subscription-title {
   text-align: center;
+  font-size: 1.75rem;
 }
 .list {
   display: flex;
@@ -238,4 +238,179 @@
 .disabled-card {
   pointer-events: none;
   opacity: 0.8;
+}
+.account-subscription-title {
+  font-size: 2.5rem;
+}
+@media (max-width: 1600px) {
+  .top-layer-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  .cards {
+    display: flex;
+    flex-direction: column;
+  }
+  .individual-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 10px;
+    height: 21rem;
+    width: 35rem;
+    margin: 0.25rem;
+    background-color: var(--background-color);
+    color: #fafafa;
+  }
+  .individual-card-dark {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 10px;
+    height: 21rem;
+    width: 35rem;
+    margin: 0.25rem;
+    background-color: rgb(49, 47, 47);
+    color: #fafafa;
+  }
+  .subscription-title {
+    text-align: center;
+    font-size: 1.2rem;
+    padding-top: 0.5rem;
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    list-style: none;
+    font-size: 0.75rem;
+    margin: 0;
+    padding: 0.2rem;
+  }
+  .modal-list {
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: white;
+    color: var(--background-color);
+    border-radius: 10px;
+    margin: 0.25rem;
+  }
+  .card-btn {
+    border: none;
+    padding: 0.5rem;
+    color: var(--background-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 0.2rem;
+  }
+  .card-btn-dark {
+    border: none;
+    padding: 0.5rem;
+    color: rgb(49, 47, 47);
+    border-radius: 10px;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 0.2rem;
+  }
+  .account-subscription-title {
+    font-size: 1.4rem;
+  }
+  .btn-container-modal {
+    width: 100%;
+    color: #fafafa;
+    justify-content: flex-end;
+    padding: 0.7rem;
+    font-size: 0.75rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .form-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 40rem;
+    width: 45rem;
+  }
+  .form-close-btn {
+    background-color: var(--background-color);
+    color: #fafafa;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    width: 10%;
+  }
+  .form-close-btn-dark {
+    background-color: rgb(49, 47, 47);
+    color: #fafafa;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    width: 10%;
+  }
+  .form-option-btn,
+  .form-submit-btn {
+    border-radius: 5px;
+    background-color: #fafafa;
+    color: var(--background-color);
+    padding: 0.45rem;
+    text-align: center;
+    width: 6rem;
+    border: none;
+    font-size: 0.75rem;
+    margin: 0;
+  }
+  .showForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background-color);
+    height: 40rem;
+    width: 36rem;
+    padding-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #fafafa;
+    border-radius: 8px;
+  }
+  .showForm-dark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(49, 47, 47);
+    height: 40rem;
+    width: 36rem;
+    padding-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #fafafa;
+    border-radius: 8px;
+  }
+  .signup-title {
+    font-size: 1.25rem;
+  }
+  .signup-header {
+    font-size: 1.25rem;
+  }
+  .label,
+  .form-input {
+    font-size: 1rem;
+  }
+  .dropdown {
+    border-radius: 5px;
+    background-color: #fafafa;
+    color: var(--background-color);
+    padding: 0.5rem;
+    text-align: center;
+    border: none;
+    font-size: 0.75rem;
+    margin: 0px;
+  }
 }

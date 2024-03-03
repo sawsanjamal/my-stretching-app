@@ -41,7 +41,7 @@ export function StretchesModal() {
         {user && user.subscription.tier && (
           <button onClick={() => setModalOpen(false)}>x</button>
         )}
-        <h1>
+        <h1 className="account-subscription-title">
           {user && user.subscription.tier !== null && "Change Subscription"}
           {user &&
             user.subscription.tier === null &&
@@ -86,7 +86,11 @@ export function StretchesModal() {
               <button
                 className={darkMode ? "card-btn-dark" : "card-btn"}
                 onClick={() => {
-                  handlePaidSubscription("month");
+                  if (user.subscription.tier === "free") {
+                    nav("/checkout/month");
+                  } else {
+                    handleChangeSubscription("month");
+                  }
                 }}
               >
                 Change to one month premium account
@@ -95,7 +99,7 @@ export function StretchesModal() {
               <button
                 className={darkMode ? "card-btn-dark" : "card-btn"}
                 onClick={() => {
-                  handlePaidSubscription("month");
+                  handleChangeSubscription("month");
                 }}
               >
                 Get Started
@@ -117,7 +121,11 @@ export function StretchesModal() {
               <button
                 className={darkMode ? "card-btn-dark" : "card-btn"}
                 onClick={() => {
-                  handleChangeSubscription("year");
+                  if (user.subscription.tier === "free") {
+                    nav("/checkout/year");
+                  } else {
+                    handleChangeSubscription("year");
+                  }
                 }}
               >
                 Change to one year premium account
@@ -132,6 +140,7 @@ export function StretchesModal() {
                 Get Started
               </button>
             )}
+
             <ul className="list">
               <li className="modal-list">Experience Year Month of Premium</li>
               <li className="modal-list">Advertisement Free Experience</li>

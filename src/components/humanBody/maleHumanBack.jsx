@@ -2,9 +2,9 @@ import "./styles.css";
 export function MaleHumanBack({ toggleMuscleGroup, muscleGroup }) {
   return (
     <svg
-      viewBox="0 0 673 1200"
+      viewBox="0 0 675 1205"
       xmlns="http://www.w3.org/2000/svg"
-      className="human-back"
+      className="human"
     >
       <g
         id="hamstrings"

@@ -12,8 +12,10 @@
   background-color: #1f2937;
   color: #fafafa;
   padding: 1.2rem;
+  margin: 0 1rem;
   border-radius: 10px;
   max-height: 30rem;
+  max-width: 450px;
 }
 .big-container-dark {
   display: flex;
@@ -22,7 +24,10 @@
   background-color: rgb(49, 47, 47);
   color: #fafafa;
   padding: 1.2rem;
+  margin: 0 1rem;
   border-radius: 10px;
+  max-height: 30rem;
+  max-width: 450px;
 }
 .article-container {
   display: flex;

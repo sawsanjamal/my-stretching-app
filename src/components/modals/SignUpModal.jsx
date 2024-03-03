@@ -71,8 +71,8 @@ export default function SignUpModal() {
               x
             </button>
           </div>
-          <h1>{isSigningUp ? "Sign Up" : "Log In"}</h1>
-          <h3>
+          <h1 className="signup-title">{isSigningUp ? "Sign Up" : "Log In"}</h1>
+          <h3 className="signup-header">
             {isSigningUp
               ? `Create Your ${SUBSCRIPTION_TIERS[subscription]}`
               : "Login To Your Account"}

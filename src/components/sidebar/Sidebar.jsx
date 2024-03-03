@@ -82,11 +82,11 @@ export default function Sidebar() {
           <div className="sidebarItemsExpanded">
             <div>
               <button
-                className={
+                className={`sidebar-menu-item ${
                   darkMode
                     ? "sidebar-btn-expanded-dark"
                     : "sidebar-btn-expanded"
-                }
+                }`}
                 onClick={handleToggleSidebar}
               >
                 <FontAwesomeIcon icon={faBars} />

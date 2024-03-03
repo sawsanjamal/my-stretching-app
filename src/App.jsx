@@ -161,17 +161,13 @@ export default function App() {
           },
         }}
       >
-        <div className={darkMode ? "on" : "off"}>
+        <div className={darkMode ? "dark-mode-on" : "dark-mode-off"}>
           <Navbar />
-          <div style={{ display: "flex" }}>
+          <div className="content-container">
             <Sidebar />
-            <div className="body">
+            <div className="outlet-container">
               {renderModal()}
-              <div
-                className={`${
-                  modalOpen || signUpModalOpen ? "blur" : ""
-                } outlet-container`}
-              >
+              <div className={modalOpen || signUpModalOpen ? "blur" : ""}>
                 <Outlet />
               </div>
             </div>

@@ -105,3 +105,55 @@
 .link {
   text-decoration: none;
 }
+
+@media (max-width: 1650px) {
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: sticky;
+    padding: 0.75rem;
+    top: 0px;
+    background-color: #1f2937;
+    align-items: center;
+    color: #fafafa;
+    z-index: 120;
+  }
+  .navbar-dark {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: sticky;
+    top: 0px;
+    padding: 0.75rem;
+    background-color: rgb(49, 47, 47);
+    align-items: center;
+    color: grey;
+    z-index: 120;
+  }
+  .account-dropdown {
+    position: absolute;
+    top: 70px;
+    right: 7px;
+    display: flex;
+    flex-direction: column;
+  }
+  .dropdown-btn {
+    border: none;
+    background-color: #1f2937;
+    color: #fafafa;
+    font-size: 0.85rem;
+    font-weight: bold;
+    padding: 0.6rem;
+    border-radius: 10px;
+  }
+  .dropdown-btn-dark {
+    border: none;
+    background-color: rgb(49, 47, 47);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: bold;
+    padding: 0.6rem;
+    border-radius: 10px;
+  }
+}
