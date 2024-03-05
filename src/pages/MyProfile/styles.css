@@ -59,10 +59,10 @@
   flex-direction: column;
   justify-content: space-between;
 }
-label {
+.my-profile-label {
   padding: 10px;
 }
-input {
+.my-profile-input {
   padding: 10px;
   border: none;
   border-radius: 10px;
