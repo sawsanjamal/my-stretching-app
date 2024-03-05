@@ -1,110 +1,82 @@
 * {
   box-sizing: border-box;
 }
-.on {
+.dark-mode-on {
   background-color: lightgrey;
-  color: black;
+  color: rgb(49, 47, 47);
+}
+.content-container {
+  display: flex;
 }
 body {
   margin: 0;
 }
 
-.off {
+.dark-mode-off {
   background-color: #fafafa;
   color: #1f2937;
 }
 
-.parentModal {
-  position: relative;
-  top: 150px;
-  left: 120px;
-}
-
-.childModal {
-  position: absolute;
-}
-
-.home-container {
-  position: fixed;
+.outlet-container {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
-}
-.human-body-front {
-  position: fixed;
-  top: 0;
-  left: 250px;
-}
-.human-body-back {
-  position: fixed;
-  top: 0;
-  left: 250px;
+  padding: 2rem;
+  min-height: 100vh;
 }
 .human-body-container {
-  position: fixed;
-  top: 200px;
-  left: 250px;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  height: 50%;
-  width: 80%;
-  border: 1px solid black;
+  justify-content: center;
+  background-color: rgba(212, 206, 206, 0.58);
+  padding: 1rem;
 }
-.home-toggle {
-  position: fixed;
-  top: 300px;
-  right: 200px;
-  width: 180x;
-  height: 40px;
-  align-self: flex-start;
-  /* z-index: 1; */
+.human-body-inner-container {
+  flex-grow: 1;
+}
+.human-body-model-container {
+  display: flex;
+  justify-content: center;
+}
+
+.span-gender-male {
+  padding-right: 0.5rem;
+}
+.span-gender-female {
+  padding-left: 0.5rem;
 }
 .btn-container {
-  position: fixed;
-  top: 300px;
-  right: 200px;
-  margin: 10px;
+  margin: 0.6rem;
   color: #fafafa;
-  padding: 10px;
-  font-size: 14px;
+  padding: 0.7rem;
+  font-size: 1rem;
   display: flex;
+  flex-direction: row;
   align-items: center;
   background-color: #1f2937;
   border-radius: 40px;
 }
 .btn-container-dark {
-  position: fixed;
-  top: 300px;
-  right: 200px;
-  margin: 10px;
+  margin: 0.6rem;
   color: #fafafa;
-  padding: 10px;
-  font-size: 14px;
+  padding: 0.7rem;
+  font-size: 1rem;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  background-color: black;
+  background-color: rgb(49, 47, 47);
   border-radius: 40px;
 }
 
-.article {
-  margin: 200px;
-  border: 1px solid black;
-  width: 20%;
-  height: 5%;
-  text-align: center;
-}
 .articles-container {
-  position: fixed;
-  bottom: 100px;
-  left: 250px;
   display: flex;
-  flex-direction: row;
-  width: 80%;
-  height: 30%;
   justify-content: center;
-  align-items: center;
-  border: 1px solid black;
+  margin-top: 3rem;
+}
+
+.home-page-title {
+  text-align: left;
+  margin-left: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid black;
 }

@@ -2,32 +2,32 @@ import "../styles.css";
 import { ArticlesContainer } from "../components/articles/articlesContainer";
 import { CategoriesContainer } from "../components/articles/categoriesContainer";
 import { AppContext } from "../App";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 export default function Articles() {
   const {
-    data: { user, articles },
-    methods: { setArticles },
+    data: { articles },
   } = useContext(AppContext);
+  const [category, setCategory] = useState(null);
 
-  function renderArticles(category) {
-    const selectedArticles = articles.filter((article) => {
-      return article.category === category;
-    });
-    setArticles(selectedArticles);
+  const articlesByCategory = articles.filter(
+    (article) => !category || article.category === category
+  );
+  function toggleCategory(selectedCategory) {
+    const value = category === selectedCategory ? null : selectedCategory;
+    setCategory(value);
   }
-  const userArticles = articles.map((article) => {
-    return { ...article, liked: user.articles.includes(article._id) };
-  });
+
   return (
     <>
-      <h1> Here are my articles </h1>
       <div className="articles-page">
-        <ArticlesContainer
-          userArticles={userArticles}
-          setArticles={setArticles}
+        {articles.length > 0 && (
+          <ArticlesContainer articles={articlesByCategory} />
+        )}
+        <CategoriesContainer
+          selectedCategory={category}
+          toggleCategory={toggleCategory}
         />
-        <CategoriesContainer renderArticles={renderArticles} />
       </div>
     </>
   );

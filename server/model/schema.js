@@ -3,12 +3,15 @@ const { Schema } = mongoose;
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { JWTSecret } = require("../config/keys");
+const { getExpiration } = require("../utils");
 
 const userSchema = new Schema({
   firstName: String,
   lastName: String,
   email: String,
   password: String,
+  profilePicture: String,
+  subscription: { tier: String, expiration: String || null },
   stretches: [{ type: Schema.Types.ObjectId, ref: "Stretch" }],
   articles: [{ type: Schema.Types.ObjectId, ref: "Article" }],
 });
@@ -53,6 +56,18 @@ userSchema.methods.toggleLikeArticle = function (articleId) {
   this.articles.push(articleId);
   this.save();
 };
+userSchema.methods.addProfilePicture = function (base64Image) {
+  this.profilePicture = base64Image;
+  this.save();
+  return;
+};
+userSchema.methods.changeSubscription = function (tier) {
+  this.subscription.tier = tier;
+  this.subscription.expiration = getExpiration(tier);
+  this.save();
+  return;
+};
+
 userSchema.methods.getLikedStretches = function () {
   const likedStretches = this.stretches;
   return likedStretches;

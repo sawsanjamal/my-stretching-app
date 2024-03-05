@@ -19,6 +19,18 @@ export async function authenticate() {
 export async function clearCookies() {
   return await baseApi.get("logout");
 }
+export async function addProfilePicture(options) {
+  const {
+    data: { user },
+  } = await baseApi.put("profilepicture", options);
+  return { user };
+}
+export async function changeSubscription(options) {
+  const {
+    data: { user },
+  } = await baseApi.put("users/subscription", options);
+  return { user };
+}
 
 export async function toggleLike(options) {
   const {

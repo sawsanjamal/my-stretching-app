@@ -6,95 +6,120 @@ import { AppContext } from "../../App";
 import { Link } from "react-router-dom";
 export function SearchModal({ setOpenModal }) {
   const {
-    data: { stretches },
+    data: { female, stretches, darkMode },
   } = useContext(AppContext);
   const inputRef = useRef(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [match, setMatch] = useState("");
-  const [stretchMatches, setStretchMatches] = useState([]);
-  const [stretchHovered, setStretchHovered] = useState(0);
-  function findMatch() {
-    const stretchMatches = stretches.filter((stretch) =>
-      stretch.name.toLowerCase().includes(searchQuery)
-    );
-    if (stretchMatches.length) {
-      setMatch(true);
-    } else {
-      setMatch(false);
-    }
-    setStretchMatches(stretchMatches);
-  }
+  const [selectedStretch, setSelectedStretch] = useState(null);
+
+  const stretchMatches = stretches.filter(
+    (stretch) =>
+      !searchQuery || stretch.name.toLowerCase().includes(searchQuery)
+  );
+
   function closeModal() {
     setOpenModal(false);
   }
   useEffect(() => {
     inputRef.current.focus();
   }, []);
+  useEffect(() => {
+    if (stretchMatches.length === 0 && selectedStretch !== null) {
+      setSelectedStretch(null);
+    }
+  }, [stretchMatches, selectedStretch]);
+
+  function findVideoMatch() {
+    if (female) {
+      return stretchMatches[selectedStretch]?.frontVideoFemale;
+    }
+    return stretchMatches[selectedStretch]?.frontVideo;
+  }
 
   return (
-    <dialog className={styles.searchModal}>
-      <CloseButton closeModal={closeModal} />
+    <dialog className={darkMode ? styles.searchModalDark : styles.searchModal}>
+      <CloseButton closeModal={closeModal} darkMode={darkMode} />
       <div className={styles.searchModalHeader}>
         <input
           ref={inputRef}
           className={styles.searchInputModal}
           type="search"
-          onChange={(e) => setSearchQuery(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") setSearchQuery(e.target.value);
-            findMatch();
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+            setSelectedStretch(0);
           }}
         />
-        <button onClick={findMatch} className={styles.searchBtnModal}>
+        <button className={styles.searchBtnModal}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
       </div>
 
       <div className={styles.searchModalBody}>
         <div className={styles.searchResultsContainer}>
-          {searchQuery && match
-            ? stretchMatches.map((stretch, i) => {
-                return (
-                  <div
-                    onMouseOver={() => {
-                      setStretchHovered(i);
-                    }}
-                    key={i}
-                    className={`${styles.searchOptions} ${
-                      stretchHovered === i ? styles.searchOptionsMatch : ""
-                    }`}
-                  >
-                    {stretch.name}
-                  </div>
-                );
-              })
-            : stretches.map((stretch, i) => {
-                return (
-                  <div key={i} className={styles.searchOptions}>
-                    {stretch.name}
-                  </div>
-                );
-              })}
+          {stretchMatches.map((stretch, i) => {
+            return (
+              <div
+                onMouseOver={() => {
+                  setSelectedStretch(i);
+                }}
+                key={i}
+                className={`${styles.searchOptions} ${
+                  selectedStretch === i ? styles.searchOptionsMatch : ""
+                }`}
+              >
+                {stretch.name}
+              </div>
+            );
+          })}
         </div>
-        <div className={styles.searchResults}>
-          {searchQuery && match && (
-            <div className={styles.searchResultsMatch}>
+        <div
+          className={darkMode ? styles.searchResultsDark : styles.searchResults}
+        >
+          {selectedStretch !== null && (
+            <div
+              className={
+                darkMode
+                  ? styles.searchResultsMatchDark
+                  : styles.searchResultsMatch
+              }
+            >
               <div className={styles.searchResult}>
-                <div>{"image"}</div>
-                <div>{stretchMatches[stretchHovered].name}</div>
+                <video
+                  className={styles.video}
+                  key={findVideoMatch()}
+                  controls
+                  loop
+                  autoPlay
+                >
+                  <source src={findVideoMatch()} type="video/mp4" />
+                </video>
+
+                <div>{stretchMatches[selectedStretch]?.name}</div>
               </div>
             </div>
           )}
-          {searchQuery && match && (
+
+          {stretchMatches[selectedStretch] && (
             <Link
-              to={`/stretches/${stretchMatches[stretchHovered]._id}`}
-              className={styles.searchModalOpenLink}
+              to={`/stretches/${stretchMatches[selectedStretch]._id}`}
+              className={
+                darkMode
+                  ? styles.searchModalOpenLinkDark
+                  : styles.searchModalOpenLink
+              }
             >
-              Open
+              <div onClick={closeModal}>Open</div>
             </Link>
           )}
-          {searchQuery && !match && (
-            <div className={styles.searchResultsMatch}>
+
+          {searchQuery && stretchMatches.length === 0 && (
+            <div
+              className={
+                darkMode
+                  ? styles.searchResultsMatchDark
+                  : styles.searchResultsMatch
+              }
+            >
               No Matches For This Stretch
             </div>
           )}
@@ -104,10 +129,13 @@ export function SearchModal({ setOpenModal }) {
   );
 }
 
-function CloseButton({ closeModal }) {
+function CloseButton({ closeModal, darkMode }) {
   return (
     <>
-      <button onClick={closeModal} className={styles.closeBtn}>
+      <button
+        onClick={closeModal}
+        className={darkMode ? styles.closeBtnDark : styles.closeBtn}
+      >
         x
       </button>
     </>

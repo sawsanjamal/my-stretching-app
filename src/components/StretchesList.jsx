@@ -1,36 +1,83 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles.css";
-import { v4 as uuid } from "uuid";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
-export default function StretchesList({ stretches, darkMode, handleLike }) {
+import LikeBtn from "./likeBtn/LikeBtn";
+import { useContext } from "react";
+import { AppContext } from "../App";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
+export default function StretchesList({ stretches }) {
+  const {
+    data: { darkMode, female, isLoading },
+  } = useContext(AppContext);
+
   return (
-    <>
-      <div className="stretches-example-container">
-        {(stretches || []).map((stretch) => {
+    <div className="stretches-example-container">
+      {!stretches.length ? (
+        <div />
+      ) : (
+        stretches.map((stretch, i) => {
           return (
-            <div key={uuid()} className="stretch-example">
-              <h1 className={darkMode ? "stretch-title-dark" : "stretch-title"}>
-                {stretch.name}
-                <button
-                  className={stretch.liked ? "hearted" : "nothearted"}
-                  onClick={() => handleLike(stretch._id)}
+            <div
+              key={i}
+              className={darkMode ? "stretch-example-dark" : "stretch-example"}
+            >
+              <div
+                className={
+                  darkMode
+                    ? "stretch-header-container-dark"
+                    : "stretch-header-container"
+                }
+              >
+                <h1
+                  className={darkMode ? "stretch-title-dark" : "stretch-title"}
                 >
-                  <FontAwesomeIcon icon={faHeart} />
-                </button>
-              </h1>
-              <div className="stretch-example-content">
-                <div>images</div>
-                <ul>
-                  {(stretch.steps || []).map((step) => {
-                    return <li key={uuid()}>{step}</li>;
-                  })}
-                </ul>
+                  {isLoading ? <Skeleton width="33%" /> : stretch.name}
+                </h1>
+                <LikeBtn selection={stretch} />
               </div>
+
+              <div>
+                <video
+                  src={female ? stretch.frontVideoFemale : stretch.frontVideo}
+                  type="video/mp4"
+                  className="video"
+                  controls
+                  autoPlay
+                >
+                  {isLoading && <Skeleton />}
+                </video>
+                <video
+                  src={female ? stretch.sideVideoFemale : stretch.sideVideo}
+                  type="video/mp4"
+                  className="video"
+                  controls
+                  autoPlay
+                >
+                  {isLoading && <Skeleton />}
+                </video>
+              </div>
+              <ul className="stretch-steps">
+                {(isLoading ? [{}, {}, {}] : stretch.steps).map((step, i) => {
+                  return (
+                    <li className="stretch-step" key={i}>
+                      <div className="number">
+                        {isLoading ? <Skeleton circle /> : i + 1}
+                      </div>
+
+                      {isLoading ? (
+                        <Skeleton containerClassName="stretch-step-skeleton" />
+                      ) : (
+                        step
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           );
-        })}
-      </div>
-    </>
+        })
+      )}
+    </div>
   );
 }

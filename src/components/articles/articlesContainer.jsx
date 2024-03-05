@@ -1,51 +1,88 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./styles.css";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { AppContext } from "../../App";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-export function ArticlesContainer({ userArticles }) {
+import LikeBtn from "../likeBtn/LikeBtn";
+import Pagination from "../pagination/Pagination";
+import Skeleton from "react-loading-skeleton";
+export function ArticlesContainer({ articles }) {
   const {
+    data: { darkMode, isLoadingArticle },
     methods: { handleLikeArticle },
   } = useContext(AppContext);
+  const [currentPage, setCurrentPage] = useState(1);
+  const POSTS_PER_PAGE = 6;
+  const indexOfLastPost = currentPage * POSTS_PER_PAGE;
+  const indexOfFirstPost = indexOfLastPost - POSTS_PER_PAGE;
+  const currentPosts = articles.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
-    <>
-      <div className="articles-page-container">
-        {userArticles.map((article, i) => {
-          return (
-            <SingleArticle
-              key={i}
-              handleLikeArticle={handleLikeArticle}
-              article={article}
-            />
-          );
-        })}
-      </div>
-    </>
+    <div className="articles-page-container">
+      {currentPosts.map((article, i) => {
+        return (
+          <SingleArticle
+            key={i}
+            handleLikeArticle={handleLikeArticle}
+            article={article}
+            isLoadingArticle={isLoadingArticle}
+            darkMode={darkMode}
+          />
+        );
+      })}
+      <Pagination
+        postsPerPage={POSTS_PER_PAGE}
+        totalPosts={articles.length}
+        paginate={paginate}
+        indexOfFirstPost={indexOfFirstPost}
+        indexOfLastPost={indexOfLastPost}
+      />
+    </div>
   );
 }
 
-export function SingleArticle({ handleLikeArticle, article }) {
+export function SingleArticle({
+  handleLikeArticle,
+  article,
+  isLoadingArticle,
+  darkMode,
+}) {
   const nav = useNavigate();
+
   return (
-    <div
-      onClick={() => nav(`/articles/${article._id}`)}
-      className="big-container"
-    >
-      <div className="article-container">
-        <div className="article-header">
-          <h1>{article.title}</h1>
-        </div>
-        <button
-          onClick={() => handleLikeArticle(article._id)}
-          className={article.liked ? "hearted" : "like-btn"}
-        >
-          <FontAwesomeIcon icon={faHeart} />
-        </button>
+    <div className={darkMode ? "big-container-dark" : "big-container"}>
+      <div className="article-image">
+        {isLoadingArticle ? (
+          <Skeleton width="400px" height="200px" />
+        ) : (
+          <img className="article-image-tag" src={article.image} />
+        )}
       </div>
+
       <div className="article-content">
-        <div>image</div>
-        <div>Article Content</div>
+        <div className="article-container">
+          <div
+            className="article-header"
+            onClick={() => nav(`/articles/${article._id}`)}
+          >
+            <h1 className="article-title">
+              {isLoadingArticle ? (
+                <Skeleton height="40px" width="380px" />
+              ) : (
+                article.title
+              )}
+            </h1>
+          </div>
+
+          <LikeBtn selection={article} handleLike={handleLikeArticle} />
+        </div>
+        <div className="article-body">
+          {isLoadingArticle ? (
+            <Skeleton height="60px" width="400px" />
+          ) : (
+            "Article Content"
+          )}
+        </div>
       </div>
     </div>
   );

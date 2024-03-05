@@ -1,45 +1,12 @@
-.human-front {
-  position: relative;
-  top: 450px;
-  left: 300px;
-  width: 500px;
-  height: 500px;
-  fill: #fafafa;
-  stroke-width: 0.2em;
-  stroke: black;
-}
-.human-front:hover,
-.human-stretches-front:hover {
-  cursor: pointer;
-}
-.human-back {
-  position: relative;
-  top: 450px;
-  left: 750px;
-  width: 500px;
-  height: 500px;
-  fill: #fafafa;
-  stroke-width: 0.2em;
-  stroke: black;
-}
+.human {
+  max-width: 575px;
 
-.human-back:hover,
-.human-stretches-back:hover {
+  fill: transparent;
+  margin: 0 1rem;
+}
+.human:hover {
   cursor: pointer;
 }
-.body-map-muscle:hover {
-  fill: #1f2937;
-}
-.human-stretches-back {
-  fill: #fafafa;
-  stroke-width: 0.2em;
-  stroke: black;
-  width: 500px;
-  height: 500px;
-}
-.human-stretches-front {
-  fill: #fafafa;
-  stroke-width: 0.2em;
-  stroke: black;
-  height: 500px;
+.selected {
+  fill: pink;
 }

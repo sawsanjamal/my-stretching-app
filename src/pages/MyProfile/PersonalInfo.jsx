@@ -1,0 +1,38 @@
+import { useContext, useState } from "react";
+import { AppContext } from "../../App";
+
+import { ImageCrop } from "./ImageCrop";
+
+export default function PersonalInfo() {
+  const [base64, setBase64] = useState();
+  const {
+    data: { user },
+  } = useContext(AppContext);
+  return (
+    <div className="info-section">
+      <h1>Personal Information</h1>
+      <div className="pic">
+        <ImageCrop base64={base64} setBase64={setBase64} />
+      </div>
+      <div className="input-fields"></div>
+      <label>
+        First Name{" "}
+        <div>
+          <input name="firstname" defaultValue={user.firstName} />
+        </div>
+      </label>
+      <label>
+        Last Name{" "}
+        <div>
+          <input name="lastname" defaultValue={user.lastName} />
+        </div>
+      </label>
+      <label>
+        Email{" "}
+        <div>
+          <input name="email" defaultValue={user.email} />
+        </div>
+      </label>
+    </div>
+  );
+}

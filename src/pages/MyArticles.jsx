@@ -26,10 +26,9 @@ export default function MyArticles() {
   return (
     <div>
       <div className="my-stretches-page">
-        <h1> Here Are My Liked Articles </h1>
         <ArticlesContainer
           handleLikeArticle={handleLikeArticle}
-          userArticles={currentPosts}
+          articles={currentPosts}
         />
         <Pagination
           postsPerPage={postsPerPage}

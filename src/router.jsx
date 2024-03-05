@@ -8,15 +8,14 @@ import MyStretches from "./pages/MyStretches";
 import MyArticles from "./pages/MyArticles";
 import Stretch from "./pages/Stretch";
 import Article from "./pages/Article";
+import Checkout from "./components/checkout/Checkout";
+import MyProfile from "./pages/MyProfile/MyProfile";
 
 export const router = createBrowserRouter([
   {
     element: <App />,
     children: [
       { index: true, element: <Home /> },
-      { path: "/success", element: <Home /> },
-      { path: "/successlogin", element: <Home /> },
-
       { path: "/signup", element: <Signup /> },
       { path: "/articles", element: <Articles /> },
       { path: "/stretches", element: <Stretches /> },
@@ -24,6 +23,8 @@ export const router = createBrowserRouter([
       { path: "/articles/:id", element: <Article /> }, // make this a child of `/stretches`
       { path: "/mystretches", element: <MyStretches /> },
       { path: "/myarticles", element: <MyArticles /> },
+      { path: "/checkout/:subscriptionTier", element: <Checkout /> },
+      { path: "/myprofile", element: <MyProfile /> },
     ],
   },
 ]);

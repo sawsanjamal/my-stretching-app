@@ -1,41 +1,45 @@
-.form-content-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
+:root {
+  --background-color: #1f2937;
 }
-
-.form-bottom-section {
+.form-content-header {
+  margin-bottom: 2px;
+  padding: 0px;
+}
+.form-content {
   display: flex;
   flex-direction: column;
 }
-.form-submit-btn:hover {
-  opacity: 0.7;
-  cursor: pointer;
+.form-bottom-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+.btn-container-modal {
+  width: 100%;
+  color: #fafafa;
+  justify-content: flex-end;
+  padding: 0.7rem;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .form-close-btn {
-  background-color: #1f2937;
-  border-radius: 5px;
+  background-color: var(--background-color);
   color: #fafafa;
   border: none;
-  padding: 6px;
-  margin-right: 40px;
-  width: 30vw;
-  text-align: end;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 1.1rem;
+  width: 10%;
 }
 .form-close-btn-dark {
-  background-color: black;
-  border-radius: 5px;
-  color: grey;
+  background-color: rgb(49, 47, 47);
+  color: #fafafa;
   border: none;
-  padding: 6px;
-  margin-right: 40px;
-  width: 30vw;
-  text-align: end;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 1.1rem;
+  width: 10%;
 }
 .form-close-btn:hover,
 .form-close-btn-dark:hover {
@@ -43,36 +47,25 @@
   cursor: pointer;
 }
 
-h1 {
-  font-size: 30px;
-  text-align: center;
-}
-.form-submit-btn {
-  border-radius: 5px;
-  background-color: #fafafa;
-  color: #1f2937;
-  padding: 7px;
-  text-align: center;
-  width: 6vw;
-  border: none;
-  font-size: 17px;
-  margin-bottom: 10px;
-}
 .form-option-btn {
   border-radius: 5px;
   background-color: #fafafa;
-  color: #1f2937;
-  padding: 7px;
+  color: var(--background-color);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
   text-align: center;
-  width: 6vw;
+  width: 6.5rem;
   border: none;
-  font-size: 15px;
+  font-size: 1rem;
 }
-
+.form-input {
+  height: 2rem;
+  font-size: 1rem;
+}
 .form-input:focus,
 .form-option-btn:focus {
   opacity: 0.85;
-  color: #1f2937;
+  color: var(--background-color);
   outline-color: #4a5369;
 }
 .form-input:hover {
@@ -80,105 +73,101 @@ h1 {
 }
 
 .showForm {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
-  background-color: #1f2937;
-  height: 100%;
-  width: 100%;
-  font-size: 23px;
+  background-color: var(--background-color);
+  font-size: 0.7rem;
   color: #fafafa;
   border-radius: 8px;
+}
+.signup-header {
+  font-size: 1.5rem;
 }
 .showForm-dark {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
-  background-color: black;
-  height: 100%;
-  width: 100%;
-  font-size: 23px;
-  color: grey;
+  background-color: rgb(49, 47, 47);
+  max-height: 50rem;
+  font-size: 1rem;
+  color: #fafafa;
   border-radius: 8px;
+  flex-grow: 1;
 }
 .formContent {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 20rem;
+  height: 5rem;
 }
 .dialog {
-  position: fixed;
-  top: 350px;
-  left: 300px;
-  height: 35%;
-  width: 40%;
+  position: absolute;
+  top: 15rem;
+  left: 15rem;
   border: none;
   background-color: transparent;
   z-index: 2;
+  width: 60%;
 }
 
 .top-layer-card-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
   display: flex;
-  align-items: start;
-  justify-content: center;
-  z-index: 100;
+  z-index: 80;
+  position: absolute;
+  width: 90%;
 }
 .top-layer-card {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 3.124rem;
+  flex-grow: 1;
 }
 .cards {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 40%;
 }
 .individual-card {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  padding: 20px;
-  margin: 30px;
+  padding: 3rem;
+  margin: 3rem;
   border-radius: 20px;
-  background-color: #1f2937;
+  background-color: var(--background-color);
   color: #fafafa;
+  max-width: 50rem;
+  min-width: 20rem;
 }
 .individual-card-dark {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  padding: 20px;
-  margin: 30px;
+  padding: 3.124rem;
+  margin: 3.124rem;
   border-radius: 20px;
-  background-color: black;
+  background-color: rgb(49, 47, 47);
   color: white;
 }
 .card-btn {
   border: none;
-  padding: 15px;
-  color: #1f2937;
+  padding: 1rem;
+  color: var(--background-color);
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 1.1rem;
+  text-align: center;
 }
 .card-btn-dark {
   border: none;
-  padding: 15px;
-  color: black;
+  padding: 1rem;
+  color: rgb(49, 47, 47);
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 1.1rem;
   background-color: white;
 }
 .card-btn:hover,
@@ -188,16 +177,69 @@ h1 {
   transition: 0.3s ease-in-out;
   transform: scale(1.2);
 }
-
-.list {
-  list-style: none;
+.subscription-title {
   text-align: center;
-  font-size: 17px;
-  white-space: nowrap;
+  font-size: 1.75rem;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+  list-style: none;
+  font-size: 1.1rem;
+  padding: 0.625rem;
+}
+.modal-list {
+  padding: 1rem;
+  font-size: 1.1rem;
+  background-color: white;
+  color: var(--background-color);
+  margin: 0.625rem;
+  border-radius: 10px;
 }
 
 .individual-card:hover {
   cursor: pointer;
   transition: all 0.5s ease-in-out;
-  transform: translateY(-10px);
+  transform: translateY(-0.625rem);
+}
+.dropdown {
+  border-radius: 5px;
+  background-color: #fafafa;
+  color: var(--background-color);
+  padding: 0.5rem;
+  text-align: center;
+  border: none;
+  font-size: 1rem;
+}
+.form-submit-btn:hover,
+.dropdown:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+.form-submit-btn {
+  border-radius: 5px;
+  background-color: #fafafa;
+  color: var(--background-color);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  width: 6.5rem;
+  border: none;
+  font-size: 1rem;
+}
+.menu-items {
+  display: block;
+  text-decoration: none;
+  color: #fafafa;
+  background-color: var(--background-color);
+}
+
+.disabled-card {
+  pointer-events: none;
+  opacity: 0.8;
+}
+.account-subscription-title {
+  font-size: 2.5rem;
 }
