@@ -31,25 +31,12 @@ export default function Stretches() {
 
   return (
     <>
-      <h1 className="stretches-header"> Here Are My Stretches </h1>
       <div className="stretches-page">
-        <div className="stretches-list">
-          {userStretches.length > 0 && (
-            <StretchesList
-              darkMode={darkMode}
-              handleLike={handleLike}
-              stretches={currentPosts}
-            />
-          )}
-
-          <Pagination
-            postsPerPage={POSTS_PER_PAGE}
-            totalPosts={selectedStretches.length}
-            paginate={paginate}
-            indexOfFirstPost={indexOfFirstPost}
-            indexOfLastPost={indexOfLastPost}
-          />
-        </div>
+        <StretchesList
+          darkMode={darkMode}
+          handleLike={handleLike}
+          stretches={currentPosts}
+        />
         <StretchesSideBar
           female={female}
           darkMode={darkMode}
@@ -59,6 +46,13 @@ export default function Stretches() {
           selectedStretches={selectedStretches}
         />
       </div>
+      <Pagination
+        postsPerPage={POSTS_PER_PAGE}
+        totalPosts={selectedStretches.length}
+        paginate={paginate}
+        indexOfFirstPost={indexOfFirstPost}
+        indexOfLastPost={indexOfLastPost}
+      />
     </>
   );
 }

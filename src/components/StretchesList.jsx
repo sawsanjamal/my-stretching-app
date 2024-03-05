@@ -9,53 +9,52 @@ import "react-loading-skeleton/dist/skeleton.css";
 export default function StretchesList({ stretches }) {
   const {
     data: { darkMode, female, isLoading },
-    methods: { handleLike },
   } = useContext(AppContext);
 
   return (
     <div className="stretches-example-container">
-      {stretches.map((stretch, i) => {
-        return (
-          <div
-            key={i}
-            className={darkMode ? "stretch-example-dark" : "stretch-example"}
-          >
+      {!stretches.length ? (
+        <div />
+      ) : (
+        stretches.map((stretch, i) => {
+          return (
             <div
-              className={
-                darkMode
-                  ? "stretch-header-container-dark"
-                  : "stretch-header-container"
-              }
+              key={i}
+              className={darkMode ? "stretch-example-dark" : "stretch-example"}
             >
-              <h1 className={darkMode ? "stretch-title-dark" : "stretch-title"}>
-                {isLoading ? <Skeleton width="33%" /> : stretch.name}
-              </h1>
-              <LikeBtn selection={stretch} handleLike={handleLike} />
-            </div>
+              <div
+                className={
+                  darkMode
+                    ? "stretch-header-container-dark"
+                    : "stretch-header-container"
+                }
+              >
+                <h1
+                  className={darkMode ? "stretch-title-dark" : "stretch-title"}
+                >
+                  {isLoading ? <Skeleton width="33%" /> : stretch.name}
+                </h1>
+                <LikeBtn selection={stretch} />
+              </div>
 
-            <div className="stretch-example-content">
-              <div className="videos">
-                <video className="video" controls autoPlay>
-                  {isLoading ? (
-                    <Skeleton />
-                  ) : (
-                    <source
-                      src={
-                        female ? stretch.frontVideoFemale : stretch.frontVideo
-                      }
-                      type="video/mp4"
-                    />
-                  )}
+              <div>
+                <video
+                  src={female ? stretch.frontVideoFemale : stretch.frontVideo}
+                  type="video/mp4"
+                  className="video"
+                  controls
+                  autoPlay
+                >
+                  {isLoading && <Skeleton />}
                 </video>
-                <video className="video" controls autoPlay>
-                  {isLoading ? (
-                    <Skeleton />
-                  ) : (
-                    <source
-                      src={female ? stretch.sideVideoFemale : stretch.sideVideo}
-                      type="video/mp4"
-                    />
-                  )}
+                <video
+                  src={female ? stretch.sideVideoFemale : stretch.sideVideo}
+                  type="video/mp4"
+                  className="video"
+                  controls
+                  autoPlay
+                >
+                  {isLoading && <Skeleton />}
                 </video>
               </div>
               <ul className="stretch-steps">
@@ -76,9 +75,9 @@ export default function StretchesList({ stretches }) {
                 })}
               </ul>
             </div>
-          </div>
-        );
-      })}
+          );
+        })
+      )}
     </div>
   );
 }

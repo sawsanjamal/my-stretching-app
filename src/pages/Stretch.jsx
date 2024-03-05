@@ -4,26 +4,23 @@ import { useContext } from "react";
 import StretchesList from "../components/StretchesList";
 import { useParams } from "react-router-dom";
 
-// pull dynamic url param :id
 export default function Stretch() {
   const {
-    data: { stretches, darkMode },
-    methods: { handleLike },
+    data: { user, stretches, darkMode },
   } = useContext(AppContext);
   const { id } = useParams();
-  const stretchesMatch = stretches.filter((stretch) => stretch._id === id);
+
+  const stretchesMatch = stretches
+    .filter((stretch) => stretch._id === id)
+    .map((stretch) => ({
+      ...stretch,
+      liked: user.stretches.includes(stretch._id),
+    }));
 
   return (
     <div className="stretches-page-container">
-      <h1> Here Is The Selected Stretch </h1>
       <div className="stretches-page">
-        <div className="stretches-list">
-          <StretchesList
-            darkMode={darkMode}
-            handleLike={handleLike}
-            stretches={stretchesMatch}
-          />
-        </div>
+        <StretchesList darkMode={darkMode} stretches={stretchesMatch} />
       </div>
     </div>
   );

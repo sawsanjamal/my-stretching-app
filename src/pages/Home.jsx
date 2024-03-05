@@ -54,6 +54,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <h1 className="home-page-title"> Featured Content</h1>
       <div className="articles-container">
         {articles.slice(0, 3).map((article, i) => {
           return (

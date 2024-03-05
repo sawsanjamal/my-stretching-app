@@ -70,12 +70,6 @@ export const ImageCrop = () => {
               onChange={onFileInputChange}
               accept="image/png,image/jpeg,image/gif"
             />
-            <button
-              className="change-btn"
-              onClick={() => fileRef.current?.click()}
-            >
-              Select New Image
-            </button>
           </div>
           <div className="btn-bar">
             <button className="crop-btn" onClick={onCrop}>
@@ -83,6 +77,12 @@ export const ImageCrop = () => {
             </button>
             <button className="crop-btn" onClick={removeImage}>
               Remove Image
+            </button>
+            <button
+              className="crop-btn"
+              onClick={() => fileRef.current?.click()}
+            >
+              Select New Image
             </button>
           </div>
         </div>

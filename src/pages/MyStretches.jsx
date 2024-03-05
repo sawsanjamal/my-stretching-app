@@ -27,8 +27,6 @@ export default function MyStretches() {
   return (
     <div>
       <div className="my-stretches-page">
-        <h1 className="stretches-header"> Here Are My Liked Stretches </h1>
-
         <StretchesList
           darkMode={darkMode}
           handleLike={handleLike}

@@ -26,7 +26,6 @@ export default function MyArticles() {
   return (
     <div>
       <div className="my-stretches-page">
-        <h1 className="article-page-header"> Here Are My Liked Articles </h1>
         <ArticlesContainer
           handleLikeArticle={handleLikeArticle}
           articles={currentPosts}

@@ -1,8 +1,7 @@
 .human {
   max-width: 575px;
-  fill: #fafafa;
-  stroke-width: 0.2em;
-  stroke: black;
+
+  fill: transparent;
   margin: 0 1rem;
 }
 .human:hover {
@@ -11,29 +10,3 @@
 .selected {
   fill: pink;
 }
-/* @media (max-width: 1719px) {
-  .human-front {
-    width: 85%;
-    height: 85%;
-    padding: 0;
-    margin: 0;
-    fill: #fafafa;
-    stroke-width: 0.2em;
-    stroke: black;
-  }
-  .human-back {
-    width: 85%;
-    height: 85%;
-    fill: #fafafa;
-    stroke-width: 0.2em;
-    stroke: black;
-    padding: 0;
-    margin: 0;
-  }
-}
-.human-back:hover {
-  cursor: pointer;
-}
-.body-map-muscle:hover {
-  fill: #1f2937;
-} */

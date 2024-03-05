@@ -1,9 +1,10 @@
 .articles-page-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  width: 70rem;
+  min-width: 50rem;
   height: 60rem;
   grid-gap: 1rem;
+  flex-grow: 1;
 }
 .big-container {
   display: flex;
@@ -15,7 +16,7 @@
   margin: 0 1rem;
   border-radius: 10px;
   max-height: 30rem;
-  max-width: 450px;
+  max-width: 30rem;
 }
 .big-container-dark {
   display: flex;
@@ -27,7 +28,7 @@
   margin: 0 1rem;
   border-radius: 10px;
   max-height: 30rem;
-  max-width: 450px;
+  max-width: 30rem;
 }
 .article-container {
   display: flex;
@@ -71,7 +72,7 @@
 }
 .categories-container {
   border: 1px solid #1f2937;
-  width: 17rem;
+  min-width: 17rem;
   height: 22rem;
   margin-left: 1.2rem;
   padding: 1rem;

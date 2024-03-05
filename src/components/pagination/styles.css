@@ -2,7 +2,7 @@
   position: fixed;
   margin: 0 auto;
   bottom: 0.68rem;
-  width: 90rem;
+  width: 90%;
   height: 4rem;
   background-color: #1f2937;
   display: flex;
@@ -16,33 +16,7 @@
   position: fixed;
   margin: 0 auto;
   bottom: 0.68rem;
-  width: 80rem;
-  height: 4rem;
-  background-color: rgb(49, 47, 47);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 6.2rem;
-  border-radius: 5px;
-}
-.pagination-nav-selected {
-  margin: 0 auto;
-  bottom: 0.68rem;
-  width: 80rem;
-  height: 4rem;
-  background-color: #1f2937;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 6.2rem;
-  border-radius: 5px;
-}
-.pagination-nav-dark-selected {
-  margin: 0 auto;
-  bottom: 0.68rem;
-  width: 80rem;
+  width: 90%;
   height: 4rem;
   background-color: rgb(49, 47, 47);
   display: flex;

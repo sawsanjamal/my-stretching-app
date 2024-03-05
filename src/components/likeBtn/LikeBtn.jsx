@@ -1,8 +1,13 @@
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./styles.css";
+import { useContext } from "react";
+import { AppContext } from "../../App";
 
-export default function LikeBtn({ selection, handleLike }) {
+export default function LikeBtn({ selection }) {
+  const {
+    methods: { handleLike },
+  } = useContext(AppContext);
   return (
     <button
       className={"like-btn" && selection.liked ? "hearted" : "nothearted"}

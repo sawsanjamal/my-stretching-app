@@ -13,6 +13,7 @@
   text-align: center;
   position: sticky;
   left: 0px;
+
   width: fit-content;
   color: #fafafa;
   padding: 0 1.75rem;
@@ -127,69 +128,4 @@
 .sidebar-menu-item:hover {
   cursor: pointer;
   opacity: 0.7;
-}
-@media (max-width: 1650px) {
-  .sidebar {
-    background-color: #1f2937;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    position: sticky;
-    left: 0px;
-    width: fit-content;
-    color: #fafafa;
-    padding: 0 1.25rem;
-  }
-  .sidebar-dark {
-    background-color: rgb(49, 47, 47);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    position: sticky;
-    left: 0px;
-    width: fit-content;
-    color: #fafafa;
-    padding: 0 1.25rem;
-  }
-  .collapsed-title {
-    font-size: 1rem;
-    margin: 2rem 0;
-  }
-  .btn-title {
-    font-size: 1.15rem;
-    text-wrap: nowrap;
-  }
-  .sidebar-btn {
-    font-size: 1.15rem;
-    padding: 0 1rem;
-    background-color: #1f2937;
-    border: none;
-    color: #fafafa;
-  }
-  .sidebar-btn-dark {
-    font-size: 1.15rem;
-    padding: 0 1rem;
-    background-color: rgb(49, 47, 47, 1);
-    border: none;
-    color: white;
-  }
-  .sidebar-btn-expanded {
-    font-size: 1.25rem;
-    padding: 0 1rem;
-    background-color: #1f2937;
-    border: none;
-    color: #fafafa;
-  }
-
-  .sidebar-btn-expanded-dark {
-    font-size: 1.25rem;
-    padding: 0 1rem;
-    background-color: rgb(49, 47, 47, 1);
-    border: none;
-    color: white;
-  }
 }

@@ -1,11 +1,10 @@
 .my-profile-container {
-  background-color: white;
   color: #1f2937;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: flex-start;
-  height: 100%;
+  height: 100vh;
   width: 100%;
 }
 .container {
@@ -13,10 +12,10 @@
   padding: 50px;
   width: 100%;
   height: 80%;
-  border: 1px solid black;
+  border: 3px solid black;
 }
 .profile-management-container {
-  font-size: 35px;
+  font-size: 2rem;
   padding: 20px;
   height: 50%;
 }
@@ -30,20 +29,19 @@
 .profile-li {
   padding: 10px;
   width: 50%;
-  background-color: grey;
+  border: 2px solid grey;
   margin: 10px;
   border-radius: 10px;
-  border: none;
 }
 
 .profile-li:hover {
   opacity: 0.7;
   cursor: pointer;
+  background-color: rgba(161, 156, 156, 0.795);
 }
 
 .info-section {
-  font-size: 35px;
-  padding: 20px;
+  font-size: 2rem;
   height: 50%;
   display: flex;
   flex-direction: column;
@@ -54,7 +52,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
   align-items: center;
 }
 .input-fields-ep {
@@ -67,11 +64,13 @@ label {
 }
 input {
   padding: 10px;
+  border: none;
   border-radius: 10px;
-  font-size: 20px;
+  font-size: 1.2rem;
   text-wrap: wrap;
+  background-color: transparent;
+  border: 1px solid black;
 }
-
 .pic {
   padding: 30px 0px;
   border-bottom: 1px solid black;
@@ -86,7 +85,6 @@ input {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 100%;
 }
 
 .pic-container {
@@ -102,8 +100,10 @@ input {
   border: none;
   border-radius: 10px;
   padding: 10px;
-  font-size: 20px;
-  margin-top: 30px;
+  font-size: 1.25rem;
+  text-wrap: nowrap;
+  margin-top: 2rem;
+  margin-right: 0.5rem;
 }
 .subscription-btn,
 .subscription-btn-active,
@@ -112,38 +112,18 @@ input {
   border: none;
   border-radius: 10px;
   padding: 15px;
-  font-size: 20px;
+  font-size: 1.2rem;
   align-self: center;
 }
 .change-subscription-btn {
   width: 50%;
-  font-size: 25px;
+  font-size: 1.2rem;
 }
 .subscription-btn-active {
   background-color: rgb(85, 167, 85);
   text-wrap: wrap;
 }
-h3 {
-  font-size: 30px;
-}
-.change-btn {
-  border: none;
-  padding: 33px;
-  border-bottom-right-radius: 999px;
-  border-bottom-left-radius: 999px;
-  z-index: 100;
-  font-size: 15px;
-  opacity: 0.7;
-}
-.change-container {
-  position: absolute;
-  bottom: 71px;
-}
 
-.change-btn:hover {
-  opacity: 1;
-  cursor: pointer;
-}
 .upload-btn:hover,
 .crop-btn:hover,
 .subscription-btn:hover,
@@ -160,5 +140,5 @@ h3 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 30%;
+  width: 60%;
 }

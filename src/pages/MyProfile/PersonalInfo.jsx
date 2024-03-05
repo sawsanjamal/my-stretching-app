@@ -12,11 +12,6 @@ export default function PersonalInfo() {
     <div className="info-section">
       <h1>Personal Information</h1>
       <div className="pic">
-        {/* {user.profilePicture && (
-          <div className="pic-container">
-            <img className="cropper-view-box" src={user.profilePicture} />
-          </div>
-        )} */}
         <ImageCrop base64={base64} setBase64={setBase64} />
       </div>
       <div className="input-fields"></div>
