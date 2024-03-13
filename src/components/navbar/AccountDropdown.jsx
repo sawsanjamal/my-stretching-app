@@ -25,7 +25,7 @@ export function AccountDropdown() {
             className="personal-dropdown-item"
             onClick={() => setOpenDropdown(false)}
           >
-            <Link to="mystretches" className="link">
+            <Link to="stretches/mystretches" className="link">
               My Stretches
             </Link>
           </div>
@@ -34,7 +34,7 @@ export function AccountDropdown() {
             onClick={() => setOpenDropdown(false)}
           >
             {" "}
-            <Link to="myarticles" className="link">
+            <Link to="articles/myarticles" className="link">
               My Articles
             </Link>
           </div>

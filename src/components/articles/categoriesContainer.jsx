@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../../App";
+import { Button } from "../buttons/Button";
 
 export function CategoriesContainer({ toggleCategory, selectedCategory }) {
   const {
@@ -21,19 +22,14 @@ export function CategoriesContainer({ toggleCategory, selectedCategory }) {
         <div className={darkMode ? "categories-list-dark" : "categories-list"}>
           {categoriesArray.map((category, i) => {
             return (
-              <button
+              <Button
                 key={i}
-                onClick={() => {
-                  toggleCategory(category);
-                }}
-                className={
-                  selectedCategory === category
-                    ? "categories-btn-selected"
-                    : "categories-btn"
-                }
+                toggleCategory={toggleCategory}
+                selectedCategory={selectedCategory}
+                category={category}
               >
                 {category}
-              </button>
+              </Button>
             );
           })}
         </div>

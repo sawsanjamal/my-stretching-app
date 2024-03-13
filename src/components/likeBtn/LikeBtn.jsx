@@ -10,7 +10,7 @@ export default function LikeBtn({ selection }) {
   } = useContext(AppContext);
   return (
     <button
-      className={"like-btn" && selection.liked ? "hearted" : "nothearted"}
+      className={selection.liked ? "hearted" : "nothearted"}
       onClick={() => handleLike(selection._id)}
     >
       <FontAwesomeIcon icon={faHeart} />

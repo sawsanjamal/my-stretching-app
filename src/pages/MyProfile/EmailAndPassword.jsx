@@ -9,16 +9,24 @@ export default function EmailAndPassword() {
     <div className="info-section">
       <h1>Email & Password</h1>
       <div className="input-fields-ep">
-        <label>
+        <label className="my-profile-label">
           Email{" "}
           <div>
-            <input type="email" defaultValue={user.email} />
+            <input
+              className="my-profile-input"
+              type="email"
+              defaultValue={user.email}
+            />
           </div>
         </label>
-        <label>
+        <label className="my-profile-label">
           Password
           <div>
-            <input type="password" defaultValue={user.password}></input>
+            <input
+              className="my-profile-input"
+              type="password"
+              defaultValue={user.password}
+            ></input>
           </div>
         </label>
       </div>

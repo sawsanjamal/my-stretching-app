@@ -1,10 +1,14 @@
 .nothearted {
   color: pink;
-  padding: 5px;
-  border-radius: 10px;
+  border-radius: 1000px;
+  padding: 0.75rem;
   border: none;
-
-  height: 25px;
+}
+.hearted {
+  color: fuchsia;
+  border-radius: 1000px;
+  padding: 0.75rem;
+  border: none;
 }
 .nothearted:hover,
 .hearted:hover {
@@ -12,12 +16,4 @@
   opacity: 0.7;
   transition: 0.3s ease-in-out;
   transform: scale(1.2);
-}
-.hearted {
-  color: fuchsia;
-  background-color: none;
-  padding: 5px;
-  border-radius: 10px;
-  border: none;
-  height: 25px;
 }

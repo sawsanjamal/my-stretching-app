@@ -1,7 +1,7 @@
 import "../styles.css";
 import { AppContext } from "../App";
 import { useContext, useState } from "react";
-import StretchesList from "../components/StretchesList";
+import StretchesList from "../components/stretches/StretchesList";
 import Pagination from "../components/pagination/Pagination";
 
 export default function MyStretches() {

@@ -73,8 +73,6 @@ export function SingleArticle({
               )}
             </h1>
           </div>
-
-          <LikeBtn selection={article} handleLike={handleLikeArticle} />
         </div>
         <div className="article-body">
           {isLoadingArticle ? (
@@ -83,6 +81,9 @@ export function SingleArticle({
             "Article Content"
           )}
         </div>
+      </div>
+      <div className="like-btn-container">
+        <LikeBtn selection={article} handleLike={handleLikeArticle} />
       </div>
     </div>
   );

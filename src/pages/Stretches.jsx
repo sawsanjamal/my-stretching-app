@@ -6,12 +6,13 @@ import { ToggleSwitch } from "../components/toggle/ToggleSwitch";
 import { FemaleHumanFront } from "../components/humanBody/femaleHumanFront";
 import { FemaleHumanBack } from "../components/humanBody/femaleHumanBack";
 import { AppContext } from "../App";
-import StretchesList from "../components/StretchesList";
+import StretchesList from "../components/stretches/StretchesList";
 import Pagination from "../components/pagination/Pagination";
+import { StretchesSkeleton } from "../components/stretches/StretchesSkeleton";
 
 export default function Stretches() {
   const {
-    data: { female, user, stretches, darkMode, muscleGroup },
+    data: { female, user, stretches, darkMode, muscleGroup, isLoading },
     methods: { setFemale, handleLike, toggleMuscleGroup },
   } = useContext(AppContext);
   const [currentPage, setCurrentPage] = useState(1);
@@ -32,11 +33,15 @@ export default function Stretches() {
   return (
     <>
       <div className="stretches-page">
-        <StretchesList
-          darkMode={darkMode}
-          handleLike={handleLike}
-          stretches={currentPosts}
-        />
+        {isLoading ? (
+          <StretchesSkeleton />
+        ) : (
+          <StretchesList
+            darkMode={darkMode}
+            handleLike={handleLike}
+            stretches={currentPosts}
+          />
+        )}
         <StretchesSideBar
           female={female}
           darkMode={darkMode}

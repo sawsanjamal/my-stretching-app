@@ -1,14 +1,16 @@
-import "../styles.css";
-
-import LikeBtn from "./likeBtn/LikeBtn";
-import { useContext } from "react";
-import { AppContext } from "../App";
-import Skeleton from "react-loading-skeleton";
+import "../../styles.css";
+import LikeBtn from "../likeBtn/LikeBtn";
+import { AppContext } from "../../App";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useContext } from "react";
 
 export default function StretchesList({ stretches }) {
+  return <StretchesListItems stretches={stretches} />;
+}
+
+function StretchesListItems({ stretches }) {
   const {
-    data: { darkMode, female, isLoading },
+    data: { darkMode, female },
   } = useContext(AppContext);
 
   return (
@@ -32,44 +34,34 @@ export default function StretchesList({ stretches }) {
                 <h1
                   className={darkMode ? "stretch-title-dark" : "stretch-title"}
                 >
-                  {isLoading ? <Skeleton width="33%" /> : stretch.name}
+                  {stretch.name}
                 </h1>
                 <LikeBtn selection={stretch} />
               </div>
 
-              <div>
+              <div className="video-container">
                 <video
                   src={female ? stretch.frontVideoFemale : stretch.frontVideo}
                   type="video/mp4"
                   className="video"
                   controls
                   autoPlay
-                >
-                  {isLoading && <Skeleton />}
-                </video>
+                ></video>
                 <video
                   src={female ? stretch.sideVideoFemale : stretch.sideVideo}
                   type="video/mp4"
                   className="video"
                   controls
                   autoPlay
-                >
-                  {isLoading && <Skeleton />}
-                </video>
+                ></video>
               </div>
+
               <ul className="stretch-steps">
-                {(isLoading ? [{}, {}, {}] : stretch.steps).map((step, i) => {
+                {stretch.steps.map((step, i) => {
                   return (
                     <li className="stretch-step" key={i}>
-                      <div className="number">
-                        {isLoading ? <Skeleton circle /> : i + 1}
-                      </div>
-
-                      {isLoading ? (
-                        <Skeleton containerClassName="stretch-step-skeleton" />
-                      ) : (
-                        step
-                      )}
+                      <div className="number">{i + 1}</div>
+                      {step}
                     </li>
                   );
                 })}

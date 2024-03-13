@@ -15,22 +15,34 @@ export default function PersonalInfo() {
         <ImageCrop base64={base64} setBase64={setBase64} />
       </div>
       <div className="input-fields"></div>
-      <label>
+      <label className="my-profile-label">
         First Name{" "}
         <div>
-          <input name="firstname" defaultValue={user.firstName} />
+          <input
+            className="my-profile-input"
+            name="firstname"
+            defaultValue={user.firstName}
+          />
         </div>
       </label>
-      <label>
+      <label className="my-profile-label">
         Last Name{" "}
         <div>
-          <input name="lastname" defaultValue={user.lastName} />
+          <input
+            className="my-profile-input"
+            name="lastname"
+            defaultValue={user.lastName}
+          />
         </div>
       </label>
-      <label>
+      <label className="my-profile-label">
         Email{" "}
         <div>
-          <input name="email" defaultValue={user.email} />
+          <input
+            className="my-profile-input"
+            name="email"
+            defaultValue={user.email}
+          />
         </div>
       </label>
     </div>
