@@ -60,6 +60,10 @@
 .article-header {
   padding: 5px;
 }
+.like-btn-container {
+  display: flex;
+  justify-content: end;
+}
 .categories-container-dark {
   border: 1px solid rgb(49, 47, 47);
   width: 17rem;
@@ -94,37 +98,7 @@
   justify-content: space-between;
   background-color: #1f2937;
 }
-.categories-btn {
-  border: none;
-  background-color: inherit;
-  color: #1f2937;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 7px;
-  background-color: #fafafa;
-  margin-left: 10px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-}
-.categories-btn-selected {
-  border: none;
-  background-color: inherit;
-  color: #1f2937;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 7px;
-  background-color: lightgray;
-  box-shadow: 0 0 2px 2px silver;
-  margin-left: 10px;
-  margin-bottom: 17px;
-  border-radius: 10px;
-}
 
-.categories-btn:hover,
-.categories-btn-selected:hover {
-  opacity: 0.7;
-  cursor: pointer;
-}
 .article-image {
   text-align: center;
   border-top-right-radius: 5px;

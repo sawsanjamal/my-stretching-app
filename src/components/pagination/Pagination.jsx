@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import "./styles.css";
 import { AppContext } from "../../App";
+import { SmallButton } from "../buttons/SmallButton";
 const Pagination = ({
   postsPerPage,
   totalPosts,
@@ -41,13 +42,12 @@ const Pagination = ({
         <ul className="number-list">
           {pageNumbers.map((number) => (
             <li className="list-item" key={number}>
-              <button
-                className={darkMode ? "pagination-btn-dark" : "pagination-btn"}
+              <SmallButton
                 onClick={() => paginate(number)}
                 aria-label={`Go to Page ${number}`}
               >
                 {number}
-              </button>
+              </SmallButton>
             </li>
           ))}
         </ul>

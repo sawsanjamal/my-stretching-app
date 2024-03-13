@@ -55,19 +55,14 @@ export default function App() {
       setUser(res.user);
       getStretches().then(({ stretches }) => {
         setStretches(stretches);
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 2000);
+        setIsLoading(false);
       });
 
       getArticles().then(({ articles }) => {
         setArticles(articles);
-        setTimeout(() => {
-          setIsLoadingArticle(false);
-        }, 2000);
+        setIsLoadingArticle(false);
       });
     });
-
     const storedDarkMode = localStorage.getItem("DARK_MODE") === "true";
     setDarkMode(storedDarkMode);
   }, []);

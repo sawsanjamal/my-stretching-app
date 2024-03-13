@@ -3,6 +3,7 @@ import { AppContext } from "../../App";
 
 import { useNavigate } from "react-router-dom";
 import { changeSubscription } from "../../api/users";
+import { ModalBtn } from "../buttons/ModalBtn";
 
 export function StretchesModal() {
   const {
@@ -54,24 +55,19 @@ export function StretchesModal() {
             <p>$0</p>
 
             {user && user.subscription.tier !== null ? (
-              <button
-                className={darkMode ? "card-btn-dark" : "card-btn"}
-                onClick={() => {
-                  handleChangeSubscription("free");
-                }}
+              <ModalBtn
+                handleChangeSubscription={handleChangeSubscription}
+                subscriptionTier="free"
               >
                 Change to free account
-              </button>
+              </ModalBtn>
             ) : (
-              <button
-                className={darkMode ? "card-btn-dark" : "card-btn"}
-                onClick={() => {
-                  setSubscription("free");
-                  setSignUpModalOpen(true);
-                }}
+              <ModalBtn
+                handlePaidSubscription={handlePaidSubscription}
+                subscriptionTier="free"
               >
                 Get Started
-              </button>
+              </ModalBtn>
             )}
             <ul className="list">
               <li className="modal-list">Access to Stretches Detail Pages</li>
@@ -83,27 +79,19 @@ export function StretchesModal() {
             <h1 className="subscription-title">One Month Premium Account</h1>
             <p>$4.99 Per Month</p>
             {user && user.subscription.tier !== null ? (
-              <button
-                className={darkMode ? "card-btn-dark" : "card-btn"}
-                onClick={() => {
-                  if (user.subscription.tier === "free") {
-                    nav("/checkout/month");
-                  } else {
-                    handleChangeSubscription("month");
-                  }
-                }}
+              <ModalBtn
+                handleChangeSubscription={handleChangeSubscription}
+                subscriptionTier="month"
               >
                 Change to one month premium account
-              </button>
+              </ModalBtn>
             ) : (
-              <button
-                className={darkMode ? "card-btn-dark" : "card-btn"}
-                onClick={() => {
-                  handleChangeSubscription("month");
-                }}
+              <ModalBtn
+                handlePaidSubscription={handlePaidSubscription}
+                subscriptionTier="month"
               >
                 Get Started
-              </button>
+              </ModalBtn>
             )}
 
             <ul className="list">
@@ -118,27 +106,19 @@ export function StretchesModal() {
             <p> $55.99 Per Year</p>
 
             {user && user.subscription.tier !== null ? (
-              <button
-                className={darkMode ? "card-btn-dark" : "card-btn"}
-                onClick={() => {
-                  if (user.subscription.tier === "free") {
-                    nav("/checkout/year");
-                  } else {
-                    handleChangeSubscription("year");
-                  }
-                }}
+              <ModalBtn
+                handleChangeSubscription={handleChangeSubscription}
+                subscriptionTier="year"
               >
                 Change to one year premium account
-              </button>
+              </ModalBtn>
             ) : (
-              <button
-                className={darkMode ? "card-btn-dark" : "card-btn"}
-                onClick={() => {
-                  handlePaidSubscription("year");
-                }}
+              <ModalBtn
+                handlePaidSubscription={handlePaidSubscription}
+                subscriptionTier="year"
               >
                 Get Started
-              </button>
+              </ModalBtn>
             )}
 
             <ul className="list">

@@ -14,15 +14,28 @@ import MyProfile from "./pages/MyProfile/MyProfile";
 export const router = createBrowserRouter([
   {
     element: <App />,
+    path: "/",
     children: [
       { index: true, element: <Home /> },
       { path: "/signup", element: <Signup /> },
-      { path: "/articles", element: <Articles /> },
-      { path: "/stretches", element: <Stretches /> },
-      { path: "/stretches/:id", element: <Stretch /> }, // make this a child of `/stretches`
-      { path: "/articles/:id", element: <Article /> }, // make this a child of `/stretches`
-      { path: "/mystretches", element: <MyStretches /> },
-      { path: "/myarticles", element: <MyArticles /> },
+      {
+        path: "/articles",
+
+        children: [
+          { index: true, element: <Articles /> },
+          { path: ":id", element: <Article /> },
+          { path: "myarticles", element: <MyArticles /> },
+        ],
+      },
+      {
+        path: "/stretches",
+        children: [
+          { index: true, element: <Stretches /> },
+          { path: ":id", element: <Stretch /> },
+          { path: "mystretches", element: <MyStretches /> },
+        ],
+      },
+
       { path: "/checkout/:subscriptionTier", element: <Checkout /> },
       { path: "/myprofile", element: <MyProfile /> },
     ],

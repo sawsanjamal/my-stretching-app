@@ -1,7 +1,7 @@
 import "../styles.css";
 import { AppContext } from "../App";
 import { useContext } from "react";
-import StretchesList from "../components/StretchesList";
+import StretchesList from "../components/stretches/StretchesList";
 import { useParams } from "react-router-dom";
 
 export default function Stretch() {
