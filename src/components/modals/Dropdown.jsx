@@ -7,7 +7,7 @@ import { SUBSCRIPTION_TIERS } from "../../constants";
 export default function Dropdown() {
   const {
     data: { subscription },
-    methods: { setSubscription, setSelectedSubscription },
+    methods: { setSubscription },
   } = useContext(AppContext);
   const { register } = useFormContext();
 
@@ -18,7 +18,6 @@ export default function Dropdown() {
       value={subscription}
       onChange={(e) => {
         setSubscription(e.target.value);
-        setSelectedSubscription(e.target.value);
       }}
     >
       {Object.entries(SUBSCRIPTION_TIERS).map(([subscription, displayName]) => (
